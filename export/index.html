@@ -22,9 +22,9 @@
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="libs/reveal.js/3.7.0/lib/css/zenburn.css">
-    <link rel="stylesheet" href="libs/highlight.js/9.12.0/darkula.css">
+    <link rel="stylesheet" href="libs/highlight.js/9.12.0/Zenburn.css">
 
-     <link rel="stylesheet" href="UoA_DJT.css">
+     
 
     <!-- Printing and PDF exports -->
     <script>
@@ -94,24 +94,8 @@
 }
 
 #logo img {
-  max-height: 110px;
-  max-width: auto;
-}
-
-/*Resizing logo for smaller screens (DT)*/
-
-@media only screen and (max-height: 500px){
-  #logo img {
-    max-height: auto;
-    max-width: 40px;
-  }
-}
-
-@media only screen and (max-height: 700px) and (min-height: 501px){
-  #logo img {
-    max-height: auto;
-    max-width: 70px;
-  }
+  max-height: 3.5em;
+  max-width: none;
 }
 
 .reveal .slides section .code-presenting-annotation {
@@ -134,9 +118,6 @@
 <body>
 
         
-        <div id="logo" style="position: fixed; top: 25px; right: 25px; z-index: 1">
-            <img src="https://cpb-ap-se2.wpmucdn.com/blogs.auckland.ac.nz/dist/d/79/files/2015/10/uoa-v-colour2.png"/>
-        </div>
 
     <div class="reveal">
 
@@ -173,11 +154,11 @@
             controlsLayout: 'bottom-right',
             controlsBackArrows: 'faded',
             progress: true,
-            slideNumber: true,
+            slideNumber: false,
             history: true,
             keyboard: true,
             overview: true,
-            center: false,
+            center: true,
             touch: true,
             loop: false,
             rtl: false,
@@ -195,7 +176,7 @@
             mouseWheel: false,
             hideAddressBar: true,
             previewLinks: false,
-            transition: 'none',
+            transition: 'default',
             transitionSpeed: 'default',
             backgroundTransition: 'default',
             viewDistance: 3,
@@ -221,8 +202,8 @@
                 { src: 'libs/reveal.js/3.7.0/plugin/menu/menu.js' },
                 { src: 'libs/reveal.js/3.7.0/plugin/math/math.js', async: true },
                 { src: 'libs/highlight.js/9.12.0/highlight.js', async: true },
-                { src: 'libs/reveal.js/3.7.0/plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize('Duleepa J Thrimawithana - Department of Electrical, Computer & Software Engineering (2019)','rgba(0,0,0,0)'); } },
-                //Modified to add author name (DT)
+                { src: 'libs/reveal.js/3.7.0/plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } },
+		
                 { src: 'libs/highlight.js/9.12.0/reveal-code-focus-1.0.0-mod.js',
                   async: true,
                   callback: function() {
