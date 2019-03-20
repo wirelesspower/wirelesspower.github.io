@@ -498,9 +498,9 @@ body {
   width: 98% !important; 
   height: 100% !important;
   top: 0;
-  right: 0px !important;
+  right: 0px;
   bottom: 0;
-  left: 0 !important;
+  left: 0;
   margin-left: 25px !important;   /*changed from margin: auto -DJT*/
   margin-right: 25px !important;   /*added -DJT*/
   pointer-events: none;
