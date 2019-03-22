@@ -39,15 +39,15 @@
 
 			// The "normal" size of the presentation, aspect ratio will be preserved
 			// when the presentation is scaled to fit different resolutions
-			width: 960,
-			height: 700,
+			width: 1280,
+			height: 720,
 
 			// Factor of the display size that should remain empty around the content
-			margin: 0.04,
+			margin: 0,
 
 			// Bounds for smallest/largest possible scale to apply to content
 			minScale: 0.2,
-			maxScale: 2.0,
+			maxScale: 5,
 
 			// Display presentation control arrows
 			controls: true,
@@ -2000,12 +2000,24 @@
 					}
 					// Apply scale transform as a fallback
 					else {
+						var DTCorrectionX = 10*(1-scale);
+						var DTCorrectionY = 15*(1-scale);
+						dom.slides.style.zoom = scale;
+						dom.slides.style.left = '';
+						dom.slides.style.top = '';
+						dom.slides.style.bottom = '';
+						dom.slides.style.right = '';			
+						transformSlides( { layout:  'translate('+ DTCorrectionX +'% , '+ DTCorrectionY +'%)' } );
+
+						/* Edited by (DT) to add just zoom'translate('+ test +', -10%)'
 						dom.slides.style.zoom = '';
 						dom.slides.style.left = '50%';
 						dom.slides.style.top = '50%';
 						dom.slides.style.bottom = 'auto';
 						dom.slides.style.right = 'auto';
 						transformSlides( { layout: 'translate(-50%, -50%) scale('+ scale +')' } );
+						
+						*/
 					}
 				}
 
