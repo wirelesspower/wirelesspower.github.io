@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sabbatical Presentation</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { 
+        font-family: 'Droid Serif'; 
+        line-height: 1.6;
+        }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: bold;
+        color: #00467F;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .TitleAuthor {
+        color:white; 
+        font-weight: normal;
+      }
+
+      .title-slide .remark-slide-number {
+        display: none;
+      }
+      .title-slide h1, h2, h3 {
+        text-align: left;
+        color:white;
+        line-height: 0.7;
+        font-weight: bold;
+      }
+
+      .title-slide {
+        vertical-align: middle;
+        background-color: #00467F;
+      }
+
+      .logo-title {
+        content: "";
+        position: absolute;
+        top: 15px;
+        right:   15px;
+        height: 88px;
+        width: 267px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(https://cdn.auckland.ac.nz/assets/central/central-services/mediaandmarketing/uoa-logos-2015/uoa-logo-2015-reverse.png);
+      }
+      .logo-slide {
+        content: "";
+        position: absolute;
+        top: 35px;
+        right:   15px;
+        height: 96px;
+        width: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(https://cpb-ap-se2.wpmucdn.com/blogs.auckland.ac.nz/dist/d/79/files/2015/10/uoa-v-colour2.png);
+      }
+
+      .left-column {
+        width: 70%;
+        float: left;
+        word-wrap: break-word;
+      }
+     
+      .right-column {
+        width: 25%;
+        float: right;
+        word-wrap: break-word;
+      }
+
+      .footer {
+        content: "";
+        position: absolute;
+        bottom: 17px;
+        color:gray;
+        font-size: 10pt;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide
+count: false
+.logo-title[]
+
+# WPT Systems for EV Applications
+### Research at UoA
+
+.TitleAuthor[Duleepa J Thrimawithana]
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+
+---
+
+# New Zealand
+
+.center[<iframe width="975" height="430" src="https://www.youtube.com/embed/fHCemviY06Y?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>]
+
+---
+
+# The University of Auckland
+
+- Highest ranked New Zealand university and 85th in the QS World University Ranking
+- Over 5,000 staff members and 40,000 students
+- Nine faculties including Medical & Health Sciences, Engineering, Business & Economics and Science
+
+.center[<img src="img/UoAMap.png" height="300">]
+
+---
+
+# Dept. of Electrical, Computer & Software Eng.
+
+.left-column[
+- One of the 5 deparments in the Faculty of Engineering
+- Offers 3 undergraduate degree programs
+ - Electrical & Electronics, Computer Systems and Software
+ - Project based teaching
+- 35+ full-time academic staff members and 15+ post-doctoral research fellows
+- 150+ postgraduate students and 600+ undergraduate students
+- Regular visiting research scholars and research students
+- Research groups include Power Electronics, Power Systems, Signal Processing, Robotics, Embedded Systems, Parallel Computing, Telecommunications and Control Systems
+]
+
+.right-column[
+<img src="img/UoAEng.png" width="300px">
+]
+---
+
+# Power Electronics Research Group
+
+.center[<img src="img/PEGROUP.gif" height="430">]
+
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Research Projects
+### Highlights & Updates
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+
+---
+
+# Research Topics
+
+- Bi-directional IPT systems
+ - Synchronisation & optimal control
+ - Circuit topologies
+- Misalignment tolerant high-power IPT systems
+ - Compensation topologies & control techniques 
+ - Modular and multi-level ciruit topologies
+- Grid integration of IPT systems
+ - Low cost circuit topologies
+ - Grid services 
+- Dynamic charging
+ - Circuit topologies & control techniques 
+ - Power distribution techniques
+ - Thermal and packaging
+
+---
+
+# Integrated Boost MMC (IB-MMC)
+.left-column[
+- Derives a higher voltage to drive the compensation network
+ - Reduces current stress and may eliminate step-up transformer
+- Inherantly eliminates circulating currents
+ - Series-blocking capacitor can be omitted
+- Generate a low THD staircase modulated output voltage
+ - Can generate wide range of voltages
+ - Can use lower voltage higher performance devices
+ 
+<img src="img/IBMMC_Conv.gif" height="175px">
+
+ ]
+
+ .right-column[
+ 
+ <img src="img/IBMMC_Vpi.gif" width="275px">
+ 
+ ]
+
+---
+
+### Video example from YouTube
+
+
+---
+ 
+# Display and Inline
+ 
+1. This is an inline integral: `\(\int_a^bf(x)dx\)`
+2. More `\(x={a \over b}\)` formulae.
+ 
+Display formula:
+$$\int_a^bf(x)dx$$
+$$e^{i\pi} + 1 = 0$$
+
+---
+
+#ABC
+
+.left-column[
+- My heading 1 
+- abscdfsgergreererweryertyeryehtyytttryewrtrwetertertetewtewtreterrywryertyteytrtytryettet
+
+regregreg
+
+]
+
+.right-column[
+First statement dfgfgfdgdgdgdsfgdsgfgfdgfgfdgsdgdfg gdfsgdfgdsg
+
+Second statement
+]
+
+---
+
+Hello
+
+.twocolumn[
+asbdfdsffkjbfsdbfkafjdfsakfbjfbsfbfjkafbflsboiflfds
+
+adfdlfiafispfsdifsdifbpdifdsfbfsidfbpfbdsifbdffisfiidbfpsfsb
+]
+
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        ratio: '16:9',
+        slideNumberFormat: '%current%',
+        countIncrementalSlides: false,
+      });
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+      MathJax.Hub.Configured();
+    </script>
+  </body>
+</html>
