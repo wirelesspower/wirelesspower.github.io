@@ -85,6 +85,21 @@
       
       
     </style>
+
+    <!-- KaTeX and Mathjax support refer to below for syntax -->
+    <!-- https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
   </head>
   <body>
     <textarea id="source">
@@ -110,7 +125,7 @@ name: template_slide
 
 # New Zealand
 
-.center[<iframe width="975" height="430" src="https://www.youtube.com/embed/fHCemviY06Y?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>]
+.center[<iframe width="975" height="430" src="https://www.youtube.com/embed/fHCemviY06Y?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
 
 ---
 
@@ -169,6 +184,7 @@ name: template_slide
 
 # Research Topics
 
+.left-column[
 - Bi-directional IPT systems
  - Synchronisation & optimal control
  - Circuit topologies
@@ -176,12 +192,18 @@ name: template_slide
  - Compensation topologies & control techniques 
  - Modular and multi-level ciruit topologies
 - Grid integration of IPT systems
- - Low cost circuit topologies
- - Grid services 
+ - Circuit topologies for grid services 
 - Dynamic charging
  - Circuit topologies & control techniques 
  - Power distribution techniques
  - Thermal and packaging
+ ]
+
+.right-column[
+ 
+<img src="img/Prtos.gif" width="350px">
+ 
+]
 
 ---
 
@@ -221,69 +243,171 @@ name: template_slide
 ]
 
 ---
- 
-# Display and Inline
- 
-1. This is an inline integral: `\(\int_a^bf(x)dx\)`
-2. More `\(x={a \over b}\)` formulae.
- 
-Display formula:
-$$\int_a^bf(x)dx$$
-$$e^{i\pi} + 1 = 0$$
+
+# Push-Pull Coupler Array (PPCA)
+
+.left-column[
+.center[<img src="img/PPCA_Conv.png" height="220px">]
+
+- Each coupler driven by a single switch and controlled independently
+- Swtich stresses do not scale with the number of couplers
+- Switches only conduct the DC current
+- A damaged module only impacts the two neighbouring modules 
+]
+
+.right-column[
+<img src="img/PPCA_W.gif" width="350px">
+]
 
 ---
 
-#ABC
+# Boost Active Bridge (BAB)
 
 .left-column[
-- My heading 1 
-- abscdfsgergreererweryertyeryehtyytttryewrtrwetertertetewtewtreterrywryertyteytrtytryettet
+- Integrated post/pre regulation capabilities enable maximum efficiency tracking
+- Wide ZVS range and reduced current stresses
+- Eliminates DC-blocking capacitor
+<br></br>
 
-regregreg
+<img src="img/BAB_Conv.png" height="200px">
+
+]
+
+.right-column[.right[
+<img src="img/BAB_W1.png" width="310px">
+
+<img src="img/BAB_W2.png" width="310px">
+]]
+
+---
+
+# WPT2/Z2 VA with Integrated BAB
+
+.left-column[
+- Boost inductors integrated in to the DD pad
+- Designed to comply with WPT2/Z2 specifications
+- Controlled both the GA and VA to maintain a nearly constant efficiency under all operating conditions
+
+.center[<img src="img/IBAB_Conv.png" height="220px">]
 
 ]
 
 .right-column[
-First statement dfgfgfdgdgdgdsfgdsgfgfdgfgfdgsdgdfg gdfsgdfgdsg
-
-Second statement
+<img src="img/IBAB_W1.png" width="350px">
 ]
 
 ---
 
-Hello
+# Hybrid Compensation Topologies
 
-.twocolumn[
-asbdfdsffkjbfsdbfkafjdfsakfbjfbsfbfjkafbflsboiflfds
+.left-column[
+- Complementary compensation networks employed to improve misalignment tolerance 
+- Require less or no control 
+- Nearly constant power transfer across the entire operating region
+- Minimize increase in VA due to detuning caused by changes in coupler inductanes  
+- For example the power throughput of a parallel hybrid system can be given by
 
-adfdlfiafispfsdifsdifbpdifdsfbfsidfbpfbdsifbdffisfiidbfpsfsb
+\\[P\_{out} = \{8V\_{in}V\_{out}\over\pi^2} \left(\frac{1}{\omega\_TM\_s} + \frac{M\_p}{\omega\_TL\_{pi}L\_{si}}\right)\\]
+
+
 ]
 
+.right-column[
+<img src="img/Hybrid_Conv1.png" width="350px">
 
+<img src="img/Hybrid_Conv2.png" width="350px">
+]
 
+---
 
+# Low Cost IPT Systems
 
+.left-column[
+- For example push-pull converters employed in both VA and GA 
+ - DC indcutor(s) and current splitting transformer can be integrted in with the D coupler
+ - Generates a higher voltage to drive the couplers   
+ - Relative phase between converters controls the power flow
+ - Switches maintain ZVS across the entire operating region
 
+.center[<img src="img/PPRC_W1.png" height="205px">]
 
+]
+
+.right-column[
+.center[<img src="img/PPRC_Conv.png" width="310px">]
+
+.center[<img src="img/PPRC_W.png" width="230px">]
+]
+
+---
+
+# Dynamic Wireless Charging 
+
+.center[<iframe width="575" height="430" src="https://www.youtube.com/embed/09v1TGJMDXc?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0&end=28" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
+
+---
+
+# Engineering Education 
+
+.center[<iframe width="765" height="430" src="https://www.youtube.com/embed/-9LZ5a-rKYU?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0&end=28" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Questions?
+### Thank you
 
 
     </textarea>
+
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
     </script>
-    <script>
+
+    <script type="text/javascript">
+
+      var options = {};
+
+      var renderMath = function() {
+        renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false},
+        ]});
+      }
+
       var slideshow = remark.create({
         ratio: '16:9',
         slideNumberFormat: '%current%',
         countIncrementalSlides: false,
+        renderMath,
       });
+
       MathJax.Hub.Config({
           tex2jax: {
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          processEscapes: true
           }
       });
+
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
       MathJax.Hub.Configured();
+      
     </script>
   </body>
 </html>
