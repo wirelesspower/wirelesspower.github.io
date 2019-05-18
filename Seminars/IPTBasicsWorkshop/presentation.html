@@ -183,7 +183,7 @@ layout: false
 count: false
 .logo-title[]
 
-# Part I - Fundamentals Concepts
+# Fundamentals Concepts
 ### Modelling the Coils and Power Transfer
 
 ---
@@ -261,137 +261,140 @@ name: template_slide
 
 # Modelling the Primary and Pick-up Coils
 
-.center[<img src="img/fund/TxEq.png" height="140px">]
+.center[<img src="img/fund/IPTConcSys.png" height="170px">]
 
 - The behaviour of the coils can be modelled using a T equivelent transformer model
  - `\(L_{pt}\)` and `\(L_{st}\)` are the self-inductances of primary and pick-up coils
  - `\(\phi_{m}\)` represents flux linkage while `\(\phi_{lk_p}\)` and `\(\phi_{lk_s}\)` represent leakage flux
  - The coupling coefficient, k, between the coils is less than 0.4 in a typical IPT system
-- The mutual inductance, M, between the two coils is given by 
+- The mutual inductance, M, between the two coils is given by
 \\[M = k\sqrt{L\_{pt}L\_{st}}\\]
-- The turns ratio, n, is related to the self-inductances of the coils since,  `\(n = \frac{N_{pt}}{N_{st}} = \sqrt{\frac{L_{pt}}{L_{st}}}\)`
 
 ---
 
-# Measuring Self-inductance 
+# Measuring Coupling coefficient
 
-.center[<img src="img/fund/OcTst.png" height="140px">]
-
-- The self-inductance of primary coil is obtained by measuring inductance seen from primary when pick-up coil is open-circuited since 
-\\[L\_{pt(oc)} = (1-k)L\_{pt}+kL\_{pt}=L\_{pt}\\]
-- Similarly the self-inductance of pick-up coil can also be measured
-- Depending on the construction of the coils, the self-inductance may change with changes in relative displacement between the coils
-
-
----
-
-# Measuring Coupling Coefficient
-
-.center[<img src="img/fund/ScTst.png" height="140px">]
-
-- The inductance seen from primary when pick-up coil is short-circuited is related to `\(L_{pt}\)` and `\(k\)` as given by 
-\\[L\_{pt(sc)} = (1-k)L\_{pt}+\frac{k(1-k)L\_{pt}^2}{kL\_{pt}+(1-k)L\_{pt}} = (1-k^2)L\_{pt}\\]
-- The coupling coefficient between the coils can be calculated from measured `\(L_{pt(oc)}\)` and `\(L_{pt(sc)}\)` using
-\\[k = \sqrt{\frac{L\_{pt(oc)}-L\_{pt(sc)}}{L\_{pt(oc)}}}\\]
 
 ---
 
 # Coupled Inductor Model
 
-.center[<img src="img/fund/CpldL.png" height="135px">]
+.left-column[
+.center[<img src="img/PPCA_Conv.png" height="220px">]
 
-- Although a T equivelent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor domain
-- In the coupled inductor model, `\(L_{pt}\)` and `\(L_{st}\)` represent the self-inductances of primary and pick-up coils
-- `\(V_{sr}\)` represents voltage induced across `\(L_{st}\)` due to current `\(I_{pt}\angle 0\)` flowing through `\(L_{pt}\)` and is given by
-\\[V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
-- Similarly, `\(V_{pr}\)` represents voltage induced across `\(L_{pt}\)` due to `\(I_{st}\angle\theta\)` and is given by
-\\[V\_{pr} = \omega MI\_{st}e^{j(\theta+\pi/2)}\\]
+- 
+
+]
+
+.right-column[
+<img src="img/PPCA_W.gif" width="350px">
+]
 
 ---
 
-# Open-Circuit Voltage & Short-Circuit Current
+# Measuring Coupling coefficient
 
-.left-column[
-- The voltage measured across an open-circuited pick-up coil, `\(V_{oc}\)`, is the same as `\(V_{sr}\)` and therefore
-\\[V\_{oc} = V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
-- The current flowing through a short-circuited pick-up coil, `\(I_{sc}\)`, is 
-\\[I\_{sc} = \frac{V\_{sr}}{j\omega L\_{st}} = I\_{pt}\frac{M}{L\_{st}}\\]
-- The uncompensated volt-ampere (VA) capacity of the pick-up coil can be given by
-\\[S\_{u} = \left | V\_{oc} \right | \left | I\_{sc} \right | = I\_{pt}^2\frac{\omega M^2}{L\_{st}}\\]
-]
 
-.right-column[.right[
-<img src="img/fund/VocIsc.png" width="310px">
-]]
+---
+
+# Short-Circuit Current and Open-Circuit Voltage
+
+
 
 ---
 
 # Power Transferred Across Airgap
 
 .left-column[
-- Assume that the `\(V_{sr}\)` induced by `\(I_{pt}\angle 0\)` causes a current `\(I_{st}\angle\theta\)` to flow through a load, `\(Z_{sc}\)`, attached across the pick-up coil 
-- Under these conditions power transferred across the airgap can be given by
-\\[P\_{o} = \Re \left \\{ V\_{sr}I\_{st}e^{-j(\theta)} \right \\} = \left | V\_{sr} \right | \left | I\_{st} \right | \cos(\pi/2-\theta)\\]
-- The VA rating of the coils required to achieve this is
-\\[\mathit{VA}\_{pt} = \omega L\_{pt} \left | I\_{pt}^2 \right | \quad \text{and} \quad \mathit{VA}\_{st} = \omega L\_{st} \left | I\_{st}^2 \right |\\]
-- Thus `\(P_{o}\)` is related to the VA in the coils as given by
-\\[P\_{o} = k \sqrt{\mathit{VA}\_{pt}\mathit{VA}\_{st}} \sin(\theta) \\]
+- Integrated post/pre regulation capabilities enable maximum efficiency tracking
+- Wide ZVS range and reduced current stresses
+- Eliminates DC-blocking capacitor
+<br></br>
+
+<img src="img/BAB_Conv.png" height="200px">
 
 ]
 
 .right-column[.right[
-<img src="img/fund/GenP.png" width="310px">
+<img src="img/BAB_W1.png" width="310px">
+
+<img src="img/BAB_W2.png" width="310px">
 ]]
 
 ---
 
-# Coil Q & Losses
+# Power Transfer Efficiency and Coil Q
 
-- Assume that the losses in `\(L_{pt}\)` and `\(L_{st}\)` are modelled using equivelent series resistances (ESRs) `\(r_{pt}\)` and `\(r_{st}\)`
-- The quality factors, `\(Q_{pt}\)` and `\(Q_{st}\)`, of the primary and pick-up coils are
-\\[Q\_{pt} =  {\omega L\_{pt}}/{r\_{pt}} \quad \text{and} \quad Q\_{st} = {\omega L\_{st}} / {r\_{st}} \\]
-- The total losses in the two coils can be expressed as
-\\[P\_{loss(c)} = \left | I\_{pt}^2 \right | r\_{pt} + \left | I\_{st}^2 \right | r\_{st} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{\mathit{VA}\_{st}}{Q\_{st}}\\]
-- Since `\(P_{o} = k \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \sin(\theta) \)`, `\(P_{loss(c)}\)` can be expressed as
-\\[P\_{loss(c)} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{P\_{o}^2}{\mathit{VA}\_{pt} k^2 Q\_{st} \sin(\theta)^2}\\]
+.left-column[
+- Boost inductors integrated in to the DD pad
+- Designed to comply with WPT2/Z2 specifications
+- Controlled both the GA and VA to maintain a nearly constant efficiency under all operating conditions
 
----
+.center[<img src="img/IBAB_Conv.png" height="220px">]
 
-# Maximum Coil-Coil Efficiency
+]
 
-- Taking the derivative of `\(P_{loss(c)}\)`, conditions to achieve minimum loss can be derived as
-\\[ \mathit{VA}\_{pt} = \frac {P\_{o}} {k} \sqrt { \frac {Q\_{pt}} {Q\_{st}} } \\]
-- Under above conditions losses in `\(L_{pt}\)` and `\(L_{st}\)` are a minimum and can be given by
-\\[ P\_{loss(c)\_{min}} = \frac {2 P\_{o}} {k \sin(\theta)} \sqrt { \frac {1} {Q\_{pt} Q\_{st}} } \\]
-- Thus the maximum coil-coil power transfer efficiency can be derived as
-\\[ \eta\_{c\_{max}} = 1 - \frac {2} {k \sin(\theta)} \sqrt { \frac {1} {Q\_{pt} Q\_{st}} } \\]
+.right-column[
+<img src="img/IBAB_W1.png" width="350px">
+
+<img src="img/IBAB_W2.png" width="350px">
+
+]
 
 ---
 
-# Example: Simulating the Coils
+# Hybrid Compensation Topologies
 
+.left-column[
+- Complementary compensation networks employed to improve misalignment tolerance 
+- Require less or no control 
+- Nearly constant power transfer across the entire operating region
+- Minimize increase in VA due to detuning caused by changes in coupler inductanes  
+- For example the power throughput of a parallel hybrid system can be given by
+
+\\[P\_{out} = \{8V\_{in}V\_{out}\over\pi^2} \left(\frac{1}{\omega\_TM\_s} + \frac{M\_p}{\omega\_TL\_{pi}L\_{si}}\right)\\]
+
+
+]
+
+.right-column[
+<img src="img/Hybrid_Conv1.png" width="350px">
+
+<img src="img/Hybrid_Conv2.png" width="350px">
+]
 
 ---
 
-class: title-slide
-layout: false
-count: false
-.logo-title[]
+# Low Cost IPT Systems
 
-# Part II - Coil Structures
-### Field Patterns and Coil Parameters
+.left-column[
+- For example push-pull converters employed in both VA and GA 
+ - DC indcutor(s) and current splitting transformer can be integrted in with the D coupler
+ - Generates a higher voltage to drive the couplers   
+ - Relative phase between converters controls the power flow
+ - Switches maintain ZVS across the entire operating region
+
+.center[<img src="img/PPRC_W1.png" height="205px">]
+
+]
+
+.right-column[
+.center[<img src="img/PPRC_Conv.png" width="310px">]
+
+.center[<img src="img/PPRC_W.png" width="230px">]
+]
 
 ---
 
-layout: true
-name: template_slide
+# Dynamic Wireless Charging 
 
-.logo-slide[]
-.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+.center[<iframe width="575" height="430" src="https://www.youtube.com/embed/09v1TGJMDXc?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0&end=28" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
 
 ---
 
-# Non-Polarised Coils
+# Engineering Education 
+
+.center[<iframe width="765" height="430" src="https://www.youtube.com/embed/-9LZ5a-rKYU?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0&end=28" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
 
 ---
 
