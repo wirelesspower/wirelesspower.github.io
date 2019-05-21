@@ -333,7 +333,7 @@ name: template_slide
 - Under these conditions power transferred across the airgap can be given by
 \\[P\_{o} = \Re \left \\{ V\_{sr}I\_{st}e^{-j(\theta)} \right \\} = \left | V\_{sr} \right | \left | I\_{st} \right | \cos(\pi/2-\theta)\\]
 - The VA rating of the coils required to achieve this is
-\\[\mathit{VA}\_{pt} = \omega L\_{pt} \left | I\_{pt}^2 \right | \quad \text{and} \quad \mathit{VA}\_{st} = \omega L\_{st} \left | I\_{st}^2 \right |\\]
+\\[\mathit{VA}\_{pt} = \omega L\_{pt} \left | I\_{pt} \right |^2 \quad \text{and} \quad \mathit{VA}\_{st} = \omega L\_{st} \left | I\_{st} \right |^2 \\]
 - Thus `\(P_{o}\)` is related to the VA in the coils as given by
 \\[P\_{o} = k \sqrt{\mathit{VA}\_{pt}\mathit{VA}\_{st}} \sin(\theta) \\]
 
@@ -360,11 +360,11 @@ name: template_slide
 # Maximum Coil-Coil Efficiency
 
 - Taking the derivative of `\(P_{loss(c)}\)`, conditions to achieve minimum loss can be derived as
-\\[ \mathit{VA}\_{pt} = \frac {P\_{o}} {k} \sqrt { \frac {Q\_{pt}} {Q\_{st}} } \\]
+\\[ \mathit{VA}\_{pt} = \frac {P\_{o}} {k} \sqrt { \frac {Q\_{pt}} {Q\_{st}} } \quad \text{or} \quad \mathit{VA}\_{pt} = \frac {Q\_{pt}} {Q\_{st}} \mathit{VA}\_{st} \sin(\theta)^2 \\]
 - Under above conditions losses in `\(L_{pt}\)` and `\(L_{st}\)` are a minimum and can be given by
-\\[ P\_{loss(c)\_{min}} = \frac {2 P\_{o}} {k \sin(\theta)} \sqrt { \frac {1} {Q\_{pt} Q\_{st}} } \\]
+\\[ P\_{loss(c)\_{min}} = \frac {2 P\_{o}} {k \sin(\theta)} \frac {1} {\sqrt {Q\_{pt} Q\_{st}} } \\]
 - Thus the maximum coil-coil power transfer efficiency can be derived as
-\\[ \eta\_{c\_{max}} = 1 - \frac {2} {k \sin(\theta)} \sqrt { \frac {1} {Q\_{pt} Q\_{st}} } \\]
+\\[ \eta\_{c\_{max}} = \frac{ k \sin(\theta) -  \frac {1} { \sqrt {Q\_{pt} Q\_{st}} }} {k \sin(\theta) +  \frac {1} {\sqrt {Q\_{pt} Q\_{st}} }} \\]
 
 ---
 
@@ -392,6 +392,72 @@ name: template_slide
 ---
 
 # Non-Polarised Coils
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part III - Compensation Networks
+### Analysing the Behaviour
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+
+---
+
+# An Uncompesated Pick-up
+
+.center[<img src="img/comp/UncompR.png" height="135px">]
+
+- Assume a load resistor, `\(R_{L}\)`, is connected directly across a pick-up coil, which is coupled with a primary coil 
+- The primary coil is driven by the primary converter generating a current `\(I_{pt}\angle 0\)` at an angular frequency `\(\omega = 2\pi f\)`
+- The current flowing through pick-up coil as well as the load will be
+\\[ I\_{st} = \frac {-V\_{sr}} {R\_{L} + j\omega L\_{st}} = \frac {-\omega MI\_{pt}e^{j\pi/2}} {R\_{L} + j\omega L\_{st}}  \\]
+
+
+---
+
+# Power from an Uncompesated Pick-up
+
+.left-column[
+- The power delivered to the load is then
+\\[ P\_{o} =  \left | I\_{st} \right |^2 R\_{L} = \left ( \omega MI\_{pt} \right )^2  \frac {R\_{L}} {R\_{L}^2 + \omega^2 L\_{st}^2 }  \\]
+- At a load `\(R_L = \omega L_{st}\)`, maximum power is delivered 
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2} {2 \omega L\_{st} } = 0.5 V\_{oc}I\_{sc}  = 0.5k^2\mathit{VA}\_{pt} \\]
+- As an example, when `\(k = 0.1\)`, to deliver 5 mW to the load, the primary coil should be driven atleast at 1 VA
+ - The impedance of `\(L_{st}\)` limits the power transfer
+]
+
+.right-column[.right[
+<img src="img/comp/PUncompR.png" width="310px">
+]]
+
+---
+
+# A Series Compensated Pick-up
+
+.center[<img src="img/comp/SCompR.png" height="135px">]
+
+- The impedance of `\(L_{st}\)` can be compensated using the capacitor `\(C_{st}\)` that is connected in series with `\(L_{st}\)`
+- The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
+\\[ Z\_{s} = j \left ( \omega L\_{st} - \frac {1} {\omega C\_{st}} \right ) + R\_{L} = j \Delta \omega L\_{st} + R\_{L} \quad \text{where} \quad (1+\Delta) \omega L\_{st} = \frac {1} {\omega C\_{st}}\\]
+- To allow the pick-up to behave like an ideal voltage source, at a given `\(\omega\)`, `\(C_{st}\)` can be selected such that 
+\\[ \omega L\_{st} = \frac {1} {\omega C\_{st}} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{st}C\_{st}} } \\]
+
+---
+
+# Power Transfer with Series Tuning
+
+- Assuming `\((1+\Delta) \omega L_{st} = \frac {1} {\omega C_{st}}\)`, a general expression for output power can be obtained as
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2} { \Delta^2 \omega^2 L\_{st}^2  + R\_{L}^2 } = 0.5 V\_{oc}I\_{sc}  = 0.5k^2\mathit{VA}\_{pt} \\]
 
 ---
 
