@@ -136,12 +136,14 @@ name: template_slide
 .footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
 
 ---
+name: S1
 
 # New Zealand
 
 .center[<iframe width="975" height="430" src="https://www.youtube.com/embed/fHCemviY06Y?modestbranding=0&autohide=1&controls=0&playsinline=0&autoplay=0" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
 
 ---
+name: S2
 
 # The University of Auckland
 
@@ -152,6 +154,7 @@ name: template_slide
 .center[<img src="img/intro/UoAMap.png" height="300">]
 
 ---
+name: S3
 
 # Dept. of Electrical, Computer & Software Eng.
 
@@ -170,6 +173,7 @@ name: template_slide
 <img src="img/intro/UoAEng.png" width="300px">
 ]
 ---
+name: S4
 
 # Power Electronics Research Group
 
@@ -195,6 +199,7 @@ name: template_slide
 .footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
 
 ---
+name: S5
 
 # Wireless Power Transfer
 
@@ -211,6 +216,7 @@ name: template_slide
  - WPC, SAE, etc. standards are been developed
 
 ---
+name: S6
 
 # IPT Applications
 
@@ -226,6 +232,7 @@ name: template_slide
  - Provides wireless power and communication to applications such as tunnel lighting, minning, industrial machinery, robots, etc. 
 
 ---
+name: S7
 
 # Components of an IPT System
 
@@ -242,6 +249,7 @@ name: template_slide
 - The compensation networks help improve efficiency by minimizing the VA requirements of converters
 
 ---
+name: S8
 
 # Current Status
 
@@ -258,6 +266,7 @@ name: template_slide
  - Operating frequency typically range from tens of kHz to tens of MHz
 
 ---
+name: S9
 
 # Modelling the Primary and Pick-up Coils
 
@@ -272,6 +281,7 @@ name: template_slide
 - The turns ratio, n, is related to the self-inductances of the coils since,  `\(n = \frac{N_{pt}}{N_{st}} = \sqrt{\frac{L_{pt}}{L_{st}}}\)`
 
 ---
+name: S10
 
 # Measuring Self-inductance 
 
@@ -284,6 +294,7 @@ name: template_slide
 
 
 ---
+name: S11
 
 # Measuring Coupling Coefficient
 
@@ -295,6 +306,7 @@ name: template_slide
 \\[k = \sqrt{\frac{L\_{pt(oc)}-L\_{pt(sc)}}{L\_{pt(oc)}}}\\]
 
 ---
+name: S12
 
 # Coupled Inductor Model
 
@@ -308,6 +320,7 @@ name: template_slide
 \\[V\_{pr} = \omega MI\_{st}e^{j(\theta+\pi/2)}\\]
 
 ---
+name: S13
 
 # Open-Circuit Voltage & Short-Circuit Current
 
@@ -325,6 +338,7 @@ name: template_slide
 ]]
 
 ---
+name: S14
 
 # Power Transferred Across Airgap
 
@@ -344,6 +358,7 @@ name: template_slide
 ]]
 
 ---
+name: S15
 
 # Coil Q & Losses
 
@@ -356,6 +371,7 @@ name: template_slide
 \\[P\_{loss(c)} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{P\_{o}^2}{\mathit{VA}\_{pt} k^2 Q\_{st} \sin(\theta)^2}\\]
 
 ---
+name: S16
 
 # Maximum Coil-Coil Efficiency
 
@@ -367,6 +383,7 @@ name: template_slide
 \\[ \eta\_{c\_{max}} = \frac{ k \sin(\theta) -  \frac {1} { \sqrt {Q\_{pt} Q\_{st}} }} {k \sin(\theta) +  \frac {1} {\sqrt {Q\_{pt} Q\_{st}} }} \\]
 
 ---
+name: S17
 
 # Example: Simulating the Coils
 
@@ -390,8 +407,57 @@ name: template_slide
 .footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
 
 ---
+name: S18
+
+# Types of Coil Structures
+
+---
+name: S19
+
+# Construction of a Non-Polarised Coil
+
+.left-column[
+- Contructed as planar spiral winding and take the shape of a circle/square/rectangle/etc.
+- Ferrite plates/disks/bars are used to create a single sided flux pattern 
+- Aluminum shielding used to reduce leakage flux
+- 
+]
+
+.right-column[
+
+]
+
+---
+name: S20
 
 # Non-Polarised Coils
+
+.left-column[
+- The single sided magnetic field distribution is from centre to edge of the coil
+- Typically used to transfer power over a gap that is roughly equivalent to one quarter of the coil diameter
+- Changes in the displacement between the primary and pick-up coils causes
+ - Changes to `\(k\)` between the coils 
+ - Changes to `\(L_{pt}\)` and `\(L_{st}\)` of the coils
+- With lateral/longitudinal displacement `\(k\)` will drop to 0
+ - The point at which `\(k\)` drops to 0 is referred to as the decoupled position of the coils
+ - A negative `\(k\)` after the decoupled position indicates a `\(180^0\)` phase-shift in induced voltage
+]
+
+.right-column[
+
+]
+
+---
+name: S21
+
+# DD Type Polarised Coils
+
+
+---
+name: S22
+
+# Multi Coil Structures
+
 
 ---
 
@@ -400,7 +466,7 @@ layout: false
 count: false
 .logo-title[]
 
-# Part III - Compensation Networks
+# Part III - Compensating the Pick-Up Coil
 ### Analysing the Behaviour
 
 ---
@@ -429,9 +495,9 @@ name: template_slide
 
 .left-column[
 - The power delivered to the load is then
-\\[ P\_{o} =  \left | I\_{st} \right |^2 R\_{L} = \left ( \omega MI\_{pt} \right )^2  \frac {R\_{L}} {R\_{L}^2 + \omega^2 L\_{st}^2 }  \\]
+\\[ P\_{o} =  \left | I\_{st} \right |^2 R\_{L} = \left ( \omega MI\_{pt} \right )^2  \frac {R\_{L}} {R\_{L}^2 + \omega^2 L\_{st}^2 } = k^2 \mathit{VA}\_{pt} \frac {\omega L\_{st} / R\_{L}} { 1 + \omega^2 L\_{st}^2 / R\_{L}^2 } \\]
 - At a load `\(R_L = \omega L_{st}\)`, maximum power is delivered 
-\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2} {2 \omega L\_{st} } = 0.5 V\_{oc}I\_{sc}  = 0.5k^2\mathit{VA}\_{pt} \\]
+\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2} {2 \omega L\_{st} } = 0.5 V\_{oc}I\_{sc}  = 0.5k^2\mathit{VA}\_{pt} \\]
 - As an example, when `\(k = 0.1\)`, to deliver 5 mW to the load, the primary coil should be driven atleast at 1 VA
  - The impedance of `\(L_{st}\)` limits the power transfer
 ]
@@ -448,16 +514,125 @@ name: template_slide
 
 - The impedance of `\(L_{st}\)` can be compensated using the capacitor `\(C_{st}\)` that is connected in series with `\(L_{st}\)`
 - The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
-\\[ Z\_{s} = j \left ( \omega L\_{st} - \frac {1} {\omega C\_{st}} \right ) + R\_{L} = j \Delta \omega L\_{st} + R\_{L} \quad \text{where} \quad (1+\Delta) \omega L\_{st} = \frac {1} {\omega C\_{st}}\\]
+\\[ Z\_{s} = j \left ( \omega L\_{st} - \frac {1} {\omega C\_{st}} \right ) + R\_{L} = j \Delta \omega L\_{st} + R\_{L} \quad \text{where} \quad \frac {1} {\omega C\_{st}} = (1+\Delta) \omega L\_{st} \\]
 - To allow the pick-up to behave like an ideal voltage source, at a given `\(\omega\)`, `\(C_{st}\)` can be selected such that 
 \\[ \omega L\_{st} = \frac {1} {\omega C\_{st}} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{st}C\_{st}} } \\]
 
 ---
 
-# Power Transfer with Series Tuning
+# Power Transfer with Series Compensation
 
-- Assuming `\((1+\Delta) \omega L_{st} = \frac {1} {\omega C_{st}}\)`, a general expression for output power can be obtained as
-\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2} { \Delta^2 \omega^2 L\_{st}^2  + R\_{L}^2 } = 0.5 V\_{oc}I\_{sc}  = 0.5k^2\mathit{VA}\_{pt} \\]
+.left-column[
+- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, a general expression for output power can be obtained as
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L}} { \Delta^2 \omega^2 L\_{st}^2  + R\_{L}^2 }  = k^2 \mathit{VA}\_{pt} \frac {\omega L\_{st} / R\_{L}} { 1 + \Delta^2 \omega^2 L\_{st}^2 / R\_{L}^2 } \\]
+- If perfectly tuned (i.e. `\(\Delta = 0\)`) output power increases with `\(1/R_L\)`
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { R\_{L} }  = k^2 \mathit{VA}\_{pt} \frac {\omega L\_{st}} {R\_{L} } \\]
+- When detuned (i.e. `\(\Delta \neq 0\)`) maximum output power is limited to 
+\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { 2 \Delta \omega L\_{st} }  = k^2 \mathit{VA}\_{pt} \frac {1} {2 \Delta } \quad \text{at} \quad R\_{L} = \Delta \omega L\_{st}\\]
+]
+
+.right-column[.right[
+<img src="img/comp/PScompR.png" width="310px">
+]]
+
+---
+
+# A Parallel Compensated Pick-up (PI)
+
+.center[<img src="img/comp/PCompRN.png" height="135px">]
+
+- The impedance of `\(L_{st}\)` is compensated using the capacitor `\(C_{st}\)` that is connected in parallel with `\(L_{st}\)`
+- The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
+\\[ Z\_{s} = j \left [ \omega L\_{st} - \frac {1} {\omega C\_{st}} \left ( \frac {\omega^2 C\_{st}^2 R\_{L}^2 } {1+\omega^2 C\_{st}^2 R\_{L}^2} \right ) \right ] + \frac {R\_{L}} {1+\omega^2 C\_{st}^2 R\_{L}^2} \\]
+- Unlike in a series compensated pick-up, `\(Z_{s}\)` can only be real at a specific `\(R_{L}\)` while under all other conditions it will be reactive 
+- Norton tranformation can be used to obtain a simplified model, where [`\(I_{sc} = V_{sr} / j \omega L_{st} \)`](#OCISC)
+
+---
+
+# A Parallel Compensated Pick-up (PII)
+
+.center[<img src="img/comp/PCompRI.png" height="135px">]
+
+- To allow the pick-up to behave like an ideal current source, at a given `\(\omega\)`, `\(C_{st}\)` can be selected such that 
+\\[ \omega L\_{st} = \frac {1} {\omega C\_{st}} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{st}C\_{st}} } \\]
+- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, to highlight the impact of detuning, `\(Z_{s}\)` can be written in the form
+\\[ Z\_{s} = j \omega L\_{st} \left [  \frac { \left ( 1 + \Delta \right )^2 - \Delta \left ( \frac {R\_L} {\omega L\_{st}} \right)^2 } {\left ( 1 + \Delta \right )^2 + \left ( \frac {R\_L} {\omega L\_{st}} \right)^2} \right ] + \frac {R\_L \left ( 1 + \Delta \right )^2} {\left ( 1 + \Delta \right )^2 + \left ( \frac {R\_L} {\omega L\_{st}} \right)^2} \\]
+
+
+---
+
+# Power Transfer with Parallel Compensation
+
+.left-column[
+- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, a general expression for output power can be obtained as
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L}} { \omega^2 L\_{st}^2  + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 }  = k^2 \mathit{VA}\_{pt} \frac {R\_{L} / \omega L\_{st}} { 1 + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 / \omega^2 L\_{st}^2 } \\]
+- If perfectly tuned (i.e. `\(\Delta = 0\)`) output power increases with `\(R_L\)`
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L} } { \omega^2 L\_{st}^2 }  = k^2 \mathit{VA}\_{pt} \frac {R\_{L} } {\omega L\_{st}} \\]
+- When detuned (i.e. `\(\Delta \neq 0\)`) maximum output power is limited to 
+\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { 2 \Delta \omega L\_{st} / (1+\Delta)}  =  \frac {k^2 \mathit{VA}\_{pt}} {2 \Delta / (1+\Delta) } \quad \text{at} \quad R\_{L} = \omega L\_{st} \frac {1+\Delta} {\Delta}\\]
+]
+
+.right-column[.right[
+<img src="img/comp/PPcompR.png" width="310px">
+]]
+
+---
+
+# An LCL Compensated Pick-up
+
+.center[<img src="img/comp/LCLCompR.png" height="135px">]
+
+- The impedance of `\(L_{st}\)` is compensated using the capacitor `\(C_{st}\)` and the inductor `\(L_{si}\)`
+- The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
+\\[ Z\_{s} = j \omega L\_{st} + \frac {R\_{L} + j \omega L\_{si}} { (1 - \omega^2 L\_{si} C\_{st} ) + j \omega R\_{L} C\_{st} } \\]
+- Typically, `\(C_{st}\)` and `\(L_{si}\)` are chosen such that `\( \omega L_{si} = 1/ \omega C_{st} \)`, thus, if `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, `\(Z_{s}\)` simplifies to 
+\\[ Z\_{s} = j \omega L\_{st} + \frac {1} {j \omega C\_{st}} + \frac {\omega^2 L\_{si}^2} {R\_{L}} = j \Delta \omega L\_{st} + \frac {\omega^2 L\_{si}^2} {R\_{L}} \\]
+
+---
+
+# Power Transfer with LCL Compensation
+
+.left-column[
+- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, output power can be given by
+\\[ P\_{o} =  k^2 \mathit{VA}\_{pt} \frac {R\_{L} / \omega L\_{st}} { \left( 1 + \frac {\Delta} {1+\Delta} \frac {L\_{si}} {L\_{st}} \right)^2 + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 / \omega^2 L\_{st}^2 } \\]
+- If perfectly tuned (i.e. `\(\Delta = 0\)`) output power increases with `\(R_L\)`
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L} } { \omega^2 L\_{st}^2 }  = k^2 \mathit{VA}\_{pt} \frac {R\_{L} } {\omega L\_{st}} \\]
+- When detuned (i.e. `\(\Delta \neq 0\)`) maximum output power is limited to 
+\\[ P\_{o\_{(max)}} = \frac {k^2 \mathit{VA}\_{pt}} {2 \frac {\Delta^2 } {(1+\Delta)^2} \left[ \frac { 1+\Delta } {\Delta} + \frac { L\_{si}} {L\_{st}}\right] } \quad \text{at} \quad R\_{L} = \omega L\_{st} \left[ \frac {1+\Delta} {\Delta} + \frac { L\_{si}} {L\_{st}} \right] \\]
+]
+
+.right-column[.right[
+<img src="img/comp/PLCLcompR.png" width="310px">
+]]
+
+---
+
+# Partial Series Compensation of Pick-up
+
+.center[<img src="img/comp/PartialSCompR.png" height="135px">]
+
+- At a given `\(k\)` and a primary excitation, `\(\mathit{VA_{pt}}\)`, the power transfered to the load of a parallel or LCL compensated pick-up is determined by `\(R_L/\omega L_{st}\)`
+- If `\(R_L\)` is fixed by the design and there is little or no flexibility to change `\(L_{st}\)`, then `\(L_{st}\)` can be partially compensated using the series connected capacitor, `\(C_{si}\)`, to increase the power output to a desired value
+ - Essentially, partially series compensation increases `\(\mathit{VA_{st}}\)` to increase `\(P_o\)`
+- The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{st}\)` (and `\(L_{si}\)` in the case of an LCL compensated pick-up) is given by
+\\[ L\_{st\_{{(eq)}}} = L\_{st} - 1/ \left(  \omega^2 C\_{si} \right)  \\]
+
+---
+
+# Example: Partial Series Compensated Pick-up
+
+
+---
+
+# Operating Quality Factor of a Pick-up
+
+- `\(P_o\)` of a series compensated pick-up was proportional to `\(\omega L_{st}/R_L\)` while for a parallel/LCL compensated pick-up `\(P_o\)` was proportional to `\(R_L/\omega L_{st}\)`
+- The ratio `\(\omega L_{st}/R_L\)` or `\(R_L/\omega L_{st}\)`, is referred to as the operating quality factor of a pick-up and thus when operated at a load `\(R_L\)`, the operating quality factor of a series compensated pick-up, `\(Q_{ss_{(op)}}\)`, or the operating quality factor of a parallel/LCL compensated pick-up, `\(Q_{sp_{(op)}}\)`, can be given by
+ \\[ Q\_{ss\_{{(op)}}} = \frac {\omega L\_{st} } {R\_L} \quad \text{or} \quad Q\_{sp\_{{(op)}}} = \frac {R\_L} {\omega L\_{st} } \\]
+- A higher operating `\(Q\)` results in higher power but also makes the pick-up increasingly sensitive to changes
+ - As an example, from previous analysis, if operated at a `\(Q_{ss_{(op)}}\)` of 5, a 20% change in `\(L_{st}\)` results in a 50% drop in `\(P_o\)`
+ - Typically, an IPT system is designed to have an operating `\(Q\)` of less than 10 
+- Note that `\(Q_{pt}\)` and `\(Q_{st}\)` are a measure of the coil quality and it is therefore desirable to for these to be much larger than the operating `\(Q\)` 
 
 ---
 
@@ -475,7 +650,12 @@ count: false
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
     
+    <!-- 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
+    </script>
+    -->
+
+    <script src="remark.min.js" type="text/javascript">
     </script>
 
     <script type="text/javascript">
