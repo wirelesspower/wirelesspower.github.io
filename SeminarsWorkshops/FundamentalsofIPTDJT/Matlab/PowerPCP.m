@@ -9,7 +9,8 @@
 function [] = PowerPCP( )
 
 f = 85e3;   %Frequency of the fundamental component of current in primary coil  
-Lpt = 20e-6;    %Inductance of the primary coils
+Lpt = 18.73e-6;    %Inductance of the primary coils
+Lst = 18.73e-6;     %Inductance of the pick-up coils
 Ipt = 10;  %RMS current in the primary coil (fundamental)
 k = 0.1; %Coupling between coils
 w = 2*pi*f; %Angular frequency
@@ -22,18 +23,18 @@ VApt = w*Lpt*Ipt^2; %VA in the primary coil
 
 %At ideal tuning, dL = 0
 dL = 0; 
-PowerPCP_0dL = 1000*(k^2*w*Lpt*Ipt^2.*RoL./(1+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
+PowerPCP_0dL = 1000*(k^2*w*Lpt*Ipt^2.*(RoL./(1+dL))./(1+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
 
 %At 10% change in compensation, dL = 0.1
 dL = 0.1;   
-PowerPCP_0dL1 = 1000*(k^2*w*Lpt*Ipt^2.*RoL./(1+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
+PowerPCP_0dL1 = 1000*(k^2*w*Lpt*Ipt^2.*(RoL./(1+dL))./(1+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
 
 %At 20% change in compensation, dL = 0.2
 dL = 0.2;    
-PowerPCP_0dL2 = 1000*(k^2*w*Lpt*Ipt^2.*RoL./(1+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
+PowerPCP_0dL2 = 1000*(k^2*w*Lpt*Ipt^2.*(RoL./(1+dL))./(1+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
 
 %Ploting the resutls
-figure(1)
+figure(2)
 %set(gcf,'PaperPosition', [17, 210, 560, 420],'PaperUnits','points' )
 axes1 = axes('Parent',gcf);
 hold(axes1,'on');
@@ -46,6 +47,7 @@ plot(RoL,PowerPCP_0dL,'LineWidth',2);
 plot(RoL,PowerPCP_0dL1,'LineWidth',2);
 plot(RoL,PowerPCP_0dL2,'LineWidth',2);
 
+%Zs = 1i*w*Lst*((1+dL)+dL*4.9984^2)/(1+4.9984^2)+50/(1+4.9984^2)
 %legend('k=0.1','k=0.15','k=0.2','Location','northeast');
 %legend BOXON
 end

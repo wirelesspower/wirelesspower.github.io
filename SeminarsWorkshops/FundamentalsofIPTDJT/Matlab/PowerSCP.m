@@ -9,7 +9,8 @@
 function [] = PowerSCP( )
 
 f = 85e3;   %Frequency of the fundamental component of current in primary coil  
-Lpt = 20e-6;    %Inductance of the primary coils
+Lpt = 18.73e-6;    %Inductance of the primary coils
+Lst = 18.73e-6;    %Inductance of the pick-up coils
 Ipt = 10;  %RMS current in the primary coil (fundamental)
 k = 0.1; %Coupling between coils
 w = 2*pi*f; %Angular frequency
@@ -22,16 +23,17 @@ VApt = w*Lpt*Ipt^2; %VA in the primary coil
 
 %At ideal tuning, dL = 0
 dL = 0; 
-PowerSCP_0dL = 1000*(k^2*w*Lpt*Ipt^2.*LoR./(1+dL^2.*LoR.^2))/VApt;
+PowerSCP_0dL = 1000*(k^2*w*Lpt*Ipt^2*(1+dL).*LoR./(1+dL^2.*LoR.^2))/VApt;
 
 %At 10% change in compensation, dL = 0.1
 dL = 0.1;   
-PowerSCP_0dL1 = 1000*(k^2*w*Lpt*Ipt^2.*LoR./(1+dL^2.*LoR.^2))/VApt;
+PowerSCP_0dL1 = 1000*(k^2*w*Lpt*Ipt^2*(1+dL).*LoR./(1+dL^2.*LoR.^2))/VApt;
+RoLPmax_0dL2 = 1/dL
 
 %At 20% change in compensation, dL = 0.2
 dL = 0.2;    
-PowerSCP_0dL2 = 1000*(k^2*w*Lpt*Ipt^2.*LoR./(1+dL^2.*LoR.^2))/VApt;
-
+PowerSCP_0dL2 = 1000*(k^2*w*Lpt*Ipt^2*(1+dL).*LoR./(1+dL^2.*LoR.^2))/VApt;
+RoLPmax_0dL2 = 1/dL
 
 %Ploting the resutls
 figure(1)

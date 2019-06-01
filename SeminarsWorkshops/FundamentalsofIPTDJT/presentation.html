@@ -387,6 +387,19 @@ name: S17
 
 # Example: Simulating the Coils
 
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)` (measured when the other coil is open circuited). The primary coil measured `\(18.5427 \mu H\)` when the pick-up coil was short-circuited. The primary coil of the IPT system is driven by the primary power supply through a compensation network to maintain a `\(85 kHz\)`, `\(10 A_{rms}\)` current. 
+
+.left-column[
+- Show that the `\(k\)` between the two coils is 0.1
+- Develop a simulation model on LTSpice 
+- With the aid of this model show that `\(V_{oc}=10V_{rms}\)` and `\(I_{sc}=1A_{rms}\)`
+- Show that the coils can be modelled using the inductance matrix
+\\[ \begin{bmatrix} L\_{pt} & M \\\ M & L\_{st} \end{bmatrix} = \begin{bmatrix} 18.73 & 1.873 \\\ 1.873 & 18.73 \end{bmatrix} \mu H \\]
+]
+
+.right-column[
+.center[<img src="img/fund/EgVocIsc.png" width="300px">]
+]
 
 ---
 
@@ -513,27 +526,48 @@ name: template_slide
 .center[<img src="img/comp/SCompR.png" height="135px">]
 
 - The impedance of `\(L_{st}\)` can be compensated using the capacitor `\(C_{st}\)` that is connected in series with `\(L_{st}\)`
-- The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
-\\[ Z\_{s} = j \left ( \omega L\_{st} - \frac {1} {\omega C\_{st}} \right ) + R\_{L} = j \Delta \omega L\_{st} + R\_{L} \quad \text{where} \quad \frac {1} {\omega C\_{st}} = (1+\Delta) \omega L\_{st} \\]
 - To allow the pick-up to behave like an ideal voltage source, at a given `\(\omega\)`, `\(C_{st}\)` can be selected such that 
 \\[ \omega L\_{st} = \frac {1} {\omega C\_{st}} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{st}C\_{st}} } \\]
+- The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
+\\[ Z\_{s} = j \left ( \omega L\_{st} - \frac {1} {\omega C\_{st}} \right ) + R\_{L} = j \Delta \omega L\_{st} + R\_{L} \quad \text{when} \quad L\_{st} \rightarrow (1 + \Delta) L\_{st} \\]
+
 
 ---
 
 # Power Transfer with Series Compensation
 
 .left-column[
-- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, a general expression for output power can be obtained as
-\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L}} { \Delta^2 \omega^2 L\_{st}^2  + R\_{L}^2 }  = k^2 \mathit{VA}\_{pt} \frac {\omega L\_{st} / R\_{L}} { 1 + \Delta^2 \omega^2 L\_{st}^2 / R\_{L}^2 } \\]
+- Assuming `\( L_{st} \rightarrow (1+\Delta) L_{st} \)` to account for detuning introduced by changes to `\(L_{st} \)`, output power can be obtained as
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L}} { \Delta^2 \omega^2 L\_{st}^2  + R\_{L}^2 }  = k^2 \mathit{VA}\_{pt} \frac {(1+ \Delta) \omega L\_{st} / R\_{L}} { 1 + \Delta^2 \omega^2 L\_{st}^2 / R\_{L}^2 } \\]
 - If perfectly tuned (i.e. `\(\Delta = 0\)`) output power increases with `\(1/R_L\)`
 \\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { R\_{L} }  = k^2 \mathit{VA}\_{pt} \frac {\omega L\_{st}} {R\_{L} } \\]
 - When detuned (i.e. `\(\Delta \neq 0\)`) maximum output power is limited to 
-\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { 2 \Delta \omega L\_{st} }  = k^2 \mathit{VA}\_{pt} \frac {1} {2 \Delta } \quad \text{at} \quad R\_{L} = \Delta \omega L\_{st}\\]
+\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { 2 \Delta \omega L\_{st} }  = k^2 \mathit{VA}\_{pt} \frac {1+ \Delta} {2 \Delta } \quad \text{at} \quad R\_{L} = \Delta \omega L\_{st}\\]
 ]
 
 .right-column[.right[
 <img src="img/comp/PScompR.png" width="310px">
 ]]
+
+---
+name: S17S
+
+# Example: Series Compensated Pick-up
+
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses series compensation and power a `\(2 \Omega \)` AC load.
+
+.left-column[
+- Show that `\(C_{st}\)` has to be `\(187.2 nH\)` to compensate `\(L_{st}\)`
+- Show that `\(\mathit{VA}_{pt}=1kVA\)`
+- Develop a simulation model on LTSpice 
+- With the aid of this model show that 
+ - `\(P_{o}=50W\)`
+ - Output power drops to `\(30W\)` if `\(L_{st}\)` increases by 20%
+]
+
+.right-column[
+.center[<img src="img/comp/EgSComp.png" width="300px">]
+]
 
 ---
 
@@ -555,8 +589,8 @@ name: template_slide
 
 - To allow the pick-up to behave like an ideal current source, at a given `\(\omega\)`, `\(C_{st}\)` can be selected such that 
 \\[ \omega L\_{st} = \frac {1} {\omega C\_{st}} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{st}C\_{st}} } \\]
-- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, to highlight the impact of detuning, `\(Z_{s}\)` can be written in the form
-\\[ Z\_{s} = j \omega L\_{st} \left [  \frac { \left ( 1 + \Delta \right )^2 - \Delta \left ( \frac {R\_L} {\omega L\_{st}} \right)^2 } {\left ( 1 + \Delta \right )^2 + \left ( \frac {R\_L} {\omega L\_{st}} \right)^2} \right ] + \frac {R\_L \left ( 1 + \Delta \right )^2} {\left ( 1 + \Delta \right )^2 + \left ( \frac {R\_L} {\omega L\_{st}} \right)^2} \\]
+- To highlight the impact of detuning, assuming `\( L_{st} \rightarrow (1+\Delta) L_{st} \)`, `\(Z_{s}\)` can be written in the form
+\\[ Z\_{s} = j \omega L\_{st} \left [  \frac { \left ( 1 + \Delta \right ) + \Delta \left ( \frac {R\_L} {\omega L\_{st}} \right)^2 } {1 + \left ( \frac {R\_L} {\omega L\_{st}} \right)^2} \right ] + \frac {R\_L } { 1 + \left ( \frac {R\_L} {\omega L\_{st}} \right)^2} \\]
 
 
 ---
@@ -564,17 +598,37 @@ name: template_slide
 # Power Transfer with Parallel Compensation
 
 .left-column[
-- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, a general expression for output power can be obtained as
-\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L}} { \omega^2 L\_{st}^2  + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 }  = k^2 \mathit{VA}\_{pt} \frac {R\_{L} / \omega L\_{st}} { 1 + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 / \omega^2 L\_{st}^2 } \\]
+- Assuming `\( L_{st} \rightarrow (1+\Delta) L_{st} \)`, output power can be obtained as
+\\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L}} { \left( 1+\Delta \right)^2 \omega^2 L\_{st}^2  + \Delta^2 {} R\_{L}^2 }  = k^2 \mathit{VA}\_{pt} \frac { \frac {1} { 1+\Delta } R\_{L} / \omega L\_{st}} { 1 + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 / \omega^2 L\_{st}^2 } \\]
 - If perfectly tuned (i.e. `\(\Delta = 0\)`) output power increases with `\(R_L\)`
 \\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L} } { \omega^2 L\_{st}^2 }  = k^2 \mathit{VA}\_{pt} \frac {R\_{L} } {\omega L\_{st}} \\]
 - When detuned (i.e. `\(\Delta \neq 0\)`) maximum output power is limited to 
-\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { 2 \Delta \omega L\_{st} / (1+\Delta)}  =  \frac {k^2 \mathit{VA}\_{pt}} {2 \Delta / (1+\Delta) } \quad \text{at} \quad R\_{L} = \omega L\_{st} \frac {1+\Delta} {\Delta}\\]
+\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2 } { 2 \Delta (1 + \Delta) \omega L\_{st}}  =  \frac {k^2 \mathit{VA}\_{pt}} {2 \Delta} \quad \text{at} \quad R\_{L} = \omega L\_{st} \frac {1+\Delta} {\Delta}\\]
 ]
 
 .right-column[.right[
 <img src="img/comp/PPcompR.png" width="310px">
 ]]
+
+---
+name: S17P
+
+# Example: Parallel Compensated Pick-up
+
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses parallel compensation and power a `\(50 \Omega \)` AC load.
+
+.left-column[
+- Show that `\(C_{st}\)` has to be `\(187.2 nF\)` to compensate `\(L_{st}\)`
+- Show that `\(\mathit{VA}_{pt}=1kVA\)`
+- Develop a simulation model on LTSpice 
+- With the aid of this model show that 
+ - `\(P_{o}=50W\)`
+ - Output power drops to `\(24.6W\)` if `\(L_{st}\)` increases by 20%
+]
+
+.right-column[
+.center[<img src="img/comp/EgPComp.png" width="300px">]
+]
 
 ---
 
@@ -585,7 +639,7 @@ name: template_slide
 - The impedance of `\(L_{st}\)` is compensated using the capacitor `\(C_{st}\)` and the inductor `\(L_{si}\)`
 - The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
 \\[ Z\_{s} = j \omega L\_{st} + \frac {R\_{L} + j \omega L\_{si}} { (1 - \omega^2 L\_{si} C\_{st} ) + j \omega R\_{L} C\_{st} } \\]
-- Typically, `\(C_{st}\)` and `\(L_{si}\)` are chosen such that `\( \omega L_{si} = 1/ \omega C_{st} \)`, thus, if `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, `\(Z_{s}\)` simplifies to 
+- Typically, `\(C_{st}\)` and `\(L_{si}\)` are chosen such that `\( \omega L_{si} = 1/ \omega C_{st} \)`, thus, `\(Z_{s}\)` simplifies to 
 \\[ Z\_{s} = j \omega L\_{st} + \frac {1} {j \omega C\_{st}} + \frac {\omega^2 L\_{si}^2} {R\_{L}} = j \Delta \omega L\_{st} + \frac {\omega^2 L\_{si}^2} {R\_{L}} \\]
 
 ---
@@ -593,17 +647,38 @@ name: template_slide
 # Power Transfer with LCL Compensation
 
 .left-column[
-- Assuming `\( \frac {1} {\omega C_{st}} = (1+\Delta) \omega L_{st} \)`, output power can be given by
-\\[ P\_{o} =  k^2 \mathit{VA}\_{pt} \frac {R\_{L} / \omega L\_{st}} { \left( 1 + \frac {\Delta} {1+\Delta} \frac {L\_{si}} {L\_{st}} \right)^2 + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 / \omega^2 L\_{st}^2 } \\]
+- Assuming `\( \omega L_{st} \rightarrow (1+\Delta) \omega L_{st} \)`, output power can be given by
+\\[ P\_{o} =  k^2 \mathit{VA}\_{pt} \frac { \frac {1} { 1+\Delta } R\_{L} / \omega L\_{st}} { \left( 1 - \frac {\Delta} {1+\Delta} \frac {L\_{si}} {L\_{st}} \right)^2 + \frac {\Delta^2} {\left( 1+\Delta \right)^2} R\_{L}^2 / \omega^2 L\_{st}^2 } \\]
 - If perfectly tuned (i.e. `\(\Delta = 0\)`) output power increases with `\(R_L\)`
 \\[ P\_{o} =  \frac {\left ( \omega MI\_{pt} \right )^2 R\_{L} } { \omega^2 L\_{st}^2 }  = k^2 \mathit{VA}\_{pt} \frac {R\_{L} } {\omega L\_{st}} \\]
 - When detuned (i.e. `\(\Delta \neq 0\)`) maximum output power is limited to 
-\\[ P\_{o\_{(max)}} = \frac {k^2 \mathit{VA}\_{pt}} {2 \frac {\Delta^2 } {(1+\Delta)^2} \left[ \frac { 1+\Delta } {\Delta} + \frac { L\_{si}} {L\_{st}}\right] } \quad \text{at} \quad R\_{L} = \omega L\_{st} \left[ \frac {1+\Delta} {\Delta} + \frac { L\_{si}} {L\_{st}} \right] \\]
+\\[ P\_{o\_{(max)}} = \frac {k^2 \mathit{VA}\_{pt}} {2 \Delta \left( 1- \frac { \Delta } {1+\Delta} \frac { L\_{si}} {L\_{st}} \right) } \quad \text{at} \quad R\_{L} = \omega L\_{st} \left[ \frac {1+\Delta} {\Delta} - \frac { L\_{si}} {L\_{st}} \right] \\]
 ]
 
 .right-column[.right[
 <img src="img/comp/PLCLcompR.png" width="310px">
 ]]
+
+---
+name: S17P
+
+# Example: LCL Compensated Pick-up
+
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load.
+
+.left-column[
+- Show that `\(C_{st}\)` has to be `\(187.2 nF\)` to compensate `\(L_{st}\)`
+- Show that `\(L_{si}\)` ideally has to be `\(18.73 /mu H\)`
+- Show that `\(\mathit{VA}_{pt}=1kVA\)`
+- Develop a simulation model on LTSpice 
+- With the aid of this model show that 
+ - `\(P_{o}=50W\)`
+ - Output power drops to `\(30W\)` if `\(L_{st}\)` increases by 20%
+]
+
+.right-column[
+.center[<img src="img/comp/EgLCLComp.png" width="300px">]
+]
 
 ---
 
@@ -618,9 +693,26 @@ name: template_slide
 \\[ L\_{st\_{{(eq)}}} = L\_{st} - 1/ \left(  \omega^2 C\_{si} \right)  \\]
 
 ---
+name: S17P
 
-# Example: Partial Series Compensated Pick-up
+# Example: Partial Series Compensation
 
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load. Partial series compensation is used to deliver `\(100 W\)` to the load when operated under tuned conditions. 
+
+.left-column[
+- Show that `\(C_{si}\)` has to be `\(639.1 nF\)` to ensure `\(P_{o}=100W\)`
+- Show that `\(C_{st}\)` has to be `\(264.7 nF\)` to compensate `\(L_{st_{(eq)}}\)`
+- Show that `\(L_{si}\)` ideally has to be `\(13.24 \mu H\)`
+- Show that `\(\mathit{VA}_{pt}=1kVA\)`
+- Develop a simulation model on LTSpice 
+- With the aid of this model show that 
+ - `\(P_{o}=100W\)`
+ - Output power drops to `\(24W\)` if `\(L_{st}\)` increases by 20%
+]
+
+.right-column[
+.center[<img src="img/comp/EgPTLCLComp.png" width="300px">]
+]
 
 ---
 
@@ -633,6 +725,74 @@ name: template_slide
  - As an example, from previous analysis, if operated at a `\(Q_{ss_{(op)}}\)` of 5, a 20% change in `\(L_{st}\)` results in a 50% drop in `\(P_o\)`
  - Typically, an IPT system is designed to have an operating `\(Q\)` of less than 10 
 - Note that `\(Q_{pt}\)` and `\(Q_{st}\)` are a measure of the coil quality and it is therefore desirable to for these to be much larger than the operating `\(Q\)` 
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part IV - Compensation Networks
+### Analysing the Behaviour of an IPT System
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+
+---
+
+# Reflected Impedance on to Primary
+
+.center[<img src="img/netw/RefImp.png" height="135px">]
+
+- The pick-up can be modelled as `\(V_{sr}\)` driving into `\(Z_s\)`, which models the pick-up compensation and the load
+- Current flowing through the pick-up coil is therefore 
+\\[ I\_{st} = -V\_{pr} / Z\_s = -j \omega M I\_{pt} / Z\_s \\]
+- `\(I_{st}\)` induces a voltage, `\(V_{pr}\)`, across the primary coil, which can be given by
+\\[ V\_{pr} = j \omega M I\_{st} = \omega^2 M^2 I\_{pt} / Z\_s \\]
+- `\(V_{pr}\)` can also be represented as a reflected impedance where `\(Z_{pr} = \omega^2 M^2 / Z_s \)`
+
+---
+
+# Primary Compensation Networks
+
+.center[<img src="img/netw/PCompGen.png" height="135px">]
+
+- Directly driving the highly inductive load consisting of `\(L_{st}\)` and `\(Z_{pr}\)` with a power converter can be very inefficiency and costly
+ - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of `\(1/(k^2Q_{ss/sp_{(op)}})\)`
+- Compensation networks are used to reduce the VA demand of the primary converter
+- A series or an LCL compensation network is commonly employed if the primary is driven by a voltage source inverter  
+- A parallel compensation network is commonly employed if the primary is driven by a current source inverter
+
+---
+
+# A Series Compensated Primary (PI)
+
+.center[<img src="img/netw/PCompGen.png" height="135px">]
+
+- The impedance of `\(L_{pt}\)` can be compensated using the capacitor `\(C_{pt}\)` that is connected in series with `\(L_{pt}\)`
+- At a given `\(\omega\)`, `\(C_{pt}\)` can be selected to negate the impedance of `\(L_{pt}\)` by ensuring
+\\[ \omega L\_{pt} = \frac {1} {\omega C\_{pt}} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{pt}C\_{pt}} } \\]
+- The impedance of the compensated primary, including `\(V_{pr}\)`, seen by the converter is given by
+\\[ Z\_{p} = j \left ( \omega L\_{pt} - \frac {1} {\omega C\_{pt}} \right ) + \frac {\omega^2 M^2} {Z\_s} = j \Delta\_p \omega L\_{pt} + \frac {\omega^2 M^2} {Z\_s} \quad \text{when} \quad L\_{pt} \rightarrow (1 + \Delta\_p) L\_{pt} \\]
+
+---
+
+# A Series Compensated Primary (PII)
+
+.center[<img src="img/netw/PCompGen.png" height="135px">]
+
+- When `\(C_{pt}\)` is designed to fully compensate `\(L_{pt}\)`, the primary converter drives an impedance
+\\[ Z\_{p} = \omega^2 M^2 / Z\_s \\]
+- In a typical IPT system, the pick-up compensation network ensures that `\(Z_{s}\)` is mostly resistive 
+ - For example, in an ideally series compensated pick-up `\(Z_{s} = R_L\)`
+- As such, when series compensated, the primary converter only has to supply the load current 
+\\[ I\_{pi} = \frac {V\_{pi}} {Z\_p} = \frac {V\_{pi}} {j \Delta\_p \omega L\_{pt} + \omega^2 M^2 / Z\_s} \\]
 
 ---
 

@@ -9,7 +9,8 @@
 function [] = PowerLCLCP( )
 
 f = 85e3;   %Frequency of the fundamental component of current in primary coil  
-Lpt = 20e-6;    %Inductance of the primary coils
+Lpt = 18.73e-6;    %Inductance of the primary coils
+Lst = 18.73e-6;     %Inductance of the pick-up coils
 Ipt = 10;  %RMS current in the primary coil (fundamental)
 k = 0.1; %Coupling between coils
 w = 2*pi*f; %Angular frequency
@@ -24,18 +25,20 @@ LRatio = 1; %Ratio between Lsi/Lst
 
 %At ideal tuning, dL = 0
 dL = 0; 
-PowerPCP_0dL = 1000*(k^2*w*Lpt*Ipt^2.*RoL./((1+(dL/(1+dL))*LRatio)^2+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
+PowerPCP_0dL = 1000*(k^2*w*Lpt*Ipt^2*(1+dL).*RoL./((1+dL)^2*(1-dL*LRatio/(1+dL))^2+dL^2.*RoL.^2))/VApt;
 
 %At 10% change in compensation, dL = 0.1
 dL = 0.1;   
-PowerPCP_0dL1 = 1000*(k^2*w*Lpt*Ipt^2.*RoL./((1+(dL/(1+dL))*LRatio)^2+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
+PowerPCP_0dL1 = 1000*(k^2*w*Lpt*Ipt^2*(1+dL).*RoL./((1+dL)^2*(1-dL*LRatio/(1+dL))^2+dL^2.*RoL.^2))/VApt;
+RoLPmax_0dL2 = (1+dL)/dL-LRatio
 
 %At 20% change in compensation, dL = 0.2
 dL = 0.2;    
-PowerPCP_0dL2 = 1000*(k^2*w*Lpt*Ipt^2.*RoL./((1+(dL/(1+dL))*LRatio)^2+(dL^2/(1+dL)^2).*RoL.^2))/VApt;
+PowerPCP_0dL2 = 1000*(k^2*w*Lpt*Ipt^2*(1+dL).*RoL./((1+dL)^2*(1-dL*LRatio/(1+dL))^2+dL^2.*RoL.^2))/VApt;
+RoLPmax_0dL2 = (1+dL)/dL-LRatio
 
 %Ploting the resutls
-figure(1)
+figure(3)
 %set(gcf,'PaperPosition', [17, 210, 560, 420],'PaperUnits','points' )
 axes1 = axes('Parent',gcf);
 hold(axes1,'on');
