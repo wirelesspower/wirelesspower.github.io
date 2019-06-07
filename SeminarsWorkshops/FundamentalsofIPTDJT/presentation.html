@@ -1409,6 +1409,7 @@ name: template_slide
 .footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
 
 ---
+name: S68
 
 # Pick-up Converters
 
@@ -1423,27 +1424,126 @@ name: template_slide
 - Direct AC-AC processing pick-up converters may be used if an AC output is required
 
 ---
+name: S69
 
-# Rectification of Series Compensated Pick-up (PI)
+# Rectification of Series Compensated Pick-up
 
+.left-column[
+- A diode rectifier and a filter capacitor used to derive a DC output 
+- The resulting `\(V_{si}\)` across the resonant tank is a square wave where
+\\[ V\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(I_{si}\)` is sinusoidal,
+\\[ P\_{o} = V\_{out} I\_{out} = V\_{sr\_{rms}} I\_{si\_{rms}} = \frac {2 \sqrt{2}} {\pi} V\_{out} I\_{si\_{rms}}  \\]
+- Thus, `\(V_{out}\)`, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(V_{sr}\)`, `\(I_{si}\)` and `\(R_{L(ac)}\)` as
+\\[ V\_{out} = \frac {\pi} {2 \sqrt{2}}  V\_{sr\_{rms}}, \quad  I\_{out} = \frac {2 \sqrt{2}} {\pi} I\_{si\_{rms}} \quad \text{&} \quad R\_{L(dc)} = \frac {\pi^2} {8}  R\_{L(ac)} \\]
+]
+
+.right-column[
+.center[<img src="img/pkup/PickupSW.png" width="250px">]
+]
+
+---
+name: S70
+
+# Rectification of Parallel Compensated Pick-up
+
+.left-column[
+- A diode rectifier, a DC inductor and a filter capacitor used 
+- The resulting `\(I_{si}\)` into the rectifier is a square wave where
+\\[ I\_{si} = I\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(V_{si}\)` is sinusoidal,
+\\[ P\_{o} = V\_{out} I\_{out} = V\_{si\_{rms}} I\_{sc\_{rms}} = \frac {2 \sqrt{2}} {\pi} I\_{out} V\_{si\_{rms}}  \\]
+- Thus, `\(V_{out}\)`, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(V_{sr}\)`, `\(I_{si}\)` and `\(R_{L(ac)}\)` as
+\\[ V\_{out} = \frac {2 \sqrt{2}} {\pi} V\_{si\_{rms}}, \quad  I\_{out} = \frac {\pi} {2 \sqrt{2}} I\_{sc\_{rms}} \quad \text{&} \quad R\_{L(dc)} = \frac {8} {\pi^2}  R\_{L(ac)} \\]
+]
+
+.right-column[
+.center[<img src="img/pkup/PickupPW.png" width="250px">]
+]
+
+---
+name: S71
+
+# Rectification of LCL Compensated Pick-up
+
+.left-column[
+- A diode rectifier and a filter capacitor used to derive a DC output 
+- The resulting `\(V_{si}\)` across the resonant tank is a square wave where
+\\[ V\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(I_{si}\)` is sinusoidal,
+\\[ P\_{o} = V\_{out} I\_{out} = \frac {2 \sqrt{2}} {\pi} V\_{out} I\_{sc\_{rms}}  \\]
+- Thus, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(I_{si}\)` and `\(R_{L(ac)}\)` as
+\\[ \quad  I\_{out} = \frac {2 \sqrt{2}} {\pi} I\_{sc\_{rms}} \quad \text{&} \quad R\_{L(dc)} = \frac {\pi^2} {8}  R\_{L(ac)} \\]
+]
+
+.right-column[
+.center[<img src="img/pkup/PickupLCLW.png" width="250px">]
+]
+
+---
+name: S72
+
+# Example: Rectification 
+
+When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and a full-bridge recrtifier to power a `\(50 \Omega \)` DC load. Analyse the behaviour and compare to a series compensated pick-up powering a `\(2 \Omega \)` DC load as well as a parallel compensated pick-up powering a `\(50 \Omega \)` DC load.
+
+.left-column[
+- With the aid of LTSpice simulation models show that 
+ - `\(I_{si}\)` of the LCL compensated pick-up is discontinuous and therefore `\(R_{L(dc)} \neq \pi^2 R_{L(ac)}/8   \)`
+ - `\(I_{si}\)` of the LCL compensated pick-up can be made continuous by increasing `\(L_{si}\)` and series compensating to create an `\(L_{si_{(eq)}}\)`
+ - A parallel compensated pick-up can deliver about 50% more power to the same DC load 
+]
+
+.right-column[
+.center[<img src="img/pkup/EgRac.png" width="300px">]
+]
 
 ---
 
-# Rectification of Parallel Compensated Pick-up (PI)
+# Current Doubler Rectifiers
 
+.center[<img src="img/pkup/CrntDblr.png" height="200px">]
+
+<div style="height:1px;font-size:1px;">&nbsp;</div>
+- A full-wave or a half-wave current doubler rectifier can be used to improve the power transfer 
+- Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(V_{si}\)` is sinusoidal, 
+\\[ I\_{out} = \frac {\pi} { \sqrt{2}} I\_{sc}, \quad V\_{out} = \frac { \sqrt{2}} {\pi} V\_{si} \quad \text{&} \quad R\_{L(dc)} = \frac {2} {\pi^2}  R\_{L(ac)}\\]
 
 ---
 
-# Rectification of LCL Compensated Pick-up (PI)
+# Short-Circuit Regulator
 
+.center[<img src="img/pkup/ShortCctReg.png" height="200px">]
 
+- Following the rectifier, a short-circuit (boost) regulator, can be used to regulate the output of a parallel compensated IPT pick-up
+- The duty-cycle, `\(D_{scr}\)`, of `\(Q_{1}\)` is controlled to regulate `\(I_{out}\)`, and therefore `\(V_{out}\)`
+- `\(Q_{1}\)` can be operated either at a 'low' switching frequency using a hysteritic controller or at a 'high' switching frequency using for example a PI controller
+- `\(L_{dc}\)` should be sufficiently large to maintain `\(I_{Ldc}\)` continuous
 
 ---
 
-Rac of LCL, LC and Series
+# Power Regulation with Short-Circuit Control
+
+.left-column[
+- `\(I_{out}\)` is therefore the average of `\(I_{D1}\)` as given by
+\\[ I\_{out} = \frac {\pi} {2 \sqrt{2}} (1-D\_{scr})  I\_{sc} \quad \text{since} \quad I\_{Ldc} = \frac {\pi} {2 \sqrt{2}} I\_{sc} \\]
+- If `\(V_{out}\)` is regulated by operating `\(Q_{1}\)` at `\( 0 < D_{scr} < 1 \)`, then
+\\[ P\_{out\_{(reg)}} = \frac {\pi} {2 \sqrt{2}} (1-D\_{scr})  I\_{sc} V\_{out\_{(reg)}} = (1-D\_{scr}) P\_{out\_{(max)}} \\]
+- If `\(R_{L}\)` drops below a critical value,  `\(V_{out}\)` is unregulated since `\( D_{scr} = 0 \)`
+\\[ V\_{out\_{(unreg)}} = \frac {\pi} {2 \sqrt{2}} I\_{sc} R\_{L(dc)} \quad \text{&} \quad P\_{out\_{(unreg)}} = \frac {\pi^2} {8} I\_{sc}^2 R\_{L(dc)}  \\]
+- `\(P_{out}\)` is a maximum at `\(R_{L(dc)_{(critical)}}=V_{out_{(reg)}} 2 \sqrt{2} \;/ (\pi I_{sc}) \)`
+]
+
+.right-column[
+.center[<img src="img/pkup/ShortCctRegW.png" width="270px">]
+]
+
+---
+
 Short-Circuit controller
+P vs D vs R for ssc
 Hysteritic control
-
+Note that, [`\(I_{Ldc} = \frac {\pi} {2 \sqrt{2}} I_{sc} \)`](#S70)
 ---
 
 class: title-slide
