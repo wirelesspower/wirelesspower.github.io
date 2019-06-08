@@ -28,7 +28,7 @@
       .title-slide .remark-slide-number {
         display: none;
       }
-      .title-slide h1, h2, h3 {
+      .title-slide h1, h2, h3, h4 {
         text-align: left;
         color:white;
         line-height: 0.7;
@@ -98,6 +98,14 @@
         }
       }
       
+      .zoom175 {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom175:hover {
+        transform: scale(1.75) translateY(-20%) translateX(-10%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      }
+
     </style>
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
@@ -234,7 +242,7 @@ name: S6
 - Biomedical
  - Charging and powering medical devices as well as implants
 - Lighting and industrial applications  
- - Provides wireless power and communication to applications such as tunnel lighting, minning, industrial machinery, robots, etc. 
+ - Provides wireless power and communication to applications such as tunnel lighting, mining, industrial machinery, robots, etc. 
 
 ---
 name: S7
@@ -248,7 +256,7 @@ name: S7
  - A lumped transmitter coil is often referred to as a primary pad/coil/coupler 
  - An elongated coil is often called a primary track
  - Can be directly fed by a DC source or through a grid-connected AC-DC converter
-- Secondary/pick-up consists of a reciever coil(s), a compensation network and an AC-DC converter
+- Secondary/pick-up consists of a receiver coil(s), a compensation network and an AC-DC converter
  - The reciever coil is is often referred to as a secondary/pick-up pad/coil/coupler
 - Primary and pick-up coils are magnetically coupled but the coupling coefficient is typically less than 40%
 - The compensation networks help improve efficiency by minimizing the VA requirements of converters
@@ -265,7 +273,7 @@ name: S8
  - Compensation for both sides is provided through series, parallel or a combination of series-parallel tuned networks
 - Power ratings up to tens of kWs
  - Magnetic designs include circular coil, solenoidal coil, polarised coil, multi coil structures as well as track based systems 
- - Ferrites and/or reflections coils are often used to shape the magnetic fields generated
+ - Ferrites and/or reflection coils are often used to shape the magnetic fields generated
  - Transmission range of over 400 mm with over ± 200 mm XY tolerance
  - Efficiency typically over 85% but can be as high as 97%
  - Operating frequency typically ranges from tens of kHz to tens of MHz
@@ -317,7 +325,7 @@ name: S12
 
 .center[<img src="img/fund/CpldL.png" height="135px">]
 
-- Although a T equivelent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor domain
+- Although a T equivalent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor domain
 - In the coupled inductor model, `\(L_{pt}\)` and `\(L_{st}\)` represent the self-inductances of primary and pick-up coils
 - `\(V_{sr}\)` represents voltage induced across `\(L_{st}\)` due to current `\(I_{pt}\angle 0\)` flowing through `\(L_{pt}\)` and is given by
 \\[V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
@@ -449,7 +457,7 @@ name: S19
 - Contructed as planar spiral winding and take the shape of a circle/square/rectangle/etc.
  - Multifilar windings can be used to increase current rating but will require special attention to ensure currents are shared
 - High-frequency Litz wire used in order to improve coil Q
- - Need to ensure that the windings are approriately isolated 
+ - Need to ensure that the windings are appropriately isolated 
 - Ferrite plates/disks/bars are used to create a single sided flux pattern 
 - The housing that provides electrical isolation holds the Litz wire and the ferrites 
  - Typically the windings and ferrites are potted 
@@ -521,7 +529,8 @@ name: S23
 
 # Demo: Simulating and Constructing a DD Coil
 
-.center[<img src="img/coils/Demo.png" height="420px">]
+<br></br>
+.center[<img src="img/coils/Demo.png" height="300px">]
 
 ---
 
@@ -544,7 +553,7 @@ name: template_slide
 ---
 name: S24
 
-# An Uncompesated Pick-up
+# An Uncompensated Pick-up
 
 .center[<img src="img/comp/UncompR.png" height="135px">]
 
@@ -557,7 +566,7 @@ name: S24
 ---
 name: S25
 
-# Power from an Uncompesated Pick-up
+# Power from an Uncompensated Pick-up
 
 .left-column[
 - The power delivered to the load is then
@@ -627,7 +636,7 @@ When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system ea
 ---
 name: S29
 
-# A Parallel Compensated Pick-up (PI)
+# A Parallel Compensated Pick-up (P-I)
 
 .center[<img src="img/comp/PCompRN.png" height="135px">]
 
@@ -640,7 +649,7 @@ name: S29
 ---
 name: S30
 
-# A Parallel Compensated Pick-up (PII)
+# A Parallel Compensated Pick-up (P-II)
 
 .center[<img src="img/comp/PCompRI.png" height="135px">]
 
@@ -748,10 +757,10 @@ name: S36
 .center[<img src="img/comp/PartialSCompR.png" height="135px">]
 
 - At a given `\(k\)` and a primary excitation, `\(\mathit{VA_{pt}}\)`, the power transfered to the load of a parallel or LCL compensated pick-up is determined by `\(R_L/\omega L_{st}\)`
-- If `\(R_L\)` is fixed by the design, then `\(L_{st}\)` can be partially compensated usingn `\(C_{pi}\)`, to increase `\(\mathit{VA_{pt}}\)` by
+- If `\(R_L\)` is fixed by the design, then `\(L_{st}\)` can be partially compensated using `\(C_{si}\)`, to increase `\(\mathit{VA_{pt}}\)` by
  - Either reducing the effective `\(L_{st}\)` to increase `\(I_{st}\)` (specially if `\(L_{st}\)` is fixed)
- - Or icreasing `\(L_{st}\)` and then partially compensating to lower `\(I_{st}\)` 
-- The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{st}\)` (and `\(L_{si}\)` in the case of an LCL compensated pick-up) is given by
+ - Or increasing `\(L_{st}\)` and then partially compensating to lower `\(I_{st}\)` 
+- The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{st}\)` (and `\(L_{si}\)` in the case of an LCL compensated pick-up), is given by
 \\[ L\_{st\_{{(eq)}}} = L\_{st} - 1/ \left(  \omega^2 C\_{si} \right)  \\]
 
 ---
@@ -828,7 +837,7 @@ name: S40
 
 .center[<img src="img/netw/PCompGen.png" height="135px">]
 
-- Directly driving the highly inductive load consisting of `\(L_{st}\)` and `\(Z_{pr}\)` with a power converter can be very inefficiency and costly
+- Directly driving the highly inductive load consisting of `\(L_{st}\)` and `\(Z_{pr}\)` with a power converter can be very inefficient and costly
  - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of `\(1/(k^2Q_{ss/sp_{(op)}})\)`
 - Compensation networks are used to reduce the VA demand of the primary converter
 - A series or an LCL compensation network is commonly employed if the primary is driven by a voltage source inverter  
@@ -837,7 +846,7 @@ name: S40
 ---
 name: S41
 
-# A Series Compensated Primary (PI)
+# A Series Compensated Primary (P-I)
 
 .center[<img src="img/netw/SCompGen.png" height="135px">]
 
@@ -850,7 +859,7 @@ name: S41
 ---
 name: S42
 
-# A Series Compensated Primary (PII)
+# A Series Compensated Primary (P-II)
 
 .center[<img src="img/netw/SCompGen.png" height="135px">]
 
@@ -906,7 +915,7 @@ When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system ea
 ---
 name: S45
 
-# An LCL Compensated Primary (PI)
+# An LCL Compensated Primary (P-I)
 
 .center[<img src="img/netw/LCLCompGen.png" height="135px">]
 
@@ -919,7 +928,7 @@ name: S45
 ---
 name: S46
 
-# An LCL Compensated Primary (PII)
+# An LCL Compensated Primary (P-II)
 
 .left-column[
 - The primary coil current can be given by
@@ -985,9 +994,9 @@ name: S49
 .center[<img src="img/netw/PartialSCompP.png" height="135px">]
 
 - The primary coil current and thus `\(\mathit{VA_{pt}}\)`, are both limited by `\(V_{pi}/\omega L_{pi}\)`
-- If `\(V_{pi}\)` is fixed by the design, then `\(L_{pt}\)` can be partially compensated usingn `\(C_{pi}\)`, to increase `\(\mathit{VA_{pt}}\)` by
+- If `\(V_{pi}\)` is fixed by the design, then `\(L_{pt}\)` can be partially compensated using `\(C_{pi}\)`, to increase `\(\mathit{VA_{pt}}\)` by
  - Either reducing the effective `\(L_{pt}\)` to increase `\(I_{pt}\)` (specially if `\(L_{pt}\)` is fixed)
- - Or icreasing `\(L_{pt}\)` and then partially compensating to lower `\(I_{pt}\)` 
+ - Or increasing `\(L_{pt}\)` and then partially compensating to lower `\(I_{pt}\)` 
 - The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{pt}\)` and `\(L_{pi}\)`, is given by
 \\[ L\_{pt\_{{(eq)}}} = L\_{pt} - 1/ \left(  \omega^2 C\_{pi} \right)  \\]
 
@@ -1009,8 +1018,10 @@ When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system ea
 ]
 
 .right-column[
+.zoom175[
 .center[<img src="img/netw/EgPPTLCLSPCompM1.png" width="300px">]
 .center[<img src="img/netw/EgPPTLCLSPCompM2.png" width="300px">]
+]
 ]
 
 ---
@@ -1232,7 +1243,7 @@ name: S57
 ---
 name: S58
  
-# Hard Switching (PI)
+# Hard Switching (P-I)
 
 .left-column[
 - Consider a half-bridge leg and assume that `\(Q_2\)` has been turned-on creating a low-voltage across `\(V_{pa}\)`
@@ -1255,14 +1266,14 @@ name: S58
 ---
 name: S59
  
-# Hard Switching (PII)
+# Hard Switching (P-II)
 
 .center[<img src="img/conv/HardSwitchState.png" width="750px">]
 
 ---
 name: S60
  
-# Soft Switching (PI)
+# Soft Switching (P-I)
 
 .left-column[
 - Consider a half-bridge leg and assume that `\(Q_2\)` has been turned-on creating a low-voltage across `\(V_{pa}\)`
@@ -1282,7 +1293,7 @@ name: S60
 ---
 name: S61
  
-# Soft Switching (PII)
+# Soft Switching (P-II)
 
 .center[<img src="img/conv/SoftSwitchState.png" width="750px">]
 
@@ -1387,7 +1398,9 @@ A push-pull parallel resonant converter (PPRC) is used to drive the primary coil
 ]
 
 .right-column[
+.zoom175[
 .center[<img src="img/conv/EGPPRC.png" width="320px">]
+]
 ]
 
 ---
@@ -1495,10 +1508,13 @@ When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each mea
 ]
 
 .right-column[
-.center[<img src="img/pkup/EgRac.png" width="300px">]
+.zoom175[
+.center[<img src="img/pkup/EgRac.png" width="290px">]
+]
 ]
 
 ---
+name: S73
 
 # Current Doubler Rectifiers
 
@@ -1510,6 +1526,7 @@ When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each mea
 \\[ I\_{out} = \frac {\pi} { \sqrt{2}} I\_{sc}, \quad V\_{out} = \frac { \sqrt{2}} {\pi} V\_{si} \quad \text{&} \quad R\_{L(dc)} = \frac {2} {\pi^2}  R\_{L(ac)}\\]
 
 ---
+name: S74
 
 # Short-Circuit Regulator
 
@@ -1521,6 +1538,7 @@ When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each mea
 - `\(L_{dc}\)` should be sufficiently large to maintain `\(I_{Ldc}\)` continuous
 
 ---
+name: S75
 
 # Power Regulation with Short-Circuit Control
 
@@ -1529,7 +1547,7 @@ When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each mea
 \\[ I\_{out} = \frac {\pi} {2 \sqrt{2}} (1-D\_{scr})  I\_{sc} \quad \text{since} \quad I\_{Ldc} = \frac {\pi} {2 \sqrt{2}} I\_{sc} \\]
 - If `\(V_{out}\)` is regulated by operating `\(Q_{1}\)` at `\( 0 < D_{scr} < 1 \)`, then
 \\[ P\_{out\_{(reg)}} = \frac {\pi} {2 \sqrt{2}} (1-D\_{scr})  I\_{sc} V\_{out\_{(reg)}} = (1-D\_{scr}) P\_{out\_{(max)}} \\]
-- If `\(R_{L}\)` drops below a critical value,  `\(V_{out}\)` is unregulated since `\( D_{scr} = 0 \)`
+- If `\(R_{L}\)` is below a critical value,  `\(V_{out}\)` is unregulated since `\( D_{scr} = 0 \)`
 \\[ V\_{out\_{(unreg)}} = \frac {\pi} {2 \sqrt{2}} I\_{sc} R\_{L(dc)} \quad \text{&} \quad P\_{out\_{(unreg)}} = \frac {\pi^2} {8} I\_{sc}^2 R\_{L(dc)}  \\]
 - `\(P_{out}\)` is a maximum at `\(R_{L(dc)_{(critical)}}=V_{out_{(reg)}} 2 \sqrt{2} \;/ (\pi I_{sc}) \)`
 ]
@@ -1539,11 +1557,90 @@ When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each mea
 ]
 
 ---
+name: S76
 
-Short-Circuit controller
-P vs D vs R for ssc
-Hysteritic control
-Note that, [`\(I_{Ldc} = \frac {\pi} {2 \sqrt{2}} I_{sc} \)`](#S70)
+# `\(f_{scr}\)` & `\(\Delta V_{out}\)` with Short-Circuit Control
+
+- The switching frequency, `\(f_{scr}\)`, of `\(Q_{1}\)` is a function of the output voltage ripple, `\(\Delta V_{out}\)` 
+\\[ f\_{scr} = \frac {\pi} {2 \sqrt{2}} \frac {I\_{sc}} {C\_{dc} \; \mathit{\Delta V\_{out}} } (1-D\_{scr}) D\_{scr} \quad \text {where} \quad f\_{scr} = \frac {1} {T\_{scr}} \\]
+- If `\(\Delta V_{out}\)` is fixed by the design, for example when using a hysteritic controller, then,
+\\[ f\_{scr\_{max}} = \frac {\pi} {8 \sqrt{2}} \frac {I\_{sc}} {C\_{dc} \; \mathit{\Delta V\_{out}} } \quad \text {when} \quad D\_{scr} = 0.5 \\]
+- When using 'slow' switching, `\(C_{dc}\)` should be chosen to ensure an acceptable `\(f_{scr_{max}}\)`
+\\[ C\_{dc} \geqslant \frac {\pi} {8 \sqrt{2}} \frac {I\_{sc}} {f\_{scr\_{max}} \; \mathit{\Delta V\_{out}} } \\]
+- When using 'fast' switching, `\(C_{dc}\)` should be chosen to ensure an acceptable `\(\Delta V_{out}\)` at the operating `\(f_{scr}\)`
+
+---
+name: S77
+
+# Slow Switching vs Fast Switching
+
+.left-column[
+- If `\(Q_{1}\)` is operated at a frequency significantly smaller than `\(f_{s}\)`
+ - When `\(Q_{1}\)` is turned-on, `\(V_{si}\)` collapases and the resonant energy is lost
+ - When `\(Q_{1}\)` is turned-off, `\(V_{si}\)` builds up and the pick-up operates at maximum [`\(Q_{sp_{op}}\)`](#S38)
+ - `\(f_{scr}\)` must be relatively low to keep losses to a minimum and not to excite any secondary resonance
+- If `\(Q_{1}\)` is operated at a significantly higher frequency
+ - `\(V_{si}\)` is continuous and is a function of `\(D_{scr}\)`
+ - [`\(Q_{sp_{op}}\)`](#S38) of the pick-up is a function of the load and is only a maximum at `\(R_{L(dc)_{(critical)}}\)`
+ - Switching losses can be significant 
+]
+
+.right-column[
+.center[<img src="img/pkup/SlowFastW.png" width="300px">]
+]
+
+---
+name: S78
+
+# Example: A Short Circuit Regulator  
+
+When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(50 A_{rms}\)` current. The pick-up uses parallel compensation and a short-circuit regulator to supply `\(500 V \)` to a variable DC load, where `\( 50 \Omega < R_{L(dc)} < 500 \Omega \)`. 
+
+.left-column[
+- Develop a LTSpice simulation model 
+- Show that 
+ - `\(R_{L(dc)_{(critical)}}\)` is `\( 91 \Omega \)` and at this load `\(V_{out}\)` just reach `\(500 V \)` 
+ - When `\(R_{L(dc)} = 50 \Omega\)`, `\(V_{out}\)` can not be regulated and drop to `\(\sim 278 V \)`
+ - When `\(R_{L(dc)} = 182 \Omega\)`, to regulate `\(V_{out}\)` to `\(500 V \)`, `\(D_{scr} \approx 0.5\)`
+ - Explore the differences between slow and fast switching 
+]
+
+.right-column[
+.zoom175[
+.center[<img src="img/pkup/EgSctControl.png" width="300px">]
+]
+]
+
+---
+name: S79
+
+# Active Rectifiers
+
+.center[<img src="img/pkup/ActiveRect.png" height="140px">]
+
+- A typical active rectifier employs a full-bridge converter that is controlled to generate a `\(V_{si}\)` that leads or lags `\(V_{pi}\)` by a phase-angle `\(\theta\)`
+- `\(\theta\)` can be controlled together with the amplitude of `\(V_{si}\)` to generate a specific AC impedance, `\(Z_{L(ac)}\)`, across `\(V_{si}\)`
+- The reactive part of `\(Z_{L(ac)}\)` can be used to improve power transfer and/or reduce losses, especially when operated under misaligned conditions
+- In applications requiring only uni-directional power flow, two of the switches in the full-bridge can be replaced with diodes 
+
+---
+name: S80
+
+# Demo: Simulating an IPT System on PLECS
+
+.center[<img src="img/pkup/DemoPlecs.png" height="400px">]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Acknowledgements
+#### Special thanks to Grant Covic, Gaurav Kalra, Cody Liu, Victor Wang, Lei Zhao and Vahid Zahiri 
+#### for their valueable feedback.
+
 ---
 
 class: title-slide
