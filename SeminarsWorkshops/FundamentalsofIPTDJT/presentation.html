@@ -103,7 +103,7 @@
       }
 
       .zoom175:hover {
-        transform: scale(1.75) translateY(-20%) translateX(-10%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        transform: scale(1.75) translateY(-20%) translateX(-20%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
       }
 
     </style>
@@ -146,7 +146,7 @@ layout: true
 name: template_slide
 
 .logo-slide[]
-.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+.footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt), Department of Electrical, Computer and Software Engineering (2019)]
 
 ---
 name: S1
@@ -200,7 +200,7 @@ layout: false
 count: false
 .logo-title[]
 
-# Part I - Fundamentals Concepts
+# Part I - Fundamental Concepts
 ### Modelling the Coils and Power Transfer
 
 ---
@@ -285,7 +285,7 @@ name: S9
 
 .center[<img src="img/fund/TxEq.png" height="140px">]
 
-- The behaviour of the coils can be modelled using a T equivelent transformer model
+- The behaviour of the coils can be modelled using a T-equivelent transformer model
  - `\(L_{pt}\)` and `\(L_{st}\)` are the self-inductances of primary and pick-up coils, respectively
  - `\(\phi_{m}\)` represents flux linkage while `\(\phi_{lk_p}\)` and `\(\phi_{lk_s}\)` represent leakage flux
  - The coupling coefficient, k, between the coils is less than 0.4 in a typical IPT system
@@ -302,7 +302,7 @@ name: S10
 
 - The self-inductance of primary coil is obtained by measuring inductance seen from primary when the pick-up coil is open-circuited since 
 \\[L\_{pt(oc)} = (1-k)L\_{pt}+kL\_{pt}=L\_{pt}\\]
-- Similarly the self-inductance of pick-up coil can also be measured
+- The self-inductance of pick-up coil can also be measured similarly
 - Depending on the construction of the coils, the self-inductance may change with changes in relative displacement between the coils
 
 
@@ -325,7 +325,7 @@ name: S12
 
 .center[<img src="img/fund/CpldL.png" height="135px">]
 
-- Although a T equivalent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor domain
+- Although a T equivalent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor-domain
 - In the coupled inductor model, `\(L_{pt}\)` and `\(L_{st}\)` represent the self-inductances of primary and pick-up coils
 - `\(V_{sr}\)` represents voltage induced across `\(L_{st}\)` due to current `\(I_{pt}\angle 0\)` flowing through `\(L_{pt}\)` and is given by
 \\[V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
@@ -455,13 +455,13 @@ name: S19
 
 .left-column[
 - Contructed as planar spiral winding and take the shape of a circle/square/rectangle/etc.
- - Multifilar windings can be used to increase current rating but will require special attention to ensure currents are shared
-- High-frequency Litz wire used in order to improve coil Q
+ - Multifilar windings can be used to increase the current rating, but special attention is required to ensure current sharing 
+- High-frequency Litz wire is used to improve coil Q
  - Need to ensure that the windings are appropriately isolated 
 - Ferrite plates/disks/bars are used to create a single sided flux pattern 
 - The housing that provides electrical isolation holds the Litz wire and the ferrites 
  - Typically the windings and ferrites are potted 
-- Aluminum shielding used to reduce leakage flux
+- Aluminum shielding is used to reduce leakage flux
 ]
 
 .right-column[
@@ -519,7 +519,7 @@ name: S22
 - DDQ structure is one of the most common multi-coil structures
  - The quadrature (Q) winding is decoupled from the DD winding
  - Thus, both windings can be used independently to transfer power
- - A DD coil coupled with a DDQ coil provides wide spatial tolerance since the Q winding helps transferring power when `\(k\)` between the DD windings drop
+ - A DD primary and DDQ secondary provides wide spatial tolerance since the Q winding helps transferring power when `\(k\)` between the DD windings drop
 - Bi-polar structure employs two overlapping windings that are decoupled from each other
  - When used as a transmitter, each coil can be driven at a desired magnitude and a phase
 - Tri-polar and other multi-coil structures typically employ decoupled overlapping windings
@@ -557,7 +557,7 @@ name: S24
 
 .center[<img src="img/comp/UncompR.png" height="135px">]
 
-- Assume a load resistor, `\(R_{L}\)`, is connected directly across a pick-up coil, which is coupled with a primary coil 
+- Assume a load resistor, `\(R_{L}\)`, is connected directly across a pick-up coil, which is coupled to a primary coil 
 - The primary coil is driven by the primary converter generating a current `\(I_{pt}\angle 0\)` at an angular frequency `\(\omega = 2\pi f\)`
 - The current flowing through pick-up coil as well as the load will be
 \\[ I\_{st} = \frac {-V\_{sr}} {R\_{L} + j\omega L\_{st}} = \frac {-\omega MI\_{pt}e^{j\pi/2}} {R\_{L} + j\omega L\_{st}}  \\]
@@ -618,7 +618,7 @@ name: S28
 
 # Example: Series Compensated Pick-up
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses series compensation and power a `\(2 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses series compensation and powers a `\(2 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{st}\)` has to be `\(187.2 nH\)` to compensate `\(L_{st}\)`
@@ -641,7 +641,7 @@ name: S29
 .center[<img src="img/comp/PCompRN.png" height="135px">]
 
 - The impedance of `\(L_{st}\)` is compensated using the capacitor `\(C_{st}\)` that is connected in parallel with `\(L_{st}\)`
-- The impedance of the compensated pick-up, including `\(R_{L}\)`, seen from `\(V_{sr}\)` is given by
+- The impedance of the compensated pick-up, including `\(R_{L}\)`, as seen from `\(V_{sr}\)` is given by
 \\[ Z\_{s} = j \left [ \omega L\_{st} - \frac {1} {\omega C\_{st}} \left ( \frac {\omega^2 C\_{st}^2 R\_{L}^2 } {1+\omega^2 C\_{st}^2 R\_{L}^2} \right ) \right ] + \frac {R\_{L}} {1+\omega^2 C\_{st}^2 R\_{L}^2} \\]
 - Unlike in a series compensated pick-up, `\(Z_{s}\)` can only be real at a specific `\(R_{L}\)` while under all other conditions it will be reactive 
 - Norton tranformation can be used to obtain a simplified model, where [`\(I_{sc} = V_{sr} / j \omega L_{st} \)`](#S13)
@@ -682,7 +682,7 @@ name: S32
 
 # Example: Parallel Compensated Pick-up
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses parallel compensation and power a `\(50 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses parallel compensation and powers a `\(50 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{st}\)` has to be `\(187.2 nF\)` to compensate `\(L_{st}\)`
@@ -790,11 +790,11 @@ name: S38
 
 # Operating Quality Factor of a Pick-up
 
-- `\(P_o\)` of a series compensated pick-up was proportional to `\(\omega L_{st}/R_L\)` while for a parallel/LCL compensated pick-up `\(P_o\)` was proportional to `\(R_L/\omega L_{st}\)`
+- `\(P_o\)` of a series compensated pick-up was proportional to `\(\omega L_{st}/R_L\)`, while for a parallel/LCL compensated pick-up `\(P_o\)` was proportional to `\(R_L/\omega L_{st}\)`
 - The ratio `\(\omega L_{st}/R_L\)` or `\(R_L/\omega L_{st}\)`, is referred to as the operating quality factor of a pick-up and thus when operated at a load `\(R_L\)`, the operating quality factor of a series compensated pick-up, `\(Q_{ss_{(op)}}\)`, or the operating quality factor of a parallel/LCL compensated pick-up, `\(Q_{sp_{(op)}}\)`, can be given by
  \\[ Q\_{ss\_{{(op)}}} = \frac {\omega L\_{st} } {R\_L} \quad \text{or} \quad Q\_{sp\_{{(op)}}} = \frac {R\_L} {\omega L\_{st} } \\]
 - A higher operating `\(Q\)` results in higher power but also makes the pick-up increasingly sensitive to changes
- - As an example, from previous analysis, if operated at a `\(Q_{ss_{(op)}}\)` of 5, a 20% change in `\(L_{st}\)` results in a 50% drop in `\(P_o\)`
+ - As an example, from previous analysis, if operated at a `\(Q_{ss_{(op)}}\)` of 5, a 20% change in `\(L_{st}\)` results in a 40% drop in `\(P_o\)`
  - Typically, an IPT system is designed to have an operating `\(Q\)` of less than 10 
 - Note that `\(Q_{pt}\)` and `\(Q_{st}\)` are a measure of the coil quality and it is therefore desirable to for these to be much larger than the operating `\(Q\)` 
 
@@ -805,7 +805,7 @@ layout: false
 count: false
 .logo-title[]
 
-# Part IV - Compensation Networks
+# Part IV - Primary Compensation Networks
 ### Analysing the Behaviour of an IPT System
 
 ---
@@ -838,7 +838,7 @@ name: S40
 .center[<img src="img/netw/PCompGen.png" height="135px">]
 
 - Directly driving the highly inductive load consisting of `\(L_{st}\)` and `\(Z_{pr}\)` with a power converter can be very inefficient and costly
- - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of `\(1/(k^2Q_{ss/sp_{(op)}})\)`
+ - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of [`\(1/(k^2Q_{ss/sp_{(op)}})\)`](#S38)
 - Compensation networks are used to reduce the VA demand of the primary converter
 - A series or an LCL compensation network is commonly employed if the primary is driven by a voltage source inverter  
 - A parallel compensation network is commonly employed if the primary is driven by a current source inverter
@@ -1167,7 +1167,7 @@ name: S53
 .left-column[
 - A full-bridge converter is typically used to drive a series/LCL compensated primary coil
 - Half-bridge converters may be used in low power applications
-- The primary converter can be fed from the grid, through a PFC stage or a grid-tied inverter or directly from a DC source
+- The primary converter can be fed from the grid through a PFC stage or a grid-tied inverter or directly from a DC source
 - The frequency of the fundamental component of `\(V_{pi}\)` generated by the converter is at or near the tuned frequency of the compensation network (10's of kHz)
 - Thus, traditional PWM schemes cannot be used to regulate the magnitude of `\(V_{pi}\)`
 - Typically, voltage cancellation schemes are used, for example using phase-shift modulation to regulate the magnitude of `\(V_{pi}\)`
@@ -1232,7 +1232,7 @@ name: S57
 - THD of `\(V_{pi}\)` is the lowest at about `\(3 \pi /4\)` and is about `\(29\%\)`
 - Operating at a `\(\phi_{p}\)` of `\(2 \pi /3\)`, eliminates the 3rd harmonic of `\(V_{pi}\)` 
 - Since the compensation networks are tuned to `\(f_{s}\)`, power is mainly transferred at `\(f_{s}\)` 
- - Thus an IPT system can be analysed at `\(f_{s}\)`, taking as `\(V_{pi(1)_{rms}} = V_{in} \sin \left( \phi_p /2 \right) \sqrt(8)/ \pi \)`  
+ - Thus an IPT system can be analysed at `\(f_{s}\)`, taking as `\(V_{pi(1)_{rms}} = V_{in} \sin \left( \phi_p /2 \right) \sqrt{8}/ \pi \)`  
 
 ]
 
@@ -1313,7 +1313,9 @@ A full-bridge converter that employs C2M0025120D devices is used as the primary 
 ]
 
 .right-column[
+.zoom175[
 .center[<img src="img/conv/EGSoftHardSw.png" width="300px">]
+]
 ]
 
 ---
@@ -1326,7 +1328,7 @@ name: S63
 - Under practical operation, `\(V_{pi}\)` may have a non-zero average 
 - When driving an LCL compensated coil, the non-zero average of `\(V_{pi}\)` will lead to circulating DC current
 - This can be avoided by having a DC-blocking capacitor, `\(C_{pi}\)`, that is connected in series with `\(L_{pi}\)`
- - If the coil is partially series compensated, a DC-blocking capacitor is not required
+ - If the primary coil is partially series compensated, a DC-blocking capacitor is not required
 - `\(C_{pi}\)` together with `\(L_{pi}\)` forms an equivalent inductance given by
 
 \\[ L\_{pi\_{(eq)}} = L\_{pi} - \frac {1} {\omega^2 C\_{pi}} \\]
@@ -1348,7 +1350,9 @@ Both the primary and the pick-up coils designed for an IPT system, when placed `
 ]
 
 .right-column[
+.zoom175[
 .center[<img src="img/conv/EGFullBridgeLCL.png" width="350px">]
+]
 ]
 
 ---
@@ -1373,7 +1377,7 @@ name: S66
 .left-column[
 - The switches are operated at a frequency `\(f_{s}\)`, where `\(f_{s}\)` is equal to or less than the resonant frequency of the system given by
 \\[ f\_{r} = \frac {1} {2 \pi \sqrt {L\_{pt} C\_{pt}}} \geqslant f\_{s} \\]
-- Switch operated complementary to each other at 50% duty-cycle
+- Switches operated complementary to each other at 50% duty-cycle
 - `\(L_{dc}\)` togther with the split-winding transformer create two `\(0.5I_{dc}\)` current sources 
 - When operating Q is sufficiently high, `\(V_{pa}\)` and `\(V_{pb}\)` take the shape of a half-sinusoidal wave
 - By equating the volt-second product at each end of `\(L_{dc}\)`
@@ -1439,11 +1443,11 @@ name: S68
 ---
 name: S69
 
-# Rectification of Series Compensated Pick-up
+# Rectification of a Series Compensated Pick-up
 
 .left-column[
 - A diode rectifier and a filter capacitor used to derive a DC output 
-- The resulting `\(V_{si}\)` across the resonant tank is a square wave where
+- The resulting `\(V_{si}\)` across the resonant tank is a square wave 
 \\[ V\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(I_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = V\_{sr\_{rms}} I\_{si\_{rms}} = \frac {2 \sqrt{2}} {\pi} V\_{out} I\_{si\_{rms}}  \\]
@@ -1458,11 +1462,11 @@ name: S69
 ---
 name: S70
 
-# Rectification of Parallel Compensated Pick-up
+# Rectification of a Parallel Compensated Pick-up
 
 .left-column[
 - A diode rectifier, a DC inductor and a filter capacitor used 
-- The resulting `\(I_{si}\)` into the rectifier is a square wave where
+- The resulting `\(I_{si}\)` into the rectifier is a square wave 
 \\[ I\_{si} = I\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(V_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = V\_{si\_{rms}} I\_{sc\_{rms}} = \frac {2 \sqrt{2}} {\pi} I\_{out} V\_{si\_{rms}}  \\]
@@ -1477,11 +1481,11 @@ name: S70
 ---
 name: S71
 
-# Rectification of LCL Compensated Pick-up
+# Rectification of an LCL Compensated Pick-up
 
 .left-column[
 - A diode rectifier and a filter capacitor used to derive a DC output 
-- The resulting `\(V_{si}\)` across the resonant tank is a square wave where
+- The resulting `\(V_{si}\)` across the resonant tank is a square wave 
 \\[ V\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(I_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = \frac {2 \sqrt{2}} {\pi} V\_{out} I\_{sc\_{rms}}  \\]
@@ -1543,7 +1547,7 @@ name: S75
 # Power Regulation with Short-Circuit Control
 
 .left-column[
-- `\(I_{out}\)` is therefore the average of `\(I_{D1}\)` as given by
+- `\(I_{out}\)` is the average of `\(I_{D1}\)` as given by
 \\[ I\_{out} = \frac {\pi} {2 \sqrt{2}} (1-D\_{scr})  I\_{sc} \quad \text{since} \quad I\_{Ldc} = \frac {\pi} {2 \sqrt{2}} I\_{sc} \\]
 - If `\(V_{out}\)` is regulated by operating `\(Q_{1}\)` at `\( 0 < D_{scr} < 1 \)`, then
 \\[ P\_{out\_{(reg)}} = \frac {\pi} {2 \sqrt{2}} (1-D\_{scr})  I\_{sc} V\_{out\_{(reg)}} = (1-D\_{scr}) P\_{out\_{(max)}} \\]
