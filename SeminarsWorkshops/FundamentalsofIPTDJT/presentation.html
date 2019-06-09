@@ -332,6 +332,18 @@ name: S12
 - Similarly, `\(V_{pr}\)` represents voltage induced across `\(L_{pt}\)` due to `\(I_{st}\angle\theta\)` and is given by
 \\[V\_{pr} = \omega MI\_{st}e^{j(\theta+\pi/2)}\\]
 
+???
+
+If the current through primary coil is `\(I_{pt} \sin (\omega t)\)` then,
+\\[\phi\_{m} \propto I\_{pt} \sin (\omega t) \\]
+The voltage induced on the pick-up coil is therefore,
+\\[v\_{sr} \propto \frac{\mathrm{d} \phi\_{m} }{\mathrm{d} t} \\]
+\\[v\_{sr} \propto \omega I\_{pt} \cos (\omega t) \\]
+Since `\(M\)` represent the coupling between the two coils,
+\\[v\_{sr} = \omega M I\_{pt} \cos (\omega t) \\]
+In the phasor-domain,
+\\[V\_{sr} = \omega M I\_{pt} e^{j\pi/2} \\]
+
 ---
 name: S13
 
@@ -369,6 +381,15 @@ name: S14
 .right-column[.right[
 <img src="img/fund/GenP.png" width="310px">
 ]]
+
+???
+
+Note that 
+\\[P\_{o} = \Re \left \\{ V\_{sr} \bar {I\_{st}} \right \\} \\]
+Substituting `\( \left| V_{sr} \right | = \omega M \left| I_{pt} \right | \)`, 
+\\[P\_{o} = \omega M \left | I\_{pt} \right | \left | I\_{st} \right | \cos(\pi/2-\theta)\\]
+\\[P\_{o} = k\sqrt{ (\omega L\_{pt} \left | I\_{pt} \right |^2 ) (\omega L\_{st} \left | I\_{st} \right |^2) } \sin(\theta)\\]
+\\[P\_{o} = k \sqrt{\mathit{VA}\_{pt}\mathit{VA}\_{st}} \sin(\theta) \\]
 
 ---
 name: S15
