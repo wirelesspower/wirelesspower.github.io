@@ -410,7 +410,7 @@ name: S15
 - The total losses in the two coils can be expressed as
 \\[P\_{loss(c)} = \left | I\_{pt}^2 \right | r\_{pt} + \left | I\_{st}^2 \right | r\_{st} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{\mathit{VA}\_{st}}{Q\_{st}}\\]
 - Since `\(P_{o} = k \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \sin(\theta) \)`, `\(P_{loss(c)}\)` can be expressed as
-\\[P\_{loss(c)} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{P\_{o}^2}{\mathit{VA}\_{pt} k^2 Q\_{st} \sin(\theta)^2}\\]
+\\[P\_{loss(c)} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{P\_{o}^2}{\mathit{VA}\_{pt} k^2 Q\_{st} \sin^2(\theta)}\\]
 
 ---
 name: S16
@@ -429,7 +429,7 @@ name: S17
 
 # Example: Simulating the Coils
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)` (measured when the other coil is open circuited). The primary coil measured `\(18.5427 \mu H\)` when the pick-up coil was short-circuited. The primary coil of the IPT system is driven by the primary power supply through a compensation network to maintain a `\(85 kHz\)`, `\(10 A_{rms}\)` current. 
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)` (measured when the other coil is open circuited). The primary coil measured `\(18.5427 \mu H\)` when the pick-up coil was short-circuited. The primary coil of the IPT system is driven by the primary power supply through a compensation network to maintain a `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. 
 
 .left-column[
 - Show that the `\(k\)` between the two coils is 0.1
@@ -651,7 +651,7 @@ name: S28
 
 # Example: Series Compensated Pick-up
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses series compensation and powers a `\(2 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The pick-up uses series compensation and powers a `\(2 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{st}\)` has to be `\(187.2 nH\)` to compensate `\(L_{st}\)`
@@ -715,7 +715,7 @@ name: S32
 
 # Example: Parallel Compensated Pick-up
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses parallel compensation and powers a `\(50 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The pick-up uses parallel compensation and powers a `\(50 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{st}\)` has to be `\(187.2 nF\)` to compensate `\(L_{st}\)`
@@ -766,7 +766,7 @@ name: S35
 
 # Example: LCL Compensated Pick-up
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{st}\)` has to be `\(187.2 nF\)` to compensate `\(L_{st}\)`
@@ -801,7 +801,7 @@ name: S37
 
 # Example: Partial Series Compensation
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load. Partial series compensation is used to deliver `\(100 W\)` to the load when operated under tuned conditions. 
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load. Partial series compensation is used to deliver `\(100 W\)` to the load when operated under tuned conditions. 
 
 .left-column[
 - Show that `\(C_{si}\)` has to be `\(639.1 nF\)` to ensure `\(P_{o}=100W\)`
@@ -858,7 +858,7 @@ name: S39
 
 - The pick-up can be modelled as `\(V_{sr}\)` driving into `\(Z_s\)`, which models the pick-up compensation and the load
 - Current flowing through the pick-up coil is therefore 
-\\[ I\_{st} = -V\_{pr} / Z\_s = -j \omega M I\_{pt} / Z\_s \\]
+\\[ I\_{st} = -V\_{sr} / Z\_s = -j \omega M I\_{pt} / Z\_s \\]
 - `\(I_{st}\)` induces a voltage, `\(V_{pr}\)`, across the primary coil, which can be given by
 \\[ V\_{pr} = j \omega M I\_{st} = \omega^2 M^2 I\_{pt} / Z\_s \\]
 - `\(V_{pr}\)` can also be represented as a reflected impedance where `\(Z_{pr} = \omega^2 M^2 / Z_s \)`
@@ -870,11 +870,11 @@ name: S40
 
 .center[<img src="img/netw/PCompGen.png" height="135px">]
 
-- Directly driving the highly inductive load consisting of `\(L_{st}\)` and `\(Z_{pr}\)` with a power converter can be very inefficient and costly
+- Directly driving the highly inductive load consisting of `\(L_{pt}\)` and `\(Z_{pr}\)` with a power converter can be very inefficient and costly
  - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of [`\(1/(k^2Q_{ss/sp_{(op)}})\)`](#S38)
 - Compensation networks are used to reduce the VA demand of the primary converter
-- A series or an LCL compensation network is commonly employed if the primary is driven by a voltage source inverter  
-- A parallel compensation network is commonly employed if the primary is driven by a current source inverter
+- A series or an LCL compensation network is commonly employed if the primary is driven by a voltage source converter  
+- A parallel compensation network is commonly employed if the primary is driven by a current source converter
 
 ---
 name: S41
@@ -908,7 +908,7 @@ name: S43
 
 # Example: Series-Series Compensated System
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses series compensation and is energised using a sinusoidal voltage source, `\(V_{si}\)`, that has a frequency of `\(85 kHz\)`. The pick-up uses series compensation and deliver `\(50 W\)` to a `\(2 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses series compensation and is energised using a sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses series compensation and deliver `\(50 W\)` to a `\(2 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{pt}\)` has to be `\(187.2 nF\)` to compensate `\(L_{pt}\)`
@@ -929,7 +929,7 @@ name: S44
 
 # Example: Series-Parallel Compensated System
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses series compensation and is energised using a sinusoidal voltage source, `\(V_{si}\)`, that has a frequency of `\(85 kHz\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses series compensation and is energised using a sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 kHz\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{pt}\)` has to be `\(187.2 nF\)` to compensate `\(L_{pt}\)`
@@ -982,7 +982,7 @@ name: S47
 
 # Example: LCL-Series Compensated System
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a sinusoidal voltage source, `\(V_{si}\)`, that has a frequency of `\(85 kHz\)`. The pick-up uses series compensation and deliver `\(50 W\)` to a `\(2 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses series compensation and deliver `\(50 W\)` to a `\(2 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{pt}\)` has to be `\(187.2 nF\)` and `\(L_{pi}\)` has to be `\(18.73 \mu H\)`
@@ -1003,7 +1003,7 @@ name: S48
 
 # Example: LCL-Parallel Compensated System
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a sinusoidal voltage source, `\(V_{si}\)`, that has a frequency of `\(85 kHz\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{pt}\)` has to be `\(187.2 nF\)` and `\(L_{pi}\)` has to be `\(18.73 \mu H\)`
@@ -1038,7 +1038,7 @@ name: S50
 
 # Example: Partially Compensated Primary
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a `\(50 V_{rms}\)` sinusoidal voltage source, `\(V_{si}\)`, that has a frequency of `\(85 kHz\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a `\(50 V_{rms}\)` sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
 
 .left-column[
 - Show that `\(C_{pi}\)` has to be `\(374.4 nF\)` to ensure `\(I_{pt}=10A_{rms}\)`
@@ -1160,7 +1160,7 @@ name: S52
 
 # Example: Design of a 2kW IPT System
 
-Both the primary and the pick-up coils designed for a 2kW IPT system, when placed `\(100 mm\)` apart measure `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The Q of the primary coil is about 400 while the Q of the pick-up is about 200 (core losses ignored). The primary uses LCL compensation and is energised using a `\(400 V_{rms}\)` sinusoidal voltage source, `\(V_{si}\)`, that has a frequency of `\(85 kHz\)`. The pick-up also uses LCL compensation and deliver `\(2 kW\)` at `\(200 V_{rms}\)` to an AC load. Determine the circuit parameters and using LTSpice validate the design.
+Both the primary and the pick-up coils designed for a 2kW IPT system, when placed `\(100 mm\)` apart measure `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The Q of the primary coil is about 400 while the Q of the pick-up is about 200 (core losses ignored). The primary uses LCL compensation and is energised using a `\(400 V_{rms}\)` sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up also uses LCL compensation and deliver `\(2 kW\)` at `\(200 V_{rms}\)` to an AC load. Determine the circuit parameters and using LTSpice validate the design.
 
 .left-column[
 - For maximum coil-coil efficiency, show that `\(\mathit{VA_{pt}}=28.28kVA\)` and `\(\mathit{VA_{st}}=14.14kVA\)` 
@@ -1201,8 +1201,8 @@ name: S53
 - A full-bridge converter is typically used to drive a series/LCL compensated primary coil
 - Half-bridge converters may be used in low power applications
 - The primary converter can be fed from the grid through a PFC stage or a grid-tied inverter or directly from a DC source
-- The frequency of the fundamental component of `\(V_{pi}\)` generated by the converter is at or near the tuned frequency of the compensation network (10's of kHz)
-- Thus, traditional PWM schemes cannot be used to regulate the magnitude of `\(V_{pi}\)`
+- The frequency of the fundamental component of `\(v_{pi}\)` generated by the converter is at or near the tuned frequency of the compensation network (10's of kHz)
+- Traditional PWM schemes cannot be used to regulate, `\(V_{pi(1)}\)` (same as `\(V_{pi}\)`), the phasor magnitude of the fundamental component of `\(v_{pi}\)`
 - Typically, voltage cancellation schemes are used, for example using phase-shift modulation to regulate the magnitude of `\(V_{pi}\)`
 ]
 
@@ -1218,8 +1218,8 @@ name: S54
 .center[<img src="img/conv/PShiftGen.png" height="220px">]
 
 - The switches are operated at a frequency `\(f_{s}\)`, where `\(f_{s}\)` is equal to or close to the tunned frequency of the compensation network
-- Each leg of the full-bridge operated at 50% duty-cycle, generating the square-waves `\(V_{pa}\)` and `\(V_{pb}\)`
-- The phase-shift modulation, `\(\phi_{p}\)`, applied between `\(V_{pa}\)` and `\(V_{pb}\)`, regulates the magnitude of the fundamental component of `\(V_{pi}\)`, since `\(V_{pi}=V_{pa}-V_{pb}\)`
+- Each leg of the full-bridge operated at 50% duty-cycle, generating the square-waves `\(v_{pa}\)` and `\(v_{pb}\)`
+- The phase-shift modulation, `\(\phi_{p}\)`, applied between `\(v_{pa}\)` and `\(v_{pb}\)`, regulates the magnitude of the fundamental component of `\(v_{pi}\)`, since `\(v_{pi}=v_{pa}-v_{pb}\)`
  - When `\(\phi_{p} = \pi\)`, `\(V_{pi}\)` is a maximum
 
 ---
@@ -1230,8 +1230,8 @@ name: S55
 .center[<img src="img/conv/DutyShiftGen.png" height="220px">]
 
 - The switches are operated at a frequency `\(f_{s}\)`, where `\(f_{s}\)` is equal to or close to the tunned frequency of the compensation network
-- Each leg of the full-bridge generates the waveforms `\(V_{pa}\)` and `\(V_{pb}\)`, which are `\(180^0\)` out of phase
-- The duty-cycle modulation, `\(D_{p}\)`, applied to each leg, regulates the magnitude of the fundamental component of `\(V_{pi}\)`, since `\(V_{pi}=V_{pa}-V_{pb}\)`
+- Each leg of the full-bridge generates the waveforms `\(v_{pa}\)` and `\(v_{pb}\)`, which are `\(180^0\)` out of phase
+- The duty-cycle modulation, `\(D_{p}\)`, applied to each leg, regulates the magnitude of the fundamental component of `\(v_{pi}\)`, since `\(v_{pi}=v_{pa}-v_{pb}\)`
  - When `\(D_{p} = 50\%\)`, `\(V_{pi}\)` is a maximum
 
 ---
@@ -1240,10 +1240,10 @@ name: S56
 # Modelling the Converter
 
 .left-column[
-- Noting that `\(\phi_{p} \equiv 2 \pi (1-D_p) \textrm{ or } 2 \pi D_p \)`, fourier expansion of `\(V_{pi}\)` is
-\\[ V\_{pi} = V\_{in} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {\sin \left(  n \phi\_p/2 \right)} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
-- `\(V_{pi}\)` can be rewritten as a function of its fundamental component
-\\[ V\_{pi}^2 = V\_{pi(1)}^2 + \sum\_{n=3,5,..}^{\infty} V\_{pi(n)}^2 \quad \text{where} \quad V\_{pi(1)} = V\_{in} \frac {4} {\pi} \sin \left(  \phi\_p/2 \right) \cos \left( \omega\_s t \right) \\]
+- Noting that `\(\phi_{p} \equiv 2 \pi (1-D_p) \textrm{ or } 2 \pi D_p \)`, fourier expansion of `\(v_{pi}\)` is
+\\[ v\_{pi} = V\_{in} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {\sin \left(  n \phi\_p/2 \right)} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- RMS of `\(v_{pi}\)` is therefore
+\\[ V\_{pi\_{rms}}^2 = V\_{pi(1)}^2 + \sum\_{n=3,5,..}^{\infty} V\_{pi(n)}^2 \quad \text{where} \quad V\_{pi(1)} = V\_{in} \frac {4} {\pi} \sin \left(  \phi\_p/2 \right) \cos \left( \omega\_s t \right) \\]
 - The RMS value of the distortion voltage is therefore
 \\[ V\_{pi(dis)\_{rms}} = \sqrt { V\_{pi\_{rms}}^2 - V\_{pi(1)\_{rms}}^2 } = \sum\_{n=3,5,..}^{\infty} V\_{pi(n)}^2 \\]
 ]
@@ -1258,14 +1258,14 @@ name: S57
 # THD and Power Factor
 
 .left-column[
-- Note that the RMS of `\(V_{pi}\)` can also be given by
-\\[ {V\_{pi\_{rms}}} = V\_{in} \sqrt{\phi\_p/pi} \\]
-- Total harmonic distortion (THD) of `\(V_{pi}\)` is
+- Note that the RMS of `\(v_{pi}\)` can also be given by
+\\[ {V\_{pi\_{rms}}} = V\_{in} \sqrt{\phi\_p/\pi} \\]
+- Total harmonic distortion (THD) of `\(v_{pi}\)` is
 \\[ THD\_{V\_{pi}} = V\_{pi(dis)\_{rms}} / V\_{pi(1)\_{rms}} \\]
-- THD of `\(V_{pi}\)` is the lowest at about `\(3 \pi /4\)` and is about `\(29\%\)`
-- Operating at a `\(\phi_{p}\)` of `\(2 \pi /3\)`, eliminates the 3rd harmonic of `\(V_{pi}\)` 
+- THD of `\(v_{pi}\)` is the lowest when `\(\phi_{p}\)` is `\(3 \pi /4\)` and is about `\(29\%\)`
+- Operating at a `\(\phi_{p}\)` of `\(2 \pi /3\)`, eliminates the 3rd harmonic of `\(v_{pi}\)` 
 - Since the compensation networks are tuned to `\(f_{s}\)`, power is mainly transferred at `\(f_{s}\)` 
- - Thus an IPT system can be analysed at `\(f_{s}\)`, taking as `\(V_{pi(1)_{rms}} = V_{in} \sin \left( \phi_p /2 \right) \sqrt{8}/ \pi \)`  
+ - Thus an IPT system can be analysed at `\(f_{s}\)`, taking as `\(V_{pi(1)_{rms}} = V_{pi} = V_{in} \sin \left( \phi_p /2 \right) \sqrt{8}/ \pi \)`  
 
 ]
 
@@ -1279,14 +1279,14 @@ name: S58
 # Hard Switching (P-I)
 
 .left-column[
-- Consider a half-bridge leg and assume that `\(Q_2\)` has been turned-on creating a low-voltage across `\(V_{pa}\)`
+- Consider a half-bridge leg and assume that `\(Q_2\)` has been turned-on creating a low-voltage across `\(v_{pa}\)`
 - To create a high-voltage, at `\(t = 0s\)`, `\(Q_2\)` starts turning-off and after the dead-time, `\(t_{d}\)`, `\(Q_1\)` starts turning-on  
- - Assume that `\(I_{pi}\)` is positive during this time (out of the leg)
-- As `\(Q_2\)` turns-off, `\(I_{pi}\)` shifts to `\(D_2\)`, but the voltage across `\(Q_2\)` as well as `\(V_{pa}\)`, is held low by `\(D_2\)`
-- Once `\(Q_2\)` is turned-off, until the end of `\(t_{d}\)`, `\(D_2\)` conducts `\(I_{pi}\)`
-- At `\(t_{d}\)`, `\(Q_1\)` starts turning-on and `\(I_{pi}\)` shifts to `\(Q_1\)`
+ - Assume that `\(i_{pi}\)` is positive during this time (out of the leg)
+- As `\(Q_2\)` turns-off, `\(i_{pi}\)` shifts to `\(D_2\)`, but the voltage across `\(Q_2\)` as well as `\(v_{pa}\)`, is held low by `\(D_2\)`
+- Once `\(Q_2\)` is turned-off, until the end of `\(t_{d}\)`, `\(D_2\)` conducts `\(i_{pi}\)`
+- At `\(t_{d}\)`, `\(Q_1\)` starts turning-on and `\(i_{pi}\)` shifts to `\(Q_1\)`
 - Then, `\(D_2\)` starts recovering and the voltage across `\(Q_1\)` starts to drop
-- At `\(t_{d}+t_{on}\)`, `\(V_{pa}\)` has completed the transition from low-high
+- At `\(t_{d}+t_{on}\)`, `\(v_{pa}\)` has completed the transition from low-high
 - `\(Q_1\)` was subjected to high-stresses leading to high turn-on losses
 - Capacitive loading and/or modulation lead to hard-switching 
 
@@ -1309,12 +1309,12 @@ name: S60
 # Soft Switching (P-I)
 
 .left-column[
-- Consider a half-bridge leg and assume that `\(Q_2\)` has been turned-on creating a low-voltage across `\(V_{pa}\)`
+- Consider a half-bridge leg and assume that `\(Q_2\)` has been turned-on creating a low-voltage across `\(v_{pa}\)`
 - To create a high-voltage, at `\(t = 0s\)`, `\(Q_2\)` starts turning-off and after the dead-time, `\(t_{d}\)`, `\(Q_1\)` starts turning-on  
- - Assume that `\(I_{pi}\)` is negative during this time (in to the leg)
-- As `\(Q_2\)` turns-off, `\(I_{pi}\)` shifts to `\(C_2\)` and `\(C_1\)` causing `\(V_{pa}\)` to increase 
-- Once `\(Q_2\)` is turned-off and `\(V_{pa}\)` has completed the transition from low-high, until the end of `\(t_{d}\)`, `\(D_1\)` conducts `\(I_{pi}\)`
-- At `\(t_{d}\)`, `\(Q_1\)` starts turning-on while voltage across it is low and `\(I_{pi}\)` shifts from `\(D_1\)` to `\(Q_1\)`
+ - Assume that `\(i_{pi}\)` is negative during this time (in to the leg)
+- As `\(Q_2\)` turns-off, `\(i_{pi}\)` shifts to `\(C_2\)` and `\(C_1\)` causing `\(v_{pa}\)` to increase 
+- Once `\(Q_2\)` is turned-off and `\(V_{pa}\)` has completed the transition from low-high, until the end of `\(t_{d}\)`, `\(D_1\)` conducts `\(i_{pi}\)`
+- At `\(t_{d}\)`, `\(Q_1\)` starts turning-on while voltage across it is low and `\(i_{pi}\)` shifts from `\(D_1\)` to `\(Q_1\)`
 - Both `\(Q_1\)` and `\(Q_2\)` had very low-stresses leading to significantly lower switching losses
 - Inductive loading and/or improved topologies help soft-switching 
 ]
@@ -1335,7 +1335,7 @@ name: S62
 
 # Example: Hard Switching vs Soft Switching
 
-A full-bridge converter that employs C2M0025120D devices is used as the primary converter of a `\(10kW\)` IPT system. The full-bridge feeds off a `\(800V\)` DC bus and produces a `\(85kHz\)` duty-cycle modulated `\(V_{pi}\)` to drive the primary coil through a compensation network. `\(I_{pi}\)` can be model using a `\(14A_{rms}\)`, `\(85kHz\)` ideal current source. Assume that `\(I_{pi}\)` lags `\(V_{pi}\)` by `\(10^0\)`.
+A full-bridge converter that employs C2M0025120D devices is used as the primary converter of a `\(10kW\)` IPT system. The full-bridge feeds off a `\(800V\)` DC bus and produces a `\(85 \mathit{kHz}\)` duty-cycle modulated `\(V_{pi}\)` to drive the primary coil through a compensation network. `\(I_{pi}\)` can be model using a `\(14A_{rms}\)`, `\(85 \mathit{kHz}\)` ideal current source. Assume that `\(I_{pi}\)` lags `\(V_{pi}\)` by `\(10^0\)`.
 
 .left-column[
 - Develop a simulation model of the full-bridge converter that is driving `\(I_{pi}\)`
@@ -1358,8 +1358,8 @@ name: S63
 
 .center[<img src="img/conv/SeriesBlock.png" height="180px">]
 
-- Under practical operation, `\(V_{pi}\)` may have a non-zero average 
-- When driving an LCL compensated coil, the non-zero average of `\(V_{pi}\)` will lead to circulating DC current
+- Under practical operation, `\(v_{pi}\)` may have a non-zero average 
+- When driving an LCL compensated coil, the non-zero average of `\(v_{pi}\)` will lead to circulating DC current
 - This can be avoided by having a DC-blocking capacitor, `\(C_{pi}\)`, that is connected in series with `\(L_{pi}\)`
  - If the primary coil is partially series compensated, a DC-blocking capacitor is not required
 - `\(C_{pi}\)` together with `\(L_{pi}\)` forms an equivalent inductance given by
@@ -1371,7 +1371,7 @@ name: S64
 
 # Example: Full-Bridge Driven LCL Primary
 
-Both the primary and the pick-up coils designed for an IPT system, when placed `\(100 mm\)` apart measure `\(18.73 \mu H\)` each. `\(k\)` between the two coils is measured as 20%. The Q of the primary coil as well as the pick-up coil is about 400 (core losses ignored). The primary and pick-up uses LCL compensation. The pick-up powers a `\(50 \Omega \)` AC load while the full-bridge converter feeds of a `\(800 V_{dc}\)` bus. The converter employs C2M0025120D devices and produces a duty-cycle modulated `\(V_{pi}\)`, at `\(85kHz\)`.
+Both the primary and the pick-up coils designed for an IPT system, when placed `\(100 mm\)` apart measure `\(18.73 \mu H\)` each. `\(k\)` between the two coils is measured as 20%. The Q of the primary coil as well as the pick-up coil is about 400 (core losses ignored). The primary and pick-up uses LCL compensation. The pick-up powers a `\(50 \Omega \)` AC load while the full-bridge converter feeds of a `\(800 V_{dc}\)` bus. The converter employs C2M0025120D devices and produces a duty-cycle modulated `\(v_{pi}\)`, at `\(85 \mathit{kHz}\)`.
 
 .left-column[
 - If `\(C_{pi}=187.2nF\)`, show that `\(L_{pi}=37.46 \mu F\)`
@@ -1412,7 +1412,7 @@ name: S66
 \\[ f\_{r} = \frac {1} {2 \pi \sqrt {L\_{pt} C\_{pt}}} \geqslant f\_{s} \\]
 - Switches operated complementary to each other at 50% duty-cycle
 - `\(L_{dc}\)` togther with the split-winding transformer create two `\(0.5I_{dc}\)` current sources 
-- When operating Q is sufficiently high, `\(V_{pa}\)` and `\(V_{pb}\)` take the shape of a half-sinusoidal wave
+- When operating Q is sufficiently high, `\(v_{pa}\)` and `\(v_{pb}\)` take the shape of a half-sinusoidal wave
 - By equating the volt-second product at each end of `\(L_{dc}\)`
 \\[ V\_{pt\_{rms}} \approx \pi V\_{in}/ \sqrt{2} \quad \text{and} \quad I\_{pt\_{rms}} \approx \pi V\_{in}/ \sqrt{2} \omega\_r L\_{pt} \\]
 ]
@@ -1426,7 +1426,7 @@ name: S67
 
 # Example: PPRC Driven Primary
 
-A push-pull parallel resonant converter (PPRC) is used to drive the primary coil of an IPT system. The PPRC feeds of a `\(200 V_{dc}\)` bus and is operated at `\(85kHz\)`. The converter employs C2M0025120D devices. Both the primary and the pick-up coils designed for this IPT system, when placed `\(100 mm\)` apart measure `\(18.73 \mu H\)` each. The reflected load on to the primary coil, `\(Z_{pr}\)`, is expected to be `\(1 \Omega \)`.
+A push-pull parallel resonant converter (PPRC) is used to drive the primary coil of an IPT system. The PPRC feeds of a `\(200 V_{dc}\)` bus and is operated at `\(85 \mathit{kHz}\)`. The converter employs C2M0025120D devices. Both the primary and the pick-up coils designed for this IPT system, when placed `\(100 mm\)` apart measure `\(18.73 \mu H\)` each. The reflected load on to the primary coil, `\(Z_{pr}\)`, is expected to be `\(1 \Omega \)`.
 
 .left-column[
 - Assuming `\(C_{pt}=180nF\)`, develop a simulation model of the system 
@@ -1480,8 +1480,8 @@ name: S69
 
 .left-column[
 - A diode rectifier and a filter capacitor used to derive a DC output 
-- The resulting `\(V_{si}\)` across the resonant tank is a square wave 
-\\[ V\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- The resulting `\(v_{si}\)` across the resonant tank is a square wave 
+\\[ v\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(I_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = V\_{sr\_{rms}} I\_{si\_{rms}} = \frac {2 \sqrt{2}} {\pi} V\_{out} I\_{si\_{rms}}  \\]
 - Thus, `\(V_{out}\)`, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(V_{sr}\)`, `\(I_{si}\)` and `\(R_{L(ac)}\)` as
@@ -1499,8 +1499,8 @@ name: S70
 
 .left-column[
 - A diode rectifier, a DC inductor and a filter capacitor used 
-- The resulting `\(I_{si}\)` into the rectifier is a square wave 
-\\[ I\_{si} = I\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- The resulting `\(i_{si}\)` into the rectifier is a square wave 
+\\[ i\_{si} = I\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(V_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = V\_{si\_{rms}} I\_{sc\_{rms}} = \frac {2 \sqrt{2}} {\pi} I\_{out} V\_{si\_{rms}}  \\]
 - Thus, `\(V_{out}\)`, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(V_{sr}\)`, `\(I_{si}\)` and `\(R_{L(ac)}\)` as
@@ -1518,8 +1518,8 @@ name: S71
 
 .left-column[
 - A diode rectifier and a filter capacitor used to derive a DC output 
-- The resulting `\(V_{si}\)` across the resonant tank is a square wave 
-\\[ V\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
+- The resulting `\(v_{si}\)` across the resonant tank is a square wave 
+\\[ v\_{si} = V\_{out} \frac {4} {\pi} \sum\_{n=1,3,..}^{\infty} \frac {1} {n} \cos \left(  n \omega\_s t \right)  \quad \text{where} \quad \omega\_s = 2 \pi f\_s \\]
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(I_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = \frac {2 \sqrt{2}} {\pi} V\_{out} I\_{sc\_{rms}}  \\]
 - Thus, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(I_{si}\)` and `\(R_{L(ac)}\)` as
@@ -1535,12 +1535,12 @@ name: S72
 
 # Example: Rectification 
 
-When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and a full-bridge recrtifier to power a `\(50 \Omega \)` DC load. Analyse the behaviour and compare to a series compensated pick-up powering a `\(2 \Omega \)` DC load as well as a parallel compensated pick-up powering a `\(50 \Omega \)` DC load.
+When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and a full-bridge recrtifier to power a `\(50 \Omega \)` DC load. Analyse the behaviour and compare to a series compensated pick-up powering a `\(2 \Omega \)` DC load as well as a parallel compensated pick-up powering a `\(50 \Omega \)` DC load.
 
 .left-column[
 - With the aid of LTSpice simulation models show that 
- - `\(I_{si}\)` of the LCL compensated pick-up is discontinuous and therefore `\(R_{L(dc)} \neq \pi^2 R_{L(ac)}/8   \)`
- - `\(I_{si}\)` of the LCL compensated pick-up can be made continuous by increasing `\(L_{si}\)` and series compensating to create an `\(L_{si_{(eq)}}\)`
+ - `\(i_{si}\)` of the LCL compensated pick-up is discontinuous and therefore `\(R_{L(dc)} \neq \pi^2 R_{L(ac)}/8   \)`
+ - `\(i_{si}\)` of the LCL compensated pick-up can be made continuous by increasing `\(L_{si}\)` and series compensating to create an `\(L_{si_{(eq)}}\)`
  - A parallel compensated pick-up can deliver about 50% more power to the same DC load 
 ]
 
@@ -1613,11 +1613,11 @@ name: S77
 
 .left-column[
 - If `\(Q_{1}\)` is operated at a frequency significantly smaller than `\(f_{s}\)`
- - When `\(Q_{1}\)` is turned-on, `\(V_{si}\)` collapases and the resonant energy is lost
- - When `\(Q_{1}\)` is turned-off, `\(V_{si}\)` builds up and the pick-up operates at maximum [`\(Q_{sp_{op}}\)`](#S38)
+ - When `\(Q_{1}\)` is turned-on, `\(v_{si}\)` collapases and the resonant energy is lost
+ - When `\(Q_{1}\)` is turned-off, `\(v_{si}\)` builds up and the pick-up operates at maximum [`\(Q_{sp_{op}}\)`](#S38)
  - `\(f_{scr}\)` must be relatively low to keep losses to a minimum and not to excite any secondary resonance
 - If `\(Q_{1}\)` is operated at a significantly higher frequency
- - `\(V_{si}\)` is continuous and is a function of `\(D_{scr}\)`
+ - `\(v_{si}\)` is continuous and is a function of `\(D_{scr}\)`
  - [`\(Q_{sp_{op}}\)`](#S38) of the pick-up is a function of the load and is only a maximum at `\(R_{L(dc)_{(critical)}}\)`
  - Switching losses can be significant 
 ]
@@ -1631,7 +1631,7 @@ name: S78
 
 # Example: A Short Circuit Regulator  
 
-When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 kHz\)`, `\(50 A_{rms}\)` current. The pick-up uses parallel compensation and a short-circuit regulator to supply `\(500 V \)` to a variable DC load, where `\( 50 \Omega < R_{L(dc)} < 500 \Omega \)`. 
+When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(50 A_{rms}\)` current. The pick-up uses parallel compensation and a short-circuit regulator to supply `\(500 V \)` to a variable DC load, where `\( 50 \Omega < R_{L(dc)} < 500 \Omega \)`. 
 
 .left-column[
 - Develop a LTSpice simulation model 
@@ -1656,7 +1656,7 @@ name: S79
 .center[<img src="img/pkup/ActiveRect.png" height="140px">]
 
 - A typical active rectifier employs a full-bridge converter that is controlled to generate a `\(V_{si}\)` that leads or lags `\(V_{pi}\)` by a phase-angle `\(\theta\)`
-- `\(\theta\)` can be controlled together with the amplitude of `\(V_{si}\)` to generate a specific AC impedance, `\(Z_{L(ac)}\)`, across `\(V_{si}\)`
+- `\(\theta\)` can be controlled together with the amplitude of `\(V_{si}\)` to generate a specific AC impedance, `\(Z_{L(ac)}\)`, across pick-up compensation network
 - The reactive part of `\(Z_{L(ac)}\)` can be used to improve power transfer and/or reduce losses, especially when operated under misaligned conditions
 - In applications requiring only uni-directional power flow, two of the switches in the full-bridge can be replaced with diodes 
 
@@ -1676,7 +1676,7 @@ count: false
 
 # Acknowledgements
 #### Special thanks to Grant Covic, Gaurav Kalra, Cody Liu, Victor Wang, Lei Zhao and Vahid Zahiri 
-#### for their valueable feedback.
+#### for their valuable feedback.
 
 ---
 
