@@ -792,7 +792,7 @@ name: S36
 - At a given `\(k\)` and a primary excitation, `\(\mathit{VA_{pt}}\)`, the power transfered to the load of a parallel or LCL compensated pick-up is determined by `\(R_L/\omega L_{st}\)`
 - If `\(R_L\)` is fixed by the design, then `\(L_{st}\)` can be partially compensated using `\(C_{si}\)`, to increase `\(\mathit{VA_{pt}}\)` by
  - Either reducing the effective `\(L_{st}\)` to increase `\(I_{st}\)` (specially if `\(L_{st}\)` is fixed)
- - Or increasing `\(L_{st}\)` and then partially compensating to lower `\(I_{st}\)` 
+ - Or increasing `\(L_{st}\)` and then partially compensating to lower `\(I_{st}\)` (VA in the coil is kept the same)
 - The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{st}\)` (and `\(L_{si}\)` in the case of an LCL compensated pick-up), is given by
 \\[ L\_{st\_{{(eq)}}} = L\_{st} - 1/ \left(  \omega^2 C\_{si} \right)  \\]
 
@@ -1029,7 +1029,7 @@ name: S49
 - The primary coil current and thus `\(\mathit{VA_{pt}}\)`, are both limited by `\(V_{pi}/\omega L_{pi}\)`
 - If `\(V_{pi}\)` is fixed by the design, then `\(L_{pt}\)` can be partially compensated using `\(C_{pi}\)`, to increase `\(\mathit{VA_{pt}}\)` by
  - Either reducing the effective `\(L_{pt}\)` to increase `\(I_{pt}\)` (specially if `\(L_{pt}\)` is fixed)
- - Or increasing `\(L_{pt}\)` and then partially compensating to lower `\(I_{pt}\)` 
+ - Or increasing `\(L_{pt}\)` and then partially compensating to lower `\(I_{pt}\)` (VA in the coil is kept the same)
 - The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{pt}\)` and `\(L_{pi}\)`, is given by
 \\[ L\_{pt\_{{(eq)}}} = L\_{pt} - 1/ \left(  \omega^2 C\_{pi} \right)  \\]
 
@@ -1042,7 +1042,7 @@ When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system ea
 
 .left-column[
 - Show that `\(C_{pi}\)` has to be `\(374.4 nF\)` to ensure `\(I_{pt}=10A_{rms}\)`
-- Show that `\(C_{st}\)` has to be `\(374.4 nF\)` 
+- Show that `\(C_{pt}\)` has to be `\(374.4 nF\)` 
 - Develop a simulation model in LTSpice 
  - `\(L_{pi}\)` can be added a `\(50 m \Omega\)` ESR to help reach SS faster
 - With the aid of this model show that 
