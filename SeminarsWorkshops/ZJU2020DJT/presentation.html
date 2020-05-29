@@ -257,17 +257,14 @@ name: S7
 
 # Current Status
 
-- Uni or bi-directional power flow
- - Primary may use a full-bridge, half-bridge, push-pull, multi-level or matrix based converter topology
- - Pick-up may use a boost, buck, full-bridge, half-bridge or push-pull topology
- - Control techniques that facilitate ZVS/ZCS over a wide range of conditions
- - Compensation for both sides is provided through series, parallel or a combination of series-parallel tuned networks
-- Power ratings up to tens of kWs
+- Power ratings of tens of kWs with uni or bi-directional power flow
  - Magnetic designs include circular coil, solenoidal coil, polarised coil, multi coil structures as well as track based systems 
  - Ferrites and/or reflection coils are often used to shape the magnetic fields generated
- - Transmission range of over 400 mm with over ± 200 mm XY tolerance
+ - Transmission range of over 300 mm with over ± 200 mm XY tolerance easily achievable 
  - Efficiency typically over 85% but can be as high as 97%
  - Operating frequency typically ranges from tens of kHz to tens of MHz
+
+.center[<img src="img/fund/LongDistance.jpg" height="200px">]
 
 ---
 name: S8
@@ -369,6 +366,129 @@ name: S12
 \\[P\_{loss(c)} = \left | I\_{pt}^2 \right | r\_{pt} + \left | I\_{st}^2 \right | r\_{st} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{\mathit{VA}\_{st}}{Q\_{st}}\\]
 - The maximum efficiency is achieved when losses in the coils are matched (i.e. `\(\mathit{VA}_{pt}/Q_{pt} = \mathit{VA}_{st}/Q_{st}\)` )
 \\[ \eta\_{c\_{max}} = \frac{ k \sin(\theta) -  \frac {1} { \sqrt {Q\_{pt} Q\_{st}} }} {k \sin(\theta) +  \frac {1} {\sqrt {Q\_{pt} Q\_{st}} }} \\]
+
+---
+name: S12b
+
+# Impact of k and Coil Q on Performance
+
+- Typically, k is in the range 0.1 to 0.3 and coil Q is in the range 400 to 600 for EV charging
+- Design of a 10 kW IPT system 
+ - Assume both `\(Q_{pt}\)` and `\(Q_{st}\)` are 400
+ - Note that `\( P_o \approx k \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)` needs to be always met
+
+<style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;}
+  .tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+    padding:10px 5px;word-break:normal;}
+  .tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+  .tg .tg-zk76{background-color:#c0c0c0;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-oe15{background-color:#ffffff;border-color:#ffffff;text-align:left;vertical-align:top}
+  .tg .tg-3aj4{background-color:rgb(192, 192, 192);border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-2bvr{background-color:#ecf4ff;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-gvc8{background-color:#dae8fc;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-wk8r{background-color:#ffffff;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-qj3s{background-color:rgb(255, 255, 255);border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-6vp7{background-color:rgb(236, 244, 255);border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-cc1p{background-color:rgb(218, 232, 252);border-color:#ffffff;text-align:center;vertical-align:top}
+</style>
+  <table class="tg" style="undefined;table-layout: fixed; width: 1010px">
+  <colgroup>
+  <col style="width: 50px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 105px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 50px">
+  <col style="width: 50px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 105px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  </colgroup>
+  <thead>
+    <tr>
+      <th class="tg-wk8r" colspan="7">When k is 0.3</th>
+      <th class="tg-oe15"></th>
+      <th class="tg-qj3s" colspan="7">When k is 0.1</th>
+    </tr>
+  </thead>
+  </tbody>
+    <tr>
+      <td class="tg-zk76">Option</th>
+      <td class="tg-zk76">`\( \mathit{VA}_{pt} \)`</th>
+      <td class="tg-zk76">`\( \mathit{VA}_{st} \)`</th>
+      <td class="tg-zk76">`\( \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)`</th>
+      <td class="tg-zk76">`\( P_{loss(pc)} \)`</th>
+      <td class="tg-zk76">`\( P_{loss(sc)} \)`</th>
+      <td class="tg-zk76">`\( \eta_{c} \)`</th>
+      <td class="tg-oe15"></th>
+      <td class="tg-3aj4">Option</th>
+      <td class="tg-3aj4">`\( \mathit{VA}_{pt} \)`</th>
+      <td class="tg-3aj4">`\( \mathit{VA}_{st} \)`</th>
+      <td class="tg-3aj4">`\( \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)`</th>
+      <td class="tg-3aj4">`\( P_{loss(pc)} \)`</th>
+      <td class="tg-3aj4">`\( P_{loss(sc)} \)`</th>
+      <td class="tg-3aj4">`\( \eta_{c} \)`</th>
+    </tr>
+    <tr>
+      <td class="tg-2bvr">1</td>
+      <td class="tg-2bvr">160 kVA</td>
+      <td class="tg-2bvr">10 kVA</td>
+      <td class="tg-2bvr">40 kVA</td>
+      <td class="tg-2bvr">400 W</td>
+      <td class="tg-2bvr">25 W</td>
+      <td class="tg-2bvr">96.5%</td>
+      <td class="tg-oe15"></td>
+      <td class="tg-6vp7">1</td>
+      <td class="tg-6vp7">480 kVA</td>
+      <td class="tg-6vp7">30 kVA</td>
+      <td class="tg-6vp7">120 kVA</td>
+      <td class="tg-6vp7">1200 W</td>
+      <td class="tg-6vp7">75 W</td>
+      <td class="tg-6vp7">89.4%</td>
+    </tr>
+    <tr>
+      <td class="tg-gvc8">2</td>
+      <td class="tg-gvc8">40 kVA</td>
+      <td class="tg-gvc8">40 kVA</td>
+      <td class="tg-gvc8">40 kVA</td>
+      <td class="tg-gvc8">100 W</td>
+      <td class="tg-gvc8">100 W</td>
+      <td class="tg-gvc8">98.3%</td>
+      <td class="tg-oe15"></td>
+      <td class="tg-cc1p">2</td>
+      <td class="tg-cc1p">120 kVA</td>
+      <td class="tg-cc1p">120 kVA</td>
+      <td class="tg-cc1p">120 kVA</td>
+      <td class="tg-cc1p">300 W</td>
+      <td class="tg-cc1p">300 W</td>
+      <td class="tg-cc1p">95%</td>
+    </tr>
+    <tr>
+      <td class="tg-2bvr">3</td>
+      <td class="tg-2bvr">10 kVA</td>
+      <td class="tg-2bvr">160 kVA</td>
+      <td class="tg-2bvr">40 kVA</td>
+      <td class="tg-2bvr">25 W</td>
+      <td class="tg-2bvr">400 W</td>
+      <td class="tg-2bvr">96.5%</td>
+      <td class="tg-oe15"></td>
+      <td class="tg-6vp7">3</td>
+      <td class="tg-6vp7">30 kVA</td>
+      <td class="tg-6vp7">480 kVA</td>
+      <td class="tg-6vp7">120 kVA</td>
+      <td class="tg-6vp7">75 W</td>
+      <td class="tg-6vp7">1200 W</td>
+      <td class="tg-6vp7">89.4%</td>
+    </tr>
+  </tbody>
+  </table>
 
 ---
 
@@ -552,6 +672,7 @@ name: S21
  - In this case we would have an ideal voltage source, `\(V_{sr}\)`, supplying the load, `\(R_{L}\)` 
 - Alternatively, the pick-up coil can be made to look like an ideal current source, `\(I_{sc}\)`
 - Resonance can be used to achieve this 'ideal voltage source' or 'ideal current source' type behaviour
+ - A technique discovered by Hertz in the 1880's
 
 ---
 name: S22
@@ -877,20 +998,6 @@ name: S35
 - Each leg of the full-bridge operated at 50% duty-cycle, generating the square-waves `\(v_{pa}\)` and `\(v_{pb}\)`
 - The phase-shift modulation, `\(\phi_{p}\)`, applied between `\(v_{pa}\)` and `\(v_{pb}\)`, regulates the magnitude of the fundamental component of `\(v_{pi}\)`, since `\(v_{pi}=v_{pa}-v_{pb}\)`
  - When `\(\phi_{p} = \pi\)`, `\(V_{pi}\)` is a maximum
-
----
-name: S36
-
-# Current Source Converters
-
-.center[<img src="img/conv/CSIGen.png" height="180px">]
-
-- Current source push-pull converters are widely used in low power IPT applications
- - Drives a parallel compensated primary coil at resonance in autonomous operating mode or near resonance in fixed-frequency operating mode
-- Not widely used in high-power applications 
- - Require a large DC inductor
- - Sensitive to changes in operating conditions
-- Current source full-bridge converters may be used in higher power applications
 
 ---
 
