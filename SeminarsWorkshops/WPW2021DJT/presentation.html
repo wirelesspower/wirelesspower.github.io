@@ -265,7 +265,7 @@ name: S1
 - Mid 2000s: Hui (HK), Hu (NZ) and Soljacic (US) developed low power IPT systems for powering/charging biomedical implants, sensors and consumer devices
 - Late 2000s: Hu's (NZ) work lead to forming Power by Proxi, Soljacic's (US) work lead to forming WiTricity  
 - Early 2010s: Boys's (NZ) and Covic's (NZ) work lead to forming HaloIPT, which lead to Qualcomm Halo and Qi standard was released 
-- Late 2010s: WiTricity holds the largest patent portfolio as they acquired Qualcomm Halo while Apple acquires Power by Proxi and number of new research groups as well as companies starts to emerge
+- Late 2010s: WiTricity holds the largest patent portfolio as they acquired Qualcomm Halo, while Apple acquires Power by Proxi, and number of new research groups as well as companies starts to emerge
 - Early 2020s: Standards for EV stationary charging completed 
 
 .center[<img src="img/UoAUptake.png" height="110px">]
@@ -332,20 +332,20 @@ name: S7
  - A lumped transmitter coil is often referred to as a primary pad/coil/coupler 
  - An elongated coil is often called a primary track
  - Can be directly fed by a DC source or through a grid-connected AC-DC converter
-- Secondary/pick-up consists of a receiver coil(s), a compensation network and an AC-DC converter
- - The reciever coil is is often referred to as a secondary/pick-up pad/coil/coupler
-- Primary and pick-up coils are magnetically coupled but the coupling coefficient is typically less than 40%
+- Secondary/secondary consists of a receiver coil(s), a compensation network and an AC-DC converter
+ - The reciever coil is is often referred to as a secondary/secondary pad/coil/coupler
+- Primary and secondary coils are magnetically coupled but coupling coefficient is typically 40% or lower
 - The compensation networks help improve efficiency by minimizing the VA requirements of converters
 
 ---
 name: S8
 
-# Modelling the Primary and Pick-up Coils
+# Modelling the Primary and Secondary Coils
 
 .center[<img src="img/fund/TxEq.png" height="140px">]
 
 - The behaviour of the coils can be modelled using a T-equivelent transformer model
- - `\(L_{pt}\)` and `\(L_{st}\)` are the self-inductances of primary and pick-up coils, respectively
+ - `\(L_{pt}\)` and `\(L_{st}\)` are the self-inductances of primary and secondary coils, respectively
  - `\(\phi_{m}\)` represents flux linkage while `\(\phi_{lk_p}\)` and `\(\phi_{lk_s}\)` represent leakage flux
  - The coupling coefficient, k, between the coils is less than 0.4 in a typical IPT system
 - The mutual inductance, M, between the two coils is given by 
@@ -360,7 +360,7 @@ name: S9
 .center[<img src="img/fund/CpldL.png" height="135px">]
 
 - Although a T equivalent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor-domain
-- In the coupled inductor model, `\(L_{pt}\)` and `\(L_{st}\)` represent the self-inductances of primary and pick-up coils
+- In the coupled inductor model, `\(L_{pt}\)` and `\(L_{st}\)` represent the self-inductances of primary and secondary coils
 - `\(V_{sr}\)` represents voltage induced across `\(L_{st}\)` due to current `\(I_{pt}\angle 0\)` flowing through `\(L_{pt}\)` and is given by
 \\[V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
 - Similarly, `\(V_{pr}\)` represents voltage induced across `\(L_{pt}\)` due to `\(I_{st}\angle\theta\)` and is given by
@@ -370,7 +370,7 @@ name: S9
 
 If the current through primary coil is `\(I_{pt} \sin (\omega t)\)` then,
 \\[\phi\_{m} \propto I\_{pt} \sin (\omega t) \\]
-The voltage induced on the pick-up coil is therefore,
+The voltage induced on the secondary coil is therefore,
 \\[v\_{sr} \propto \frac{\mathrm{d} \phi\_{m} }{\mathrm{d} t} \\]
 \\[v\_{sr} \propto \omega I\_{pt} \cos (\omega t) \\]
 Since `\(M\)` represent the coupling between the two coils,
@@ -384,11 +384,11 @@ name: S10
 # Open-Circuit Voltage & Short-Circuit Current
 
 .left-column[
-- The voltage measured across an open-circuited pick-up coil, `\(V_{oc}\)`, is the same as `\(V_{sr}\)` and therefore
+- The voltage measured across an open-circuited secondary coil, `\(V_{oc}\)`, is the same as `\(V_{sr}\)` and therefore
 \\[V\_{oc} = V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
-- The current flowing through a short-circuited pick-up coil, `\(I_{sc}\)`, is 
+- The current flowing through a short-circuited secondary coil, `\(I_{sc}\)`, is 
 \\[I\_{sc} = \frac{V\_{sr}}{j\omega L\_{st}} = I\_{pt}\frac{M}{L\_{st}}\\]
-- The uncompensated volt-ampere (VA) capacity of the pick-up coil can be given by
+- The uncompensated volt-ampere (VA) capacity of the secondary coil can be given by
 \\[S\_{u} = \left | V\_{oc} \right | \left | I\_{sc} \right | = I\_{pt}^2\frac{\omega M^2}{L\_{st}}\\]
 ]
 
@@ -402,7 +402,7 @@ name: S11
 # Power Transferred Across Airgap
 
 .left-column[
-- Assume that the `\(V_{sr}\)` induced by `\(I_{pt}\angle 0\)` causes a current `\(I_{st}\angle\theta\)` to flow through a load, `\(Z_{sc}\)`, attached across the pick-up coil 
+- Assume that the `\(V_{sr}\)` induced by `\(I_{pt}\angle 0\)` causes a current `\(I_{st}\angle\theta\)` to flow through a load, `\(Z_{sc}\)`, attached across the secondary coil 
 - Under these conditions, power transferred is
 \\[P\_{o} = \Re \left \\{ V\_{sr}I\_{st}e^{-j(\theta)} \right \\} = \left | V\_{sr} \right | \left | I\_{st} \right | \cos(\pi/2-\theta)\\]
 - The VA rating of the coils required to achieve this is
@@ -431,7 +431,7 @@ name: S12
 # Coil Q, Losses & Maximum Efficiency
 
 - Assume that the losses in `\(L_{pt}\)` and `\(L_{st}\)` are modelled using equivelent series resistances (ESRs) `\(r_{pt}\)` and `\(r_{st}\)`
-- The quality factors, `\(Q_{pt}\)` and `\(Q_{st}\)`, of the primary and pick-up coils are
+- The quality factors, `\(Q_{pt}\)` and `\(Q_{st}\)`, of the primary and secondary coils are
 \\[Q\_{pt} =  {\omega L\_{pt}}/{r\_{pt}} \quad \text{and} \quad Q\_{st} = {\omega L\_{st}} / {r\_{st}} \\]
 - The total losses in the two coils can be expressed as
 \\[P\_{loss(c)} = \left | I\_{pt}^2 \right | r\_{pt} + \left | I\_{st}^2 \right | r\_{st} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{\mathit{VA}\_{st}}{Q\_{st}}\\]
@@ -582,20 +582,20 @@ name: template_slide
 ---
 name: S19
 
-# An Uncompensated Pick-up
+# An Uncompensated Secondary
 
 .center[<img src="img/comp/UncompR.png" height="135px">]
 
-- Assume a load resistor, `\(R_{L}\)`, is connected directly across a pick-up coil, which is coupled to a primary coil 
+- Assume load resistor, `\(R_{L}\)`, is connected directly across a secondary coil, which is coupled to a primary coil 
 - The primary coil is driven by the primary converter generating a current `\(I_{pt}\angle 0\)` at an angular frequency `\(\omega = 2\pi f\)`
-- The current flowing through pick-up coil as well as the load will be
+- The current flowing through secondary coil as well as the load will be
 \\[ I\_{st} = \frac {-V\_{sr}} {R\_{L} + j\omega L\_{st}} = \frac {-\omega MI\_{pt}e^{j\pi/2}} {R\_{L} + j\omega L\_{st}}  \\]
 - The impedance of `\(L_{st}\)` limits the ability to supply current to `\(R_{L}\)`
 
 ---
 name: S20
 
-# Power from an Uncompensated Pick-up
+# Power from an Uncompensated Secondary
 
 .left-column[
 - The power delivered to the load is then
@@ -613,15 +613,15 @@ name: S20
 ---
 name: S21
 
-# What Should an 'Ideal' Pick-up Look Like?
+# What Should an 'Ideal' Secondary Look Like?
 
 .center[<img src="img/comp/GenericPower.png" height="150px">]
 
-- The load `\(R_{L}\)` 'ideally' needs to be able to take any amount of power from pick-up
-- This could be achieved, for example if the pick-up coil is made to to look like an ideal voltage source
+- The load `\(R_{L}\)` 'ideally' needs to be able to take any amount of power from secondary
+- This could be achieved, for example if the secondary coil is made to to look like an ideal voltage source
  - The impedance of `\(L_{st}\)` need to be made zero 
  - In this case we would have an ideal voltage source, `\(V_{sr}\)`, supplying the load, `\(R_{L}\)` 
-- Alternatively, the pick-up coil can be made to look like an ideal current source, `\(I_{sc}\)`
+- Alternatively, the secondary coil can be made to look like an ideal current source, `\(I_{sc}\)`
 - Resonance can be used to achieve this 'ideal voltage source' or 'ideal current source' type behavior
  - A technique discovered by Hertz in the 1880's
 
@@ -632,8 +632,8 @@ name: S22
 
 .center[<img src="img/netw/RefImp.png" height="135px">]
 
-- The pick-up can be modelled as `\(V_{sr}\)` driving into `\(Z_s\)`, which models the pick-up compensation and the load
-- Current flowing through the pick-up coil is therefore 
+- Secondary can be modelled as `\(V_{sr}\)` driving into `\(Z_s\)`, which represents secondary compensation and load
+- Current flowing through the secondary coil is therefore 
 \\[ I\_{st} = -V\_{sr} / Z\_s = -j \omega M I\_{pt} / Z\_s \\]
 - `\(I_{st}\)` induces a voltage, `\(V_{pr}\)`, across the primary coil, which can be given by
 \\[ V\_{pr} = j \omega M I\_{st} = \omega^2 M^2 I\_{pt} / Z\_s \\]
@@ -647,7 +647,7 @@ name: S23
 .center[<img src="img/netw/PCompGen.png" height="135px">]
 
 - Directly driving the highly inductive load consisting of `\(L_{pt}\)` and `\(Z_{pr}\)` with a power converter can be very inefficient and costly
- - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of `\(1/(k^2Q_{ss/sp_{(op)}})\)`
+ - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the secondary load, can be in excess of `\(1/(k^2Q_{ss/sp_{(op)}})\)`
  - If `\(k = 0.1\)` and `\(Q_{ss/sp_{(op)}}=5\)`, which are typical for an IPT system, the primary converter will need to be supply 20VA to deliver 1W to the load
 - Resonance is also used to reduce the VA demand of the primary converter
  - Many different resonant networks have been developed to-date to cater for different applications
@@ -693,9 +693,9 @@ name: S25
     <tr>
       <th class="tg-zv4m"></th>
       <th class="tg-lghr"></th>
-      <th class="tg-w8f3">Pick-up Series</th>
-      <th class="tg-w8f3">Pick-up Parallel</th>
-      <th class="tg-w8f3">Pick-up LCL</th>
+      <th class="tg-w8f3">Secondary Series</th>
+      <th class="tg-w8f3">Secondary Parallel</th>
+      <th class="tg-w8f3">Secondary LCL</th>
     </tr>
     <tr>
       <td class="tg-zv4m"></td>
@@ -894,17 +894,17 @@ name: S65
 ---
 name: S68
 
-# Pick-up Converters
+# Secondary Converters
 
 .center[<img src="img/pkup/PickupGen.png" height="110px">]
 
 <div style="height:1px;font-size:1px;">&nbsp;</div>
 - In most applications a rectifier is used to derive a DC output
-- In some applications, current doubler rectifiers are used to increase the power transfer capability of a parallel compensated pick-up 
+- In some applications, current doubler rectifiers are used to increase the power transfer capability of a parallel compensated secondary 
 - Following the rectifier, a DC-DC converter is often used to regulate the output 
 - Alternatively, an active rectifier may be used for rectification and regulation while also providing additional functionalities such as bi-directional power flow or improved misalignment tolerance
  - However, the active rectifier needs to be synchronised with the primary converter 
-- Direct AC-AC processing pick-up converters may be used if an AC output is required
+- Direct AC-AC processing secondary converters may be used if an AC output is required
 
 
 ---
@@ -914,7 +914,7 @@ name: S74
 
 .center[<img src="img/pkup/ShortCctReg.png" height="200px">]
 
-- Following the rectifier, a short-circuit (boost) regulator, can be used to regulate the output of a parallel compensated IPT pick-up
+- Following the rectifier, a short-circuit (boost) regulator, can be used to regulate the output of a parallel compensated IPT secondary
 - The duty-cycle, `\(D_{scr}\)`, of `\(Q_{1}\)` is controlled to regulate `\(I_{out}\)`, and therefore `\(V_{out}\)`
 - `\(Q_{1}\)` can be operated either at a 'low' switching frequency using a hysteritic controller or at a 'high' switching frequency using for example a PI controller
 - `\(L_{dc}\)` should be sufficiently large to maintain `\(I_{Ldc}\)` continuous
@@ -927,7 +927,7 @@ name: S79
 .center[<img src="img/pkup/ActiveRect.png" height="140px">]
 
 - A typical active rectifier employs a full-bridge converter that is controlled to generate a `\(V_{si}\)` that leads or lags `\(V_{pi}\)` by a phase-angle `\(\theta\)`
-- `\(\theta\)` can be controlled together with the amplitude of `\(V_{si}\)` to generate a specific AC impedance, `\(Z_{L(ac)}\)`, across pick-up compensation network
+- `\(\theta\)` can be controlled together with the amplitude of `\(V_{si}\)` to generate a specific AC impedance, `\(Z_{L(ac)}\)`, across secondary compensation network
 - The reactive part of `\(Z_{L(ac)}\)` can be used to improve power transfer and/or reduce losses, especially when operated under misaligned conditions
 - In applications requiring only uni-directional power flow, two of the switches in the full-bridge can be replaced with diodes 
 
