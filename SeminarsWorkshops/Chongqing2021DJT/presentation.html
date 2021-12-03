@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wireless EV Charging</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { 
+        font-family: 'Droid Serif'; 
+        line-height: 1.6;
+        }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: bold;
+        color: #00467F;
+      }
+
+      h1{
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .TitleAuthor {
+        color:white; 
+        font-weight: normal;
+      }
+
+      .title-slide .remark-slide-number {
+        display: none;
+      }
+      .title-slide h1, h2, h3, h4 {
+        text-align: left;
+        color:white;
+        line-height: 0.7;
+        font-weight: bold;
+      }
+
+      .title-slide {
+        vertical-align: middle;
+        background-color: #00467F;
+      }
+
+      .logo-title {
+        content: "";
+        position: absolute;
+        top: 15px;
+        right:   15px;
+        height: 88px;
+        width: 267px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(https://cdn.auckland.ac.nz/assets/central/central-services/mediaandmarketing/uoa-logos-2015/uoa-logo-2015-reverse.png);
+      }
+      .logo-slide {
+        content: "";
+        position: absolute;
+        top: 35px;
+        right:   15px;
+        height: 96px;
+        width: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(https://cpb-ap-se2.wpmucdn.com/blogs.auckland.ac.nz/dist/d/79/files/2015/10/uoa-v-colour2.png);
+      }
+
+      .left-column {
+        width: 65%;
+        float: left;
+        word-wrap: break-word;
+      }
+     
+      .right-column {
+        width: 30%;
+        float: right;
+        word-wrap: break-word;
+      }
+
+      .footer {
+        content: "";
+        position: absolute;
+        bottom: 17px;
+        color:gray;
+        font-size: 10pt;
+      }
+      
+      @page {
+        size: 1210px 681px;
+        margin: 0;
+      }
+
+      @media print {
+        .remark-slide-scaler {
+          width: 100% !important;
+          height: 100% !important;
+          transform: scale(1) !important;
+          top: 0 !important;
+          left: 0 !important;
+        }
+      }
+      
+      .red {color:red;}
+
+      .zoom175 {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom175:hover {
+        transform: scale(1.75) translateY(-20%) translateX(-20%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      }
+
+    </style>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <style>
+    .smaller-font { font-size:14px } 
+    </style>
+
+    <!-- KaTeX and Mathjax support refer to below for syntax -->
+    <!-- https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide
+count: false
+.logo-title[]
+
+# Wireless Electric Vehicle Charging 
+### Recent Developments
+
+.TitleAuthor[Duleepa J Thrimawithana]
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt), Department of Electrical, Computer and Software Engineering (2021)]
+
+---
+
+# The University of Auckland
+
+- Highest ranked New Zealand university and 85th in the QS World University Ranking
+- Over 5,000 staff members and 40,000 students
+- Nine faculties including Medical & Health Sciences, Engineering, Business & Economics and Science
+
+.center[<img src="img/UoAMap.png" height="300">]
+
+---
+
+# Dept. of Electrical, Computer & Software Eng.
+
+.left-column[
+- One of the 5 departments in the Faculty of Engineering
+- Offers 3 undergraduate degree programs
+ - Electrical & Electronics, Computer Systems and Software
+ - Project based teaching
+- 35+ full-time academic staff members and 15+ post-doctoral research fellows
+- 150+ postgraduate students and 700+ undergraduate students
+- Regular visiting research scholars and research students
+- Research groups include Power Electronics, Power Systems, Signal Processing, Robotics, Embedded Systems, Parallel Computing, Telecommunications and Control Systems
+]
+
+.right-column[
+<img src="img/UoAEng.png" width="300px">
+]
+
+---
+
+# Dept. of Electrical, Computer & Software Eng.
+
+.center[<img src="img/EngBuild.png" height="400">]
+
+---
+
+# Power Electronics Research Group
+
+.center[<img src="img/PEGROUP.gif" height="430">]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part I - Wireless Power Transfer
+### A Review of Current Status
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt), Department of Electrical, Computer and Software Engineering (2021)]
+
+---
+
+name: S1
+
+# Wireless Power Transfer
+
+.left-column[
+- Can be divided in to two broad categories
+- Radiative transmission through far-field principles
+ - Examples include power transfer through radio-frequency, microwave, optical and ultrasonic technologies
+ - At an experimental stage of development
+ - AirFuel Alliance is developing standards
+- Non-radiative transmission through near-field principles
+ - Inductive power transfer (IPT) and capacitive power transfer (CPT) technologies are utilised
+ - IPT is the most mature technology 
+ - WPC, SAE, etc. standards are being developed
+]
+
+.right-column[
+.center[<img src="img/intro/longdist.png" height="380px">]
+]
+
+---
+
+name: S2
+
+# WI-Charge Technology
+
+.center[<img src="img/egs/WiCharge.jpg" height="400px">]
+
+---
+
+name: S3
+
+# Energous WattUp Technology
+
+.center[<img src="img/egs/Energous.jpg" height="400px">]
+
+---
+
+name: S4
+
+# CPT Technologies
+
+.center[<img src="img/egs/cpt.png" height="350px">]
+
+---
+name: S5
+
+# IPT Technologies
+
+- Power ratings of tens of kWs with uni or bi-directional power flow
+ - Magnetic designs include circular coil, solenoidal coil, polarised coil, multi coil structures as well as track based systems 
+ - Ferrites and/or reflection coils are often used to shape the magnetic fields generated
+ - Transmission range of over 300 mm with over ± 200 mm XY tolerance easily achievable 
+ - Efficiency typically over 85% but can be as high as 97%
+ - Operating frequency typically ranges from tens of kHz to tens of MHz
+
+.center[<img src="img/fund/LongDistance.jpg" height="200px">]
+
+---
+name: S6
+
+# IPT Applications
+
+- Factory automation and materials handling
+ - Includes hoists, AGVs and clean room systems  
+- Consumer electronics and appliances
+ - Charging phones, laptops, etc. as well as powering appliances 
+- Transportation electrification 
+ - Charging stationary and in-motion electric vehicles, charging electric ferries, etc.
+- Biomedical
+ - Charging and powering medical devices as well as implants
+- Lighting  
+ - Wireless power and communication to tunnel lighting, stage lighting and mines 
+- Industrial applications 
+ - Industrial machinery, robots, electric fense energizers, etc. 
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part II - IPT Fundamentals
+### Modelling the Coils and Power Transfer
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt), Department of Electrical, Computer and Software Engineering (2020)]
+
+---
+name: S7
+
+# Components of an IPT System
+
+
+.center[<img src="img/fund/IPTConcSys.png" height="150px">]
+
+- Primary consists of a DC-AC switched-mode converter, a compensation network and a transmitter coil(s) 
+ - A lumped transmitter coil is often referred to as a primary pad/coil/coupler 
+ - An elongated coil is often called a primary track
+ - Can be directly fed by a DC source or through a grid-connected AC-DC converter
+- Secondary/pick-up consists of a receiver coil(s), a compensation network and an AC-DC converter
+ - The reciever coil is is often referred to as a secondary/pick-up pad/coil/coupler
+- Primary and pick-up coils are magnetically coupled but the coupling coefficient is typically less than 40%
+- The compensation networks help improve efficiency by minimizing the VA requirements of converters
+
+---
+name: S8
+
+# Modelling the Primary and Pick-up Coils
+
+.center[<img src="img/fund/TxEq.png" height="140px">]
+
+- The behaviour of the coils can be modelled using a T-equivelent transformer model
+ - `\(L_{pt}\)` and `\(L_{st}\)` are the self-inductances of primary and pick-up coils, respectively
+ - `\(\phi_{m}\)` represents flux linkage while `\(\phi_{lk_p}\)` and `\(\phi_{lk_s}\)` represent leakage flux
+ - The coupling coefficient, k, between the coils is less than 0.4 in a typical IPT system
+- The mutual inductance, M, between the two coils is given by 
+\\[M = k\sqrt{L\_{pt}L\_{st}}\\]
+- If the mean-turn lengths of the coils do not change, then `\(n = \frac{N_{pt}}{N_{st}} = \sqrt{\frac{L_{pt}}{L_{st}}}\)`, where `\(n\)` is the turns ratio
+
+---
+name: S9
+
+# Coupled Inductor Model
+
+.center[<img src="img/fund/CpldL.png" height="135px">]
+
+- Although a T equivalent transformer model can be used to model the coils, the coupled inductor model is widely used when analysing an IPT system in the phasor-domain
+- In the coupled inductor model, `\(L_{pt}\)` and `\(L_{st}\)` represent the self-inductances of primary and pick-up coils
+- `\(V_{sr}\)` represents voltage induced across `\(L_{st}\)` due to current `\(I_{pt}\angle 0\)` flowing through `\(L_{pt}\)` and is given by
+\\[V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
+- Similarly, `\(V_{pr}\)` represents voltage induced across `\(L_{pt}\)` due to `\(I_{st}\angle\theta\)` and is given by
+\\[V\_{pr} = \omega MI\_{st}e^{j(\theta+\pi/2)}\\]
+
+???
+
+If the current through primary coil is `\(I_{pt} \sin (\omega t)\)` then,
+\\[\phi\_{m} \propto I\_{pt} \sin (\omega t) \\]
+The voltage induced on the pick-up coil is therefore,
+\\[v\_{sr} \propto \frac{\mathrm{d} \phi\_{m} }{\mathrm{d} t} \\]
+\\[v\_{sr} \propto \omega I\_{pt} \cos (\omega t) \\]
+Since `\(M\)` represent the coupling between the two coils,
+\\[v\_{sr} = \omega M I\_{pt} \cos (\omega t) \\]
+In the phasor-domain,
+\\[V\_{sr} = \omega M I\_{pt} e^{j\pi/2} \\]
+
+---
+name: S10
+
+# Open-Circuit Voltage & Short-Circuit Current
+
+.left-column[
+- The voltage measured across an open-circuited pick-up coil, `\(V_{oc}\)`, is the same as `\(V_{sr}\)` and therefore
+\\[V\_{oc} = V\_{sr} = \omega MI\_{pt}e^{j\pi/2}\\]
+- The current flowing through a short-circuited pick-up coil, `\(I_{sc}\)`, is 
+\\[I\_{sc} = \frac{V\_{sr}}{j\omega L\_{st}} = I\_{pt}\frac{M}{L\_{st}}\\]
+- The uncompensated volt-ampere (VA) capacity of the pick-up coil can be given by
+\\[S\_{u} = \left | V\_{oc} \right | \left | I\_{sc} \right | = I\_{pt}^2\frac{\omega M^2}{L\_{st}}\\]
+]
+
+.right-column[.right[
+<img src="img/fund/VocIsc.png" width="310px">
+]]
+
+---
+name: S11
+
+# Power Transferred Across Airgap
+
+.left-column[
+- Assume that the `\(V_{sr}\)` induced by `\(I_{pt}\angle 0\)` causes a current `\(I_{st}\angle\theta\)` to flow through a load, `\(Z_{sc}\)`, attached across the pick-up coil 
+- Under these conditions, power transferred is
+\\[P\_{o} = \Re \left \\{ V\_{sr}I\_{st}e^{-j(\theta)} \right \\} = \left | V\_{sr} \right | \left | I\_{st} \right | \cos(\pi/2-\theta)\\]
+- The VA rating of the coils required to achieve this is
+\\[\mathit{VA}\_{pt} = \omega L\_{pt} \left | I\_{pt} \right |^2 \quad \text{and} \quad \mathit{VA}\_{st} = \omega L\_{st} \left | I\_{st} \right |^2 \\]
+- Thus `\(P_{o}\)` is related to the VA in the coils as given by
+\\[P\_{o} = k \sqrt{\mathit{VA}\_{pt}\mathit{VA}\_{st}} \sin(\theta) \\]
+ - Typically, `\(\sin(\theta) \approx 1\)`, and thus `\( P_o \approx k \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)`
+]
+
+.right-column[.right[
+<img src="img/fund/GenP.png" width="310px">
+]]
+
+???
+
+Note that 
+\\[P\_{o} = \Re \left \\{ V\_{sr} \bar {I\_{st}} \right \\} \\]
+Substituting `\( \left| V_{sr} \right | = \omega M \left| I_{pt} \right | \)`, 
+\\[P\_{o} = \omega M \left | I\_{pt} \right | \left | I\_{st} \right | \cos(\pi/2-\theta)\\]
+\\[P\_{o} = k\sqrt{ (\omega L\_{pt} \left | I\_{pt} \right |^2 ) (\omega L\_{st} \left | I\_{st} \right |^2) } \sin(\theta)\\]
+\\[P\_{o} = k \sqrt{\mathit{VA}\_{pt}\mathit{VA}\_{st}} \sin(\theta) \\]
+
+---
+name: S12
+
+# Coil Q, Losses & Maximum Efficiency
+
+- Assume that the losses in `\(L_{pt}\)` and `\(L_{st}\)` are modelled using equivelent series resistances (ESRs) `\(r_{pt}\)` and `\(r_{st}\)`
+- The quality factors, `\(Q_{pt}\)` and `\(Q_{st}\)`, of the primary and pick-up coils are
+\\[Q\_{pt} =  {\omega L\_{pt}}/{r\_{pt}} \quad \text{and} \quad Q\_{st} = {\omega L\_{st}} / {r\_{st}} \\]
+- The total losses in the two coils can be expressed as
+\\[P\_{loss(c)} = \left | I\_{pt}^2 \right | r\_{pt} + \left | I\_{st}^2 \right | r\_{st} = \frac{\mathit{VA}\_{pt}}{Q\_{pt}} + \frac{\mathit{VA}\_{st}}{Q\_{st}}\\]
+- The maximum efficiency is achieved when losses in the coils are matched (i.e. `\(\mathit{VA}_{pt}/Q_{pt} = \mathit{VA}_{st}/Q_{st}\)` )
+\\[ \eta\_{c\_{max}} = \frac{ k \sin(\theta) -  \frac {1} { \sqrt {Q\_{pt} Q\_{st}} }} {k \sin(\theta) +  \frac {1} {\sqrt {Q\_{pt} Q\_{st}} }} \\]
+
+---
+name: S12b
+
+# Impact of k and Coil Q on Performance
+
+- Typically, k is in the range 0.1 to 0.3 and coil Q is in the range 400 to 600 for EV charging
+- Design of a 10 kW IPT system 
+ - Assume both `\(Q_{pt}\)` and `\(Q_{st}\)` are 400
+ - Note that `\( P_o \approx k \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)` needs to be always met
+
+<style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;}
+  .tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+    padding:10px 5px;word-break:normal;}
+  .tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+  .tg .tg-zk76{background-color:#c0c0c0;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-oe15{background-color:#ffffff;border-color:#ffffff;text-align:left;vertical-align:top}
+  .tg .tg-3aj4{background-color:rgb(192, 192, 192);border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-2bvr{background-color:#ecf4ff;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-gvc8{background-color:#dae8fc;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-wk8r{background-color:#ffffff;border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-qj3s{background-color:rgb(255, 255, 255);border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-6vp7{background-color:rgb(236, 244, 255);border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-cc1p{background-color:rgb(218, 232, 252);border-color:#ffffff;text-align:center;vertical-align:top}
+</style>
+  <table class="tg" style="undefined;table-layout: fixed; width: 1010px">
+  <colgroup>
+  <col style="width: 50px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 105px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 50px">
+  <col style="width: 50px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 105px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  <col style="width: 65px">
+  </colgroup>
+  <thead>
+    <tr>
+      <th class="tg-wk8r" colspan="7">When k is 0.3</th>
+      <th class="tg-oe15"></th>
+      <th class="tg-qj3s" colspan="7">When k is 0.1</th>
+    </tr>
+  </thead>
+  </tbody>
+    <tr>
+      <td class="tg-zk76">Option</th>
+      <td class="tg-zk76">`\( \mathit{VA}_{pt} \)`</th>
+      <td class="tg-zk76">`\( \mathit{VA}_{st} \)`</th>
+      <td class="tg-zk76">`\( \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)`</th>
+      <td class="tg-zk76">`\( P_{loss(pc)} \)`</th>
+      <td class="tg-zk76">`\( P_{loss(sc)} \)`</th>
+      <td class="tg-zk76">`\( \eta_{c} \)`</th>
+      <td class="tg-oe15"></th>
+      <td class="tg-3aj4">Option</th>
+      <td class="tg-3aj4">`\( \mathit{VA}_{pt} \)`</th>
+      <td class="tg-3aj4">`\( \mathit{VA}_{st} \)`</th>
+      <td class="tg-3aj4">`\( \sqrt{\mathit{VA}_{pt}\mathit{VA}_{st}} \)`</th>
+      <td class="tg-3aj4">`\( P_{loss(pc)} \)`</th>
+      <td class="tg-3aj4">`\( P_{loss(sc)} \)`</th>
+      <td class="tg-3aj4">`\( \eta_{c} \)`</th>
+    </tr>
+    <tr>
+      <td class="tg-2bvr">1</td>
+      <td class="tg-2bvr">160 kVA</td>
+      <td class="tg-2bvr">10 kVA</td>
+      <td class="tg-2bvr">40 kVA</td>
+      <td class="tg-2bvr">400 W</td>
+      <td class="tg-2bvr">25 W</td>
+      <td class="tg-2bvr">96.5%</td>
+      <td class="tg-oe15"></td>
+      <td class="tg-6vp7">1</td>
+      <td class="tg-6vp7">480 kVA</td>
+      <td class="tg-6vp7">30 kVA</td>
+      <td class="tg-6vp7">120 kVA</td>
+      <td class="tg-6vp7">1200 W</td>
+      <td class="tg-6vp7">75 W</td>
+      <td class="tg-6vp7">89.4%</td>
+    </tr>
+    <tr>
+      <td class="tg-gvc8">2</td>
+      <td class="tg-gvc8">40 kVA</td>
+      <td class="tg-gvc8">40 kVA</td>
+      <td class="tg-gvc8">40 kVA</td>
+      <td class="tg-gvc8">100 W</td>
+      <td class="tg-gvc8">100 W</td>
+      <td class="tg-gvc8">98.3%</td>
+      <td class="tg-oe15"></td>
+      <td class="tg-cc1p">2</td>
+      <td class="tg-cc1p">120 kVA</td>
+      <td class="tg-cc1p">120 kVA</td>
+      <td class="tg-cc1p">120 kVA</td>
+      <td class="tg-cc1p">300 W</td>
+      <td class="tg-cc1p">300 W</td>
+      <td class="tg-cc1p">95%</td>
+    </tr>
+    <tr>
+      <td class="tg-2bvr">3</td>
+      <td class="tg-2bvr">10 kVA</td>
+      <td class="tg-2bvr">160 kVA</td>
+      <td class="tg-2bvr">40 kVA</td>
+      <td class="tg-2bvr">25 W</td>
+      <td class="tg-2bvr">400 W</td>
+      <td class="tg-2bvr">96.5%</td>
+      <td class="tg-oe15"></td>
+      <td class="tg-6vp7">3</td>
+      <td class="tg-6vp7">30 kVA</td>
+      <td class="tg-6vp7">480 kVA</td>
+      <td class="tg-6vp7">120 kVA</td>
+      <td class="tg-6vp7">75 W</td>
+      <td class="tg-6vp7">1200 W</td>
+      <td class="tg-6vp7">89.4%</td>
+    </tr>
+  </tbody>
+  </table>
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part III - Coil Structures
+### Field Patterns and Coil Parameters
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt), Department of Electrical, Computer and Software Engineering (2020)]
+
+---
+name: S13
+
+# Types of Coil Structures
+
+.center[<img src="img/coils/CoilGen.png" height="150px">]
+
+- Can be broadly divided into ditributed track type coil structures and lumped coil structures
+- Typically, ferrites are used to help shape the field generated 
+ - Maximize coupling, minimize leakage and improve coil Q
+- As an alternative for ferrites, energised or passive field shapping coils can be used
+- Lumped coil structures can be further divided as non-polarised, polarised and multi-coil structures
+- Multi-coil structures typically employ multiple decoupled coils 
+ - Each coil can be driven seperately to create the desired field pattern
+- Repeater coils can be used to extend the range 
+
+---
+name: S14
+
+# Construction of a Lumped Coil
+
+.left-column[
+- Contructed as planar spiral winding and take the shape of a circle/square/rectangle/etc.
+ - Multifilar windings can be used to increase the current rating, but special attention is required to ensure current sharing 
+- High-frequency Litz wire is used to improve coil Q
+ - Need to ensure that the windings are appropriately isolated 
+- Ferrite plates/disks/bars are used to create a single sided flux pattern 
+- The housing that provides electrical isolation holds the Litz wire and the ferrites 
+ - Typically the windings and ferrites are potted 
+- Aluminum shielding is used to reduce leakage flux
+]
+
+.right-column[
+.center[<img src="img/coils/Construction.png" width="240px">]
+]
+
+---
+name: S15
+
+# Non-Polarised Coils
+
+.left-column[
+- The single sided magnetic field distribution is from centre to edge of the coil
+- Typically used to transfer power over a gap that is roughly equivalent to one quarter of the coil diameter
+- Changes in the displacement between the primary and pick-up coils causes
+ - Changes to `\(k\)` between the coils 
+ - Changes to `\(L_{pt}\)` and `\(L_{st}\)` of the coils
+- With lateral/longitudinal displacement `\(k\)` will drop to 0
+ - The point at which `\(k\)` drops to 0 is referred to as the decoupled position of the coils
+ - A negative `\(k\)` after the decoupled position indicates a `\(180^0\)` phase-shift in induced voltage
+]
+
+.right-column[
+<img src="img/coils/CircCoil.png" width="290px">
+]
+
+---
+name: S16
+
+# DD Type Polarised Coils
+
+.left-column[
+- The single sided magnetic field distribution is from one end to the other end of the coil
+- Typically used to transfer power over a gap that is roughly equivalent to one half of the coil length
+- Flux-pipe formed by the two coils at the center of the pad should be as large as possible
+- Changes in the displacement between the primary and pick-up coils causes
+ - Changes to `\(k\)` between the coils 
+ - Changes to `\(L_{pt}\)` and `\(L_{st}\)` of the coils
+- With longitudinal (x) displacement `\(k\)` will drop to 0
+ - At the point at which `\(k\)` drops to 0, primary and pick-up DD coils are decoupled
+]
+
+.right-column[
+.center[<img src="img/coils/DDCoil.png" width="340px">]
+]
+
+---
+name: S17
+
+# Multi Coil Structures
+
+
+.center[<img src="img/coils/MultiCoil.png" height="150px">]
+
+- DDQ structure is one of the most common multi-coil structures
+ - The quadrature (Q) winding is decoupled from the DD winding
+ - Thus, both windings can be used independently to transfer power
+ - A DD primary and DDQ secondary provides wide spatial tolerance since the Q winding helps transferring power when `\(k\)` between the DD windings drop
+- Bi-polar structure employs two overlapping windings that are decoupled from each other
+ - When used as a transmitter, each coil can be driven at a desired magnitude and a phase
+- Tri-polar and other multi-coil structures typically employ decoupled overlapping windings
+
+---
+name: S18
+
+# Demo: Fields Generated by a DD Coil
+
+.center[
+<img src="img/coils/Demo1.gif" height="400px">
+]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part IV - Compensating the Coils
+### Behavior of the Compensated Coils
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt), Department of Electrical, Computer and Software Engineering (2020)]
+
+---
+name: S19
+
+# An Uncompensated Pick-up
+
+.center[<img src="img/comp/UncompR.png" height="135px">]
+
+- Assume a load resistor, `\(R_{L}\)`, is connected directly across a pick-up coil, which is coupled to a primary coil 
+- The primary coil is driven by the primary converter generating a current `\(I_{pt}\angle 0\)` at an angular frequency `\(\omega = 2\pi f\)`
+- The current flowing through pick-up coil as well as the load will be
+\\[ I\_{st} = \frac {-V\_{sr}} {R\_{L} + j\omega L\_{st}} = \frac {-\omega MI\_{pt}e^{j\pi/2}} {R\_{L} + j\omega L\_{st}}  \\]
+- The impedance of `\(L_{st}\)` limits the ability to supply current to `\(R_{L}\)`
+
+---
+name: S20
+
+# Power from an Uncompensated Pick-up
+
+.left-column[
+- The power delivered to the load is then
+\\[ P\_{o} =  \left | I\_{st} \right |^2 R\_{L} = \left ( \omega MI\_{pt} \right )^2  \frac {R\_{L}} {R\_{L}^2 + \omega^2 L\_{st}^2 } = k^2 \mathit{VA}\_{pt} \frac {\omega L\_{st} / R\_{L}} { 1 + \omega^2 L\_{st}^2 / R\_{L}^2 } \\]
+- At a load `\(R_L = \omega L_{st}\)`, maximum power is delivered 
+\\[ P\_{o\_{(max)}} =  \frac {\left ( \omega MI\_{pt} \right )^2} {2 \omega L\_{st} } = 0.5 V\_{oc}I\_{sc}  = 0.5k^2\mathit{VA}\_{pt} \\]
+- As an example, when `\(k = 0.1\)`, to deliver 5 mW to the load, the primary coil should be driven at least at 1 VA
+ - The impedance of `\(L_{st}\)` limits the power transfer
+]
+
+.right-column[.right[
+<img src="img/comp/PUncompR.png" width="310px">
+]]
+
+---
+name: S21
+
+# What Should an 'Ideal' Pick-up Look Like?
+
+.center[<img src="img/comp/GenericPower.png" height="150px">]
+
+- The load `\(R_{L}\)` 'ideally' needs to be able to take any amount of power from pick-up
+- This could be achieved, for example if the pick-up coil is made to to look like an ideal voltage source
+ - The impedance of `\(L_{st}\)` need to be made zero 
+ - In this case we would have an ideal voltage source, `\(V_{sr}\)`, supplying the load, `\(R_{L}\)` 
+- Alternatively, the pick-up coil can be made to look like an ideal current source, `\(I_{sc}\)`
+- Resonance can be used to achieve this 'ideal voltage source' or 'ideal current source' type behavior
+ - A technique discovered by Hertz in the 1880's
+
+---
+name: S23
+
+# Primary Compensation Networks
+
+.center[<img src="img/netw/PCompGen.png" height="135px">]
+
+- Directly driving the highly inductive load consisting of `\(L_{pt}\)` and `\(Z_{pr}\)` with a power converter can be very inefficient and costly
+ - For example the VA rating of the converter, which is required to deliver `\(1W\)` to the pick-up load, can be in excess of `\(1/(k^2Q_{ss/sp_{(op)}})\)`
+ - If `\(k = 0.1\)` and `\(Q_{ss/sp_{(op)}}=5\)`, which are typical for an IPT system, the primary converter will need to be supply 20VA to deliver 1W to the load
+- Resonance is also used to reduce the VA demand of the primary converter
+ - Many different resonant networks have been developed to-date to cater for different applications
+
+---
+name: S24
+
+# Compensation Methods
+
+- The two most common resonant/compensation networks are the parallel and series types
+ - Parallel resonance is not common on primary in modern systems as it needs to be driven by a current sourced inverter
+- Primary side commonly employ LCL compensation networks 
+- More complex compensation networks include
+ - LCCL and LCLC
+ - Hybrid compensation
+ - Impedance compression networks
+
+.center[<img src="img/comp/Comp.png" height="160px">]
+
+---
+name: S25
+
+# Compensation Networks - Summary
+
+
+<style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;}
+  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:6px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:6px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+  .tg .tg-0n7a{background-color:#9aff99;border-color:#ffffff;text-align:center}
+  .tg .tg-zv4m{border-color:#ffffff;text-align:center;vertical-align:top}
+  .tg .tg-uwdm{background-color:#ffffc7;border-color:#ffffff;text-align:center}
+  .tg .tg-lghr{border-color:#ffffff;text-align:center}
+  .tg .tg-w8f3{background-color:#c0c0c0;color:#000000;border-color:#ffffff;text-align:center}
+  .tg .tg-uzdq{background-color:#ffce93;border-color:#ffffff;text-align:center}
+  .tg .tg-lxhs{background-color:#ffce93;border-color:#ffffff;text-align:center}
+  .tg .tg-mthk{background-color:#ffffc7;border-color:#ffffff;text-align:center}
+  .tg .tg-bk58{background-color:#9aff99;border-color:#ffffff;text-align:center}
+  .tg .tg-us2q{background-color:#ffffff;border-color:#ffffff;text-align:center}
+  .tg .tg-bqvo{background-color:#ffffff;border-color:#ffffff;text-align:center}
+  </style>
+  <table class="tg">
+    <tr>
+      <th class="tg-zv4m"></th>
+      <th class="tg-lghr"></th>
+      <th class="tg-w8f3">Pick-up Series</th>
+      <th class="tg-w8f3">Pick-up Parallel</th>
+      <th class="tg-w8f3">Pick-up LCL</th>
+    </tr>
+    <tr>
+      <td class="tg-zv4m"></td>
+      <td class="tg-uzdq">`\(Q_{(op)}\)`</td>
+      <td class="tg-lxhs">`\( \omega L_{st} \div R_L \)`</td>
+      <td class="tg-lxhs">`\( R_L \div \omega L_{st} \)`</td>
+      <td class="tg-lxhs">`\( R_L \div \omega L_{st} \)`</td>
+    </tr>
+    <tr>
+      <td class="tg-zv4m"></td>
+      <td class="tg-uzdq">`\(P_{o}\)`</td>
+      <td class="tg-lxhs">`\( k^2 \mathit{VA_{pt}} Q_{(op)} \)`</td>
+      <td class="tg-lxhs">`\( k^2 \mathit{VA_{pt}} Q_{(op)} \)`</td>
+      <td class="tg-lxhs">`\( k^2 \mathit{VA_{pt}} Q_{(op)} \)`</td>
+    </tr>
+    <tr>
+      <td class="tg-zv4m"></td>
+      <td class="tg-uzdq">`\(Z_{s}\)`</td>
+      <td class="tg-lxhs">`\(R_{L}\)`</td>
+      <td class="tg-lxhs">`\( \left( j \omega L_{st} + R_L \right) \div \left( 1 + Q_{(op)}^2 \right) \)`</td>
+      <td class="tg-lxhs">`\( \omega^2 L_{si}^2 \div R_{L}\)`</td>
+    </tr>
+    <tr>
+      <td class="tg-uwdm" rowspan="3">Primary<br>Series</td>
+      <td class="tg-uwdm">`\(Z_{p}\)`</td>
+      <td class="tg-mthk">`\( \omega^2 M^2 \div R_{L}\)`</td>
+      <td class="tg-mthk">`\( \omega^2 M^2 \left( 1 + Q_{(op)}^2 \right) \div \left( j \omega L_{st} + R_L \right) \)`</td>
+      <td class="tg-mthk">`\( \omega^2 M^2 R_{L} \div \omega^2 L_{si}^2 \)`</td>
+    </tr>
+    <tr>
+      <td class="tg-uwdm">`\(I_{pi}\)`</td>
+      <td class="tg-mthk">`\( V_{pi} R_{L} \div \omega^2 M^2 \)`</td>
+      <td class="tg-mthk">`\( V_{pi} \left( j \omega L_{st} + R_L \right) \div \omega^2 M^2 \left( 1 + Q_{(op)}^2 \right) \)`</td>
+      <td class="tg-mthk">`\( V_{pi} \omega^2 L_{si}^2 \div \omega^2 M^2 R_{L}\)`</td>
+    </tr>
+    <tr>
+      <td class="tg-uwdm">`\(I_{pt}\)`</td>
+      <td class="tg-mthk">`\( V_{pi} R_{L} \div \omega^2 M^2 \)`</td>
+      <td class="tg-mthk">`\( V_{pi} \left( j \omega L_{st} + R_L \right) \div \omega^2 M^2 \left( 1 + Q_{(op)}^2 \right) \)`</td>
+      <td class="tg-mthk">`\( V_{pi} \omega^2 L_{si}^2 \div \omega^2 M^2 R_{L}\)`</td>
+    </tr>
+    <tr>
+      <td class="tg-0n7a" rowspan="3">Primary<br>LCL</td>
+      <td class="tg-0n7a">`\(Z_{p}\)`</td>
+      <td class="tg-bk58">`\( \omega^2 L_{pi}^2 R_L \div \omega^2 M^2 \)`</td>
+      <td class="tg-bk58">`\( \omega^2 L_{pi}^2 \left( j \omega L_{st} + R_L \right) \div \omega^2 M^2 \left( 1 + Q_{(op)}^2 \right) \)`</td>
+      <td class="tg-bk58">`\( \omega^4 L_{pi}^2 L_{si}^2 \div \omega^2 M^2 R_L \)`</td>
+    </tr>
+    <tr>
+      <td class="tg-0n7a">`\(I_{pi}\)`</td>
+      <td class="tg-bk58">`\( V_{pi} \omega^2 M^2 \div \omega^2 L_{pi}^2 R_L \)`</td>
+      <td class="tg-bk58">`\( V_{pi} \omega^2 M^2 \left( 1 + Q_{(op)}^2 \right) \div \omega^2 L_{pi}^2 \left( j \omega L_{st} + R_L \right) \)`</td>
+      <td class="tg-bk58">`\( V_{pi} \omega^2 M^2 R_L \div \omega^4 L_{pi}^2 L_{si}^2  \)`</td>
+    </tr>
+    <tr>
+      <td class="tg-0n7a">`\(I_{pt}\)`</td>
+      <td class="tg-bk58">`\(V_{pi} \div j \omega L_{pi} \)`</td>
+      <td class="tg-bk58">`\(V_{pi} \div j \omega L_{pi} \)`</td>
+      <td class="tg-bk58">`\(V_{pi} \div j \omega L_{pi} \)`</td>
+    </tr>
+    <tr>
+      <td class="tg-zv4m"><img width=85/></td>
+      <td class="tg-us2q"><img width=75/></td>
+      <td class="tg-bqvo"><img width=275/></td>
+      <td class="tg-bqvo"><img width=275/></td>
+      <td class="tg-bqvo"><img width=275/></td>
+    </tr>
+  </table>
+
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Research Advances
+### Highlights & Updates
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[Duleepa J Thrimawithana, Department of Electrical, Computer and Software Engineering (2019)]
+
+---
+# Active Rectification of Pick-up Output
+
+.center[<img src="img/updates/ActiveSys.png" height="180px">]
+
+- Identical primary and pick-up circuits employ inductor-capacitor-inductor (LCL) T-resonant networks
+ - Can use other types of compensation networks 
+- Both full-bridge converters are operated at the same frequency to drive the couplers
+ - Compensation networks are typically tuned to the fundamental switching frequency
+- Magnitude of power flow is regulated using voltage cancellation to control the RMS of `\( V_{pi} \)` and `\( V_{si} \)` and/or controlling the phase difference between `\( V_{pi} \)` and `\( V_{si} \)`
+- Direction of power flow is controlled using the phase difference, `\( \theta \)`, between `\( V_{pi} \)` and `\( V_{si} \)`
+
+---
+
+# Hybrid Compensation Topologies
+
+.left-column[
+- Complementary compensation networks employed to improve misalignment tolerance 
+- Require less or no control 
+- Nearly constant power transfer across the entire operating region
+- Minimize increase in VA due to detuning caused by changes in coupler inductanes  
+- For example the power throughput of a parallel hybrid system can be given by
+
+\\[P\_{out} = \{8V\_{in}V\_{out}\over\pi^2} \left(\frac{1}{\omega\_TM\_s} + \frac{M\_p}{\omega\_TL\_{pi}L\_{si}}\right)\\]
+
+
+]
+
+.right-column[
+<img src="img/updates/Hybrid_Conv1.png" width="350px">
+
+<img src="img/updates/Hybrid_Conv2.png" width="350px">
+]
+
+---
+
+# Boost Active Bridge (BAB)
+
+.left-column[
+- Integrated post/pre regulation capabilities enable maximum efficiency tracking
+- Wide ZVS range and reduced current stresses
+- Eliminates DC-blocking capacitor
+<br></br>
+
+<img src="img/updates/BAB_Conv.png" height="200px">
+
+]
+
+.right-column[.right[
+<img src="img/updates/BAB_W1.png" width="310px">
+
+<img src="img/updates/BAB_W2.png" width="310px">
+]]
+
+---
+
+# WPT2/Z2 VA with Integrated BAB
+
+.left-column[
+- Boost inductors integrated in to the DD pad
+- Designed to comply with WPT2/Z2 specifications
+- Controlled both the GA and VA to maintain a nearly constant efficiency under all operating conditions
+
+.center[<img src="img/updates/IBAB_Conv.png" height="220px">]
+
+]
+
+.right-column[
+<img src="img/updates/IBAB_W1.png" width="350px">
+
+<img src="img/updates/IBAB_W2.png" width="350px">
+
+]
+
+---
+
+# Integrated Boost MMC (IB-MMC)
+.left-column[
+- Derives a higher voltage to drive the compensation network
+ - Reduces current stress and may eliminate step-up transformer
+- Inherently eliminates circulating currents
+ - Series-blocking capacitor can be omitted
+- Generate a low THD staircase modulated output voltage
+ - Can generate wide range of voltages
+ - Can use lower voltage higher performance devices
+ 
+<img src="img/updates/IBMMC_Conv.gif" height="160px">
+
+ ]
+
+ .right-column[
+ 
+ <img src="img/updates/IBMMC_Vpi.gif" width="275px">
+ 
+ ]
+
+---
+
+# IB-MMC Performance
+
+.left-column[
+<img src="img/updates/IBMMC_W.gif" width="700px">
+]
+
+.right-column[
+- Maintains a constant 7.7 kW power transfer through primary control
+- Operate in 5-level mode at low k and 3-level mode at high k
+- Efficiency ranges between 91.5% and 92.4% across entire operating region
+- A simple algorithm used to ensure module voltages are balanced
+]
+
+---
+
+# A New Digitized Modulation Scheme
+
+.left-column[
+<img src="img/updates/DigitisedSumary.png" width="690px">
+]
+
+.right-column[
+- Traditional duty/phase modulation causes loss of ZVS
+- Pulse density modulation introduces unwanted resonances
+- New scheme operates a module only at 0%, 50% or 100% duty ensuring ZVS
+- Works like a DAC as the number of modules in each of the 3 states determine voltage amplitude 
+]
+
+---
+
+# Low Cost IPT Systems
+
+.left-column[
+- For example push-pull converters employed in both VA and GA 
+ - DC indcutor(s) and current splitting transformer can be integrted in with the D coupler
+ - Generates a higher voltage to drive the couplers   
+ - Relative phase between converters controls the power flow
+ - Switches maintain ZVS across the entire operating region
+
+.center[<img src="img/updates/PPRC_W1.png" height="205px">]
+
+]
+
+.right-column[
+.center[<img src="img/updates/PPRC_Conv.png" width="310px">]
+
+.center[<img src="img/updates/PPRC_W.png" width="230px">]
+]
+
+---
+
+# Push-Pull Coupler Array (PPCA)
+
+.left-column[
+.center[<img src="img/updates/PPCA_Conv.png" height="220px">]
+
+- Each coupler driven by a single switch and controlled independently
+- Swtich stresses do not scale with the number of couplers
+- Switches only conduct the DC current
+- A damaged module only impacts the two neighbouring modules 
+]
+
+.right-column[
+<img src="img/updates/PPCA_W.gif" width="350px">
+]
+
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# References
+#### These slides were derived from a presentation prepared by the author on 
+#### "Fundametals of Inductive Power Transfer: A Workshop with Example Designs"
+#### @wirelesspower.github.io/SeminarsWorkshops/FundamentalsofIPTDJT/presentation.html
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Thank You
+
+
+
+    </textarea>
+
+    <!-- 
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    -->    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
+    </script>
+
+
+    <script src="remark.min.js" type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+
+      var options = {};
+
+      var renderMath = function() {
+        renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false},
+        ]});
+      }
+
+      var slideshow = remark.create({
+        ratio: '16:9',
+        slideNumberFormat: '%current%',
+        countIncrementalSlides: false,
+        renderMath,
+      });
+
+      MathJax.Hub.Config({
+          tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          processEscapes: true
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
+      
+    </script>
+  </body>
+</html>
