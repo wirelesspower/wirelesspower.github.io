@@ -1,0 +1,42 @@
+div.search form {
+  display: inline-block;
+}
+
+div.search form input {
+  opacity: 0;
+
+  background-color: #CCC;
+  color: black;
+
+  border: 1px solid #f92672;
+  padding: 3px;
+  width: 10em;
+
+  transition: .2s;
+}
+
+div.search a {
+  opacity: 0;
+  padding: 1em;
+  color: #999;
+  transition: .2s;
+}
+
+div.search {
+  position: absolute;
+  top: 1em;
+}
+
+div.search #search-next{
+  display: none;
+}
+
+span.match.current-match {
+  background-color: #26f944;
+}
+
+span.match {
+  padding: 1px;
+  background-color: #26dcf9;
+  color: black;
+}
