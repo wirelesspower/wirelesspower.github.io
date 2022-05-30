@@ -261,7 +261,7 @@ name: S2
     </tr>
     <tr>
       <td class="tg-sabo">X-Axis Misalignment</td>
-      <td class="tg-sabo">&plusmn 20mm</td>
+      <td class="tg-sabo">&plusmn 40mm</td>
     </tr>
     <tr>
       <td class="tg-ig71">Y-Axis Misalignment</td>
@@ -308,14 +308,39 @@ name: template_slide
 
 name: S3
 
-# Step 1: FEM Model of the Couplers
+# Step 1: FEM Model of the Couplers (PI)
 
 .left-column[
 - An Ansys Maxwell model, which has a unipolar square primary coupler design, is provided to you 
- - The coil of the primary coupler is sized to be 300mm x 300mm (W x L)
+ - The coil of the primary coupler is sized to be 300mm x 300mm
+ - The ferrite base is sized to be 350mm x 350mm
+ - Initially, a 10mm thick ferrite base and a conductor diameter of 5mm is assumed
+ - An inner to outer diameter ratio of 40% is used for the coil
 - Modify the Ansys Maxwell model to add a secondary coupler that is identical to the primary
-- Place the secondary coupler such that the air gap is 100mm and it is misaligned in the x-direction by 20mm
- - This is because we want to simulate the worst case situation for coupling first
+- Place the secondary coupler such that the air gap is 100mm and it is center aligned
+]
+
+.right-column[
+.center[<img src="img/primary.png" height="380">]
+]
+
+---
+
+name: S4
+
+# Step 1: FEM Model of the Couplers (PII)
+
+.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+
+---
+
+name: S5
+
+# Step 2: Worst Case Coupling (PI)
+
+.left-column[
+- Move the secondary coupler such that it is misaligned in the x-direction by 40mm
+ - This is because we want to simulate the worst case situation for coupling 
 - Worst case coupling dictates the circuit parameters 
  - As coupling increases, power converters are modulated to regulate power 
 ]
@@ -323,6 +348,42 @@ name: S3
 .right-column[
 .center[<img src="img/primary.png" height="380">]
 ]
+
+---
+
+name: S6
+
+# Step 2: Worst Case Coupling (PII)
+
+.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+
+---
+
+name: S7
+
+# Step 3: Highest Primary & Secondary VA
+
+- Knowing the worst case coupling, we can now start to determine the highest VA we primary and secondary should be driven at since
+\\[P\_{o} = k \sqrt{\mathit{VA}\_{pt}\mathit{VA}\_{st}} \sin(\theta) \\]
+- As we have not specified any restrictions, we can assume the both the primary and secondary couplers can be designed to have similar Qs
+ - Thus, to achieve best efficiency, `\( \mathit{VA}_{pt} = \mathit{VA}_{st} \)`
+- Lets also assume that we are going to compensate the system such that `\( \sin(\theta) \approx 1 \)` under worst case k 
+- We can now determine `\( \mathit{VA}_{pt} \)` and `\( \mathit{VA}_{st} \)`, and in our example since `\( k = 0.313 \)`
+\\[P\_{o} = k \mathit{VA}\_{pt} = k \mathit{VA}\_{st} \quad \Rightarrow \quad \mathit{VA}\_{pt} = \mathit{VA}\_{st} = \frac { 1000} {0.313} \approx 3.2kVA \\]
+
+---
+
+name: S8
+
+# Step 3: Primary & Secondary Turns
+
+- So far we simulated the couplers assuming there is only a single turn in the primary as well as secondary coils
+- To determine the number of turns, we need to first know the inductance we aim for in each coupler
+ - Inductance required depends on the compensation strategy we aim to employ
+- Lets assume we plan to use LCL compensation in the primary and parallel compensation in the secondary
+\\[I\_{pt(RMS)} \approx \frac {2 \sqrt{2} V\_{in}} {\pi \omega L\_{pi}} = \frac {2 \sqrt{2} V\_{in}} {\pi \omega L\_{pt}} \quad \text{and} \quad  I\_{st(RMS)} \approx \frac {\pi V\_{out}} {2 \sqrt{2} \omega L\_{st}} \\]
+- Since we know `\( \mathit{VA}_{pt} \)` and `\( \mathit{VA}_{st} \)` as well as `\( V_{in} \)` and `\( V_{out} \)`
+
 
 ---
 
