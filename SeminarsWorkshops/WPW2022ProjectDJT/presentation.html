@@ -245,7 +245,7 @@ name: S2
     </tr>
     <tr>
       <td class="tg-sabo">Output DC Voltage</td>
-      <td class="tg-sabo">48V</td>
+      <td class="tg-sabo">52V</td>
     </tr>
     <tr>
       <td class="tg-ig71">Power Rating</td>
@@ -287,7 +287,6 @@ name: S2
 </table>
 
 ---
-
 class: title-slide
 layout: false
 count: false
@@ -297,7 +296,6 @@ count: false
 ### Recommendations & Guidelines 
 
 ---
-
 layout: true
 name: template_slide
 
@@ -305,7 +303,6 @@ name: template_slide
 .footer[[Duleepa J Thrimawithana](https://www.linkedin.com/in/duleepajt) & [Grant A Covic](), Department of Electrical, Computer and Software Engineering (2022)]
 
 ---
-
 name: S3
 
 # Step 1: FEM Model of the Couplers (PI)
@@ -325,7 +322,6 @@ name: S3
 ]
 
 ---
-
 name: S4
 
 # Step 1: FEM Model of the Couplers (PII)
@@ -333,7 +329,6 @@ name: S4
 .center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
 
 ---
-
 name: S5
 
 # Step 2: Worst Case Coupling (PI)
@@ -350,7 +345,6 @@ name: S5
 ]
 
 ---
-
 name: S6
 
 # Step 2: Worst Case Coupling (PII)
@@ -358,7 +352,6 @@ name: S6
 .center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
 
 ---
-
 name: S7
 
 # Step 3: Highest Primary & Secondary VA
@@ -372,18 +365,38 @@ name: S7
 \\[P\_{o} = k \mathit{VA}\_{pt} = k \mathit{VA}\_{st} \quad \Rightarrow \quad \mathit{VA}\_{pt} = \mathit{VA}\_{st} = \frac { 1000} {0.313} \approx 3.2kVA \\]
 
 ---
-
 name: S8
 
-# Step 3: Primary & Secondary Turns
+# Step 4: Coupler Inductances
 
-- So far we simulated the couplers assuming there is only a single turn in the primary as well as secondary coils
+- So far we simulated the couplers assuming only a single turn in the primary as well as secondary coils
 - To determine the number of turns, we need to first know the inductance we aim for in each coupler
  - Inductance required depends on the compensation strategy we aim to employ
 - Lets assume we plan to use LCL compensation in the primary and parallel compensation in the secondary
 \\[I\_{pt(RMS)} \approx \frac {2 \sqrt{2} V\_{in}} {\pi \omega L\_{pi}} = \frac {2 \sqrt{2} V\_{in}} {\pi \omega L\_{pt}} \quad \text{and} \quad  I\_{st(RMS)} \approx \frac {\pi V\_{out}} {2 \sqrt{2} \omega L\_{st}} \\]
 - Since we know `\( \mathit{VA}_{pt} \)` and `\( \mathit{VA}_{st} \)` as well as `\( V_{in} \)` and `\( V_{out} \)`
+\\[L\_{pt} \leqslant \frac { 8V\_{in}^2 } {\pi^2 \omega \mathit{VA}\_{pt}}  \quad \text{and} \quad L\_{st} \leqslant \frac { \pi^2 V\_{out}^2 } {8 \omega \mathit{VA}\_{st}} \\]
+- Based on the design specifications, we can calculate `\( L_{pt} \leqslant 96 \mu H \)` and `\( L_{st} \leqslant 1.95 \mu H\)`
 
+---
+name: S9
+
+# Step 5: Final Coupler Specifications (PI)
+
+- From the initial Ansys Maxwell simulations, per-turn inductance of the primary coil, `\( \mathit{AL}_{pt} \)`, and the secondary coil `\( \mathit{AL}_{st} \)` were similar due to their identical geometries and was,
+\\[\mathit{AL}\_{pt} = \mathit{AL}\_{st} = 0.48 \mu H \text{ per turns squared} \\]
+- Therefore, we can calculate the turns needed in the primary coil, `\( N_{pt} \)`, as 14 and the turns needed in the secondary coil, `\( N_{st} \)`, as 2, which theoretically result in 
+\\[ L\_{pt} = 0.48 \times 14^2 =  94 \mu H \quad \text{and} \quad L\_{st} = 0.48 \times 2^2 =  1.92 \mu H  \\]
+- The current in each coupler can be now found as 
+\\[ I\_{pt} = \sqrt{ \mathit{VA}\_{pt} / \omega L\_{pt} } \approx 8A\_{rms} \quad \text{and} \quad I\_{st} = \sqrt{ \mathit{VA}\_{st} / \omega L\_{st} } \approx 56A\_{rms} \\]
+- Refine the Ansys Maxwell model to reflect these coupler specifications and simulate to obtain the final `\( k \)`, `\( L_{pt} \)` and `\( L_{st} \)` values both at X = 0mm and X = 40mm
+
+---
+name: S10
+
+# Step 5: Final Coupler Specifications (PII)
+
+.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
 
 ---
 
