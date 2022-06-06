@@ -349,7 +349,7 @@ name: S6
 
 # Step 2: Worst Case Coupling (PII)
 
-.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/cL3elc9B_XI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
 
 ---
 name: S7
@@ -396,7 +396,65 @@ name: S10
 
 # Step 5: Final Coupler Specifications (PII)
 
-.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/8_JAxLc0OhM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+.center[<iframe width="800" height="450" src="https://www.youtube.com/embed/Hf0AmImIqLw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+
+---
+name: S11
+
+# Step 6: Designing Compensation & Simulate (PI)
+
+- From the latest Ansys Maxwell simulation results we know expected `\( k \)`, `\( L_{pt} \)` and `\( L_{st} \)` values both at X = 0mm and X = 40mm
+- Using these values we can determine the parallel tuning capacitors needed in the primary and secondary 
+ - We can for example design the system to be tuned at X = 40mm
+ \\[ C\_{pt} = \frac {1} {\omega^2 L\_{pt} } \quad \text{and} \quad C\_{st} = \frac {1} {\omega^2 L\_{st} } \\]
+- In a practical system, the LCL compensation network is required to have a series blocking capacitor to avoid DC circulating currents in case the primary inverter output voltage has a DC average
+ - We can for example, add a series capacitor `\( C_{pi} \)` in series with `\( L_{pi} \)` such that
+\\[ \omega L\_{pt} = \omega L\_{pi} - \frac {1} {\omega C\_{pi}} \\]
+- We can now simulate this wireless charger in, for example, LTspice to investigate its performance 
+
+---
+name: S12
+
+# Step 6: Designing Compensation & Simulate (PII)
+
+.center[<img src="img/Spice1.PNG" height="450">]
+
+
+---
+name: S13
+
+# Step 7: Designing Controller (PI)
+
+- A short-circuit controller can be used in the secondary to control the power delivered to the battery in the robot 
+- In this case both the primary inverter and the secondary short-circuit controller can be controlled to achieve best performance
+ - This however leads to a quite challenging controller design
+- Since the variation of `\( k \)` in this design is quite small we can choose to only use the short-circuit controller and maintain the primary always at its maximum duty-cycle 
+- As the final step of this project, develop a slow-switching short-circuit controller to regulate the output voltage of the secondary to 52V
+ - Modify the LTspice model to validate the design 
+ - Model the battery of the robot as a load resistor that has a value between 2.7&#8486; and 5.4&#8486; 
+- After concluding the project prepare a small presentation highlighting your findings
+
+---
+name: S14
+
+# Step 7: Designing Controller (PII)
+
+.center[<img src="img/Spice2.PNG" height="450">]
+
+---
+name: S15
+
+# Optional Further Improvements
+
+- You may wish to improve your design further and these improvements can be to the magnetic design, compensation topology, power electronics and/or control
+- In case of the magnetics, in a practical application the weight of the secondary needs to be minimized 
+ - You can investigate DD couplers and try to make the secondary coupler smaller than the primary by redistributing the VAs
+- In case of the compensation, in a practical design, having just 2 turns in the secondary can lead to poor `\( k \)`
+ - We didnt observe this as the winding was modeled as a plate in Ansys Maxwell
+ - One option can be to have a higher inductance in the secondary and use series compensation 
+ - Also when selecting the compensation components you can consider zero voltage switching conditions
+- In case of the power electronics, we should model the losses and ensure devices selected are suitable
+ - You can improve the LTSpice model using device models provided by for example Wolfspeed and investigate losses in both the primary and the secondary converter 
 
 ---
 
