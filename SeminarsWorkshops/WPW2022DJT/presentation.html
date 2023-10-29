@@ -131,13 +131,23 @@
     <!-- KaTeX and Mathjax support refer to below for syntax -->
     <!-- https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference -->
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+    <!--
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
     
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
 
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
-    
+    -->
+
     <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
@@ -1244,7 +1254,7 @@ name: S70
 - Assuming `\(\omega L_{st} = 1 / \omega C_{st}\)` and `\(V_{si}\)` is sinusoidal,
 \\[ P\_{o} = V\_{out} I\_{out} = V\_{si\_{rms}} I\_{sc\_{rms}} = \frac {2 \sqrt{2}} {\pi} I\_{out} V\_{si\_{rms}}  \\]
 - Thus, `\(V_{out}\)`, `\(I_{out}\)` and `\(R_{L(dc)}\)` are related to `\(V_{sr}\)`, `\(I_{si}\)` and `\(R_{L(ac)}\)` as
-\\[ V\_{out} = \frac {2 \sqrt{2}} {\pi} V\_{si\_{rms}}, \quad  I\_{out} = \frac {\pi} {2 \sqrt{2}} I\_{sc\_{rms}} \quad \text{&} \quad R\_{L(dc)} = \frac {8} {\pi^2}  R\_{L(ac)} \\]
+\\[ V\_{out} = \frac {2 \sqrt{2}} {\pi} V\_{si\_{rms}}, \quad  I\_{out} = \frac {\pi} {2 \sqrt{2}} I\_{sc\_{rms}} \quad \text{&amp} \quad R\_{L(dc)} = \frac {8} {\pi^2}  R\_{L(ac)} \\]
 ]
 
 .right-column[
@@ -1286,7 +1296,7 @@ name: S75
 ---
 name: S76
 
-# `\(f_{scr}\)` & `\(\Delta V_{out}\)` with Short-Circuit Control
+# `\(f_{scr}\)` &amp `\(\Delta V_{out}\)` with Short-Circuit Control
 
 - The switching frequency, `\(f_{scr}\)`, of `\(Q_{1}\)` is a function of the output voltage ripple, `\(\Delta V_{out}\)` 
 \\[ f\_{scr} = \frac {\pi} {2 \sqrt{2}} \frac {I\_{sc}} {C\_{dc} \; \mathit{\Delta V\_{out}} } (1-D\_{scr}) D\_{scr} \quad \text {where} \quad f\_{scr} = \frac {1} {T\_{scr}} \\]
