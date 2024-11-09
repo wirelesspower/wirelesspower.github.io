@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryogenic Power Electronics</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { 
+        font-family: 'Droid Serif'; 
+        line-height: 1.6;
+        }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: bold;
+        color: #00467F;
+      }
+
+      h1{
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .TitleAuthor {
+        color:white; 
+        font-weight: normal;
+      }
+
+      .title-slide .remark-slide-number {
+        display: none;
+      }
+      .title-slide h1, h2, h3, h4 {
+        text-align: left;
+        color:white;
+        line-height: 0.7;
+        font-weight: bold;
+      }
+
+      .title-slide {
+        vertical-align: middle;
+        background-color: #00467F;
+      }
+
+      .logo-title {
+        content: "";
+        position: absolute;
+        top: 15px;
+        right:   15px;
+        height: 88px;
+        width: 267px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(https://cdn.auckland.ac.nz/assets/central/central-services/mediaandmarketing/uoa-logos-2015/uoa-logo-2015-reverse.png);
+      }
+      .logo-slide {
+        content: "";
+        position: absolute;
+        top: 35px;
+        right:   25px;
+        height: 100px;
+        width: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(Logo.png);
+      }
+
+      .left-column {
+        width: 65%;
+        float: left;
+        word-wrap: break-word;
+      }
+     
+      .right-column {
+        width: 30%;
+        float: right;
+        word-wrap: break-word;
+      }
+
+      .footer {
+        content: "";
+        position: absolute;
+        bottom: 17px;
+        color:gray;
+        font-size: 10pt;
+      }
+      
+      @page {
+        size: 1600px 900px;
+        margin: 0;
+      }
+
+      @media print {
+        .remark-slide-scaler {
+          width: 100% !important;
+          height: 100% !important;
+          transform: scale(1) !important;
+          top: 0 !important;
+          left: 0 !important;
+        }
+      }
+      
+      .red {color:red;}
+
+      .zoom175 {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom175:hover {
+        transform: scale(1.75) translateY(-20%) translateX(-20%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      }
+
+      .credits {
+        font-size: 12px;
+        line-height: 4px !important;
+        margin-top: 4px !important;
+        font-family: 'Droid Serif'; 
+      }
+
+    </style>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <style>
+    .smaller-font { font-size:14px } 
+    </style>
+
+    <!-- KaTeX and Mathjax support refer to below for syntax -->
+    <!-- https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+    <!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    -->
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide
+count: false
+.logo-title[]
+
+# Electrifying Large Scale Transport
+### Cryogenic Power Electronics 
+
+.TitleAuthor[Duleepa J Thrimawithana]
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+---
+
+# The University of Auckland
+
+- Highest ranked New Zealand university and 65th in the QS World University Ranking
+- Over 6,000 staff members and 35,000 students
+- Nine faculties including Medical & Health Sciences, Engineering, Business & Economics and Science
+
+.center[<img src="img/intro/UoAMap.png" height="300">]
+
+---
+
+# Dept. of Electrical, Computer & Software Eng.
+
+.left-column[
+- One of the 5 departments in the Faculty of Engineering
+- Offers 3 undergraduate degree programs
+ - Electrical & Electronics, Computer Systems and Software
+ - Project based teaching
+- 35+ full-time academic staff members and 15+ post-doctoral research fellows
+- 150+ postgraduate students and 700+ undergraduate students
+- Regular visiting research scholars and research students
+- Research groups include Power Electronics, Power Systems, Signal Processing, Robotics, Embedded Systems, Parallel Computing, Telecommunications and Control Systems
+]
+
+.right-column[
+<img src="img/intro/UoAEng.png" width="300px">
+]
+
+---
+
+# Dept. of Electrical, Computer & Software Eng.
+
+.center[<img src="img/intro/EngBuild.png" height="400">]
+
+---
+
+# The Power Electronics Research Group
+
+.center[<img src="img/intro/PEGROUP.gif" height="430">]
+
+---
+
+# Commercial Successes 
+
+.center[<img src="img/intro/WPT_History.png" height="430">]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# The Advanced Energy Technology Program
+### An Overview
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+---
+
+name: S1
+
+# Program Overview 
+
+.center[<img src="img/overview/program.png" height="410px">]
+
+---
+
+# National and International Partners
+
+.center[<img src="img/overview/colab.png" height="410px">]
+
+---
+
+# Power Electronics & GaN HEMTs Work Stream 
+
+.center[<img src="img/overview/team.png" height="410px">]
+
+
+---
+
+# System Overview 
+
+.center[<img src="img/overview/system.png" height="410px">]
+
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Switch Characterization 
+### Behavior Under Cryogenic Conditions
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+---
+name: S8
+
+# GaN HEMTs - R<sub>DS(ON)</sub> at 77K
+
+- The performance of GaN HEMTs in cryogenic temperatures depends on the gate technology
+ - Devices with ohmic p-GaN gates do not perform well 
+ - The series Si-FET in a cascode limits improvement in R<sub>DS(ON)</sub>
+
+.center[<img src="img/devices/GaNTable.png" height="300px">]
+
+---
+name: S10
+
+# GaN HEMTs - R<sub>DS(ON)</sub> Comparison 
+
+.center[<img src="img/devices/RdsPlot_all.png" height="410px">]
+
+---
+name: S10
+
+# GaN HEMTs - R<sub>DS(ON)</sub> Variation 
+
+.center[<img src="img/devices/stats.png" height="410px">]
+
+---
+name: S10
+
+# GaN HEMTs - Threshold Voltage 
+
+- The threshold voltage of devices with Schottky p-GaN gates reduces with temperature
+ - In contrast the threshold voltage of cascodes and devices with ohmic p-GaN devices increases with reducing temperature
+
+.center[<img src="img/devices/vth.png" height="200px">]
+
+---
+name: S10
+
+# GaN HEMTs - Gate Hysteresis  
+
+- The gate voltage of devices with Schottky p-GaN gates exhibits hysteresis 
+ - Gate leakage current reduce at cryo temperatures 
+
+.center[<img src="img/gan/Gate_Hys.png" height="350px">]
+
+
+---
+name: S10
+
+# GaN HEMTs - Drain Leakage Current   
+
+- The leakage current while blocking seems to decrease at cryo temperatures 
+
+.center[<img src="img/gan/DS_Leakage.png" height="375px">]
+
+---
+name: S11
+
+# Si Switches - R<sub>DS(ON)</sub> at 77K
+
+- The R<sub>DS(ON)</sub> of Si MOSFETs improve until about 120K 
+- The R<sub>DS(ON)</sub> of Si-Superjunction MOSFETs improve until about 120K but starts to get worse quite rapidly 
+- The R<sub>DS(ON)</sub> of SiC devices do not deteriorate until about 220K 
+- The effective R<sub>DS(ON)</sub> of Si IGBTs gets worse with reducing temperature
+
+.center[<img src="img/devices/siFet.png" height="200px">]
+
+---
+name: S11
+
+# Best Switches for Cryogenic Operation 
+
+- Our work show that the GaN Systems HV Schottky p-GaN gate HEMTs offer the best performance to-date 
+ - Low variability between samples, reliable operation under thermal cycling, relatively easier to design cooling, better power handling, etc.
+
+.center[<img src="img/gan/GaN_Sys.jpg" height="300px">]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Magnetic Cores 
+### Behavior Under Cryogenic Conditions
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+
+---
+name: S10
+
+# Core Loss Measurement
+
+- Used a modified partial/full cancellation methods to extract core losses 
+ - Tested laminated steel, iron powder, ferrite and nanocrystalline cores
+- Tests were conducted at 295K (room temperature) and 77K (using an LN2 bath)
+ - A power amplifier drives the test setup and C<sub>p</sub> help reduce VA requirement  
+
+.center[<img src="img/devices/CapPartialCancellation.png" height="270px">]
+
+---
+name: S11
+
+# Core Types
+
+- Many core types were tested to understand changes in magnetic properties at cryogenic temperatures
+ - Notable core types tested are summarized in the table
+
+.center[<img src="img/devices/coreTypes.png" height="350px">]
+
+---
+name: S12
+
+# Core Losses
+
+.center[<img src="img/devices/coreLoss.png" height="450px">]
+
+---
+name: S12
+
+# Nanocrystalline Core Comparison (PI)
+
+- Not all nanocrystalline core types behaves the same 
+ - Introducing an air-gap in the core increases core loss
+ - Production technique and core structure has a significant impact
+
+.center[<img src="img/devices/ucore_toroid_ferrite_ribbon.png" height="350px">]
+
+---
+name: S12
+
+# Nanocrystalline Core Comparison (PII)
+
+- U cores have significantly higher losses in comparison to toroidal cores 
+- In toroidal cores, the size and the production technique impacts the losses
+ - Stress annealed cores perform the best
+ - Crushed nanocrystalline cores have slightly higher losses in comparison to stress annealed cores 
+ - Core height increases the losses due to increased eddy current effects
+
+.center[<img src="img/devices/NC_Summary.png" height="250px">]
+
+---
+name: S12
+
+# Nanocrystalline Core Comparison (PII)
+
+- U cores have significantly higher losses in comparison to toroidal cores 
+- In toroidal cores, the size and the production technique impacts the losses
+ - Stress annealed cores perform the best
+ - Crushed nanocrystalline cores have slightly higher losses in comparison to stress annealed cores 
+ - Core height increases the losses due to increased eddy current effects
+
+.center[<img src="img/devices/NC_Summary.png" height="250px">]
+
+
+---
+name: S12
+
+# Improved Magnetics
+
+- Shorter toroidal cores can be stacked with an air-gaps between them to reduce eddy current losses
+
+.center[<img src="img/devices/Stacked_NC.png" height="370px">]
+
+---
+name: S19
+
+# Evolution of Magnetic Designs
+
+.center[<img src="Gen3.png" height="450px">]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# A GaN Based Cryogenic Converter
+### The Design and Performance 
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+---
+name: S19
+
+# A Cryogenic Converter
+
+- A GaN based synchronous buck converter that can operate in cryogenic temperatures has been built
+ - All components except the controller were operated at cryogenic temperatures
+- Helps identify advantages and drawbacks of operating at cryogenic temperatures  
+ - Compared with operation at 295K including a loss breakdown  
+
+.center[<img src="img/gan/ganSetup.png" height="250px">]
+
+---
+name: S19
+
+# Testing in a Synchronous Buck Configuration
+
+.center[<img src="img/gan/Buck_Conv.png" height="430px">]
+
+---
+name: S19
+
+# Converter with Gen 2 Magnetics
+
+- Experiments considered nanocrystalline inductor operation in 77K and 295K
+ - This enabled comparison with a ferrite inductor that operated at 295K
+- As expected the nanocrystalline inductor leads to slightly lower efficiency
+ - However, it allows over 70% reduction in weight
+
+.center[<img src="img/gan/efficiency.png" height="250px">]
+
+---
+name: S19
+
+# Loss Breakdown
+
+- An air-core inductor is used to extract switch losses and compare 
+ - A significant improvement in switch loss is observed at 77K
+- Though a ferrite core inductor is more efficient there is a significant weight penalty 
+ - The Gen 2 nanocrystalline core allows over 70% reduction in weight
+
+.center[<img src="img/gan/lossComp.png" height="250px">]
+
+
+---
+name: S19
+
+# Converter with Gen 3 Magnetics
+
+- The Gen 3 magnetic design with stacked stress annealed NC cores offers similar performance to the ferrite core inductor 
+ - However the Gen 3 design is 2% of the volume and weight of a traditional ferrite core inductor 
+ - In this 3 kW converter, the Gen 3 inductor was only 130 g, thus providing a viable scalable design for cryogenic magnetics
+
+.center[<img src="img/gan/Gen3_Conv.png" height="260px">]
+
+---
+name: S19
+
+# Demonstration
+
+.center[<iframe width="745" height="420" src="demo.mp4" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
+
+---
+name: S19
+
+# Cryoconverter Comparison
+
+.center[<img src="Comparison.png" height="420px">]
+
+---
+name: S19
+
+# Operation Down to 40K
+
+- The GaN based synchronous buck converter has been tested down to 40K 
+ - Need significant improvements to the design to effectively operate in a vacuum
+
+.center[<iframe width="620" height="350" src="CryoChamber.mp4" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
+
+---
+name: S19
+
+# 2-Level Three-Phase Inverter 
+
+- The GaN converter that was validated has been extended to form a 2-level three-phase inverter
+ - Tested at 6 kVA and aim to re-test at 9 kVA
+
+.center[<img src="img/gan/Three_Phase.png" height="360px">]
+
+---
+name: S19
+
+# Driving a Homopolar Machine with HTS Field Winding 
+
+- A homopolar machine with an HTS field winding has been driven using the 2-level three-phase inverter
+ - Inverter was in LN2 while the motor was inside a vacuum chamber cooled using a cold head
+
+.center[<iframe width="620" height="350" src="HTS_Motor.mp4" frameborder="50" allow="encrypted-media" allowfullscreen></iframe>]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# GaN HEMTs for Cryogenic Operation
+### Characterization and Optimization  
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+---
+name: S19
+
+# Impact of Thermal Cycling
+
+- Samples with pre-existing surface features were cycled between 340K to 80K
+- Atomic force microscopy used to look for evidence of heterostructure degradation
+- Proportion of sample area which is occupied by fissures (averaged over 5 scans) used as a metric
+ - This was measured using FIJI, by segmenting the atomic force microscopy images
+- No significant change which suggests repeated thermal cycling does not damage the heterostructure
+
+.center[<img src="img/structure/fissures.png" height="200px">]
+
+---
+name: S19
+
+# Annealing to Help Ohmic Contacts
+
+
+
+---
+name: S19
+
+# Porous GaN Structures 
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Ongoing Work
+### Planned Research Activities and Research Challenges
+
+---
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (November 2024)]
+
+---
+name: S19
+
+# A Benchmark System
+
+- A liquid cooled, SiC based benchmark setup is under development to drive a 1MW HTS machine
+ - Custom designed fully superconducting machine and cooling is currently been developed by work streams lead by the Victoria University and Callaghan Innovations
+
+.center[<img src="img/benchmark/Three_Phase.png" height="320px">]
+
+---
+name: S19
+
+# Dynamic R<sub>DS(ON)</sub> at Cryo Temperatures
+
+- Measurement circuitry has been developed to capture the dynamic R<sub>DS(ON)</sub> under cryo temperatures
+ - The 
+
+.center[<img src="img/DynamicRds/DynamicRdsCct.png" height="320px">]
+
+---
+name: S19
+
+# Research Challenges 
+
+- Fully cryogenic power conversion system
+ - We are in the process of developing the 3rd generation of our GaN HEMT based power conversion modules, with integrated isolation, protection, ancillary services and digital control 
+- Conduction cooling the converters
+ - We are investigating new designs that enable conduction cooling for a power conversion system in a vacuum chamber using a cold head
+- Reliability of components
+ - Further investigation on failure modes, impact of thermal cycling, thermal shock, thermal gradients, mechanical stresses introduced by encapsulating materials, etc. needs investigation
+ - Radiation hardness of cryo-cooled GaN HEMTs (possible collaboration with Airbus and STM)
+- 
+
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Thank You
+
+
+
+    </textarea>
+
+    <!-- 
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    -->    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
+    </script>
+
+
+    <script src="remark.min.js" type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+
+      var options = {};
+
+      var renderMath = function() {
+        renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false},
+        ]});
+      }
+
+      var slideshow = remark.create({
+        ratio: '16:9',
+        slideNumberFormat: '%current%',
+        countIncrementalSlides: false,
+        renderMath,
+      });
+
+      MathJax.Hub.Config({
+          tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          processEscapes: true
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
+      
+    </script>
+  </body>
+</html>
