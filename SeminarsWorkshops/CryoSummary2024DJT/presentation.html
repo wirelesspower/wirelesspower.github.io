@@ -436,20 +436,6 @@ name: S12
 ---
 name: S12
 
-# Nanocrystalline Core Comparison (PII)
-
-- U cores have significantly higher losses in comparison to toroidal cores 
-- In toroidal cores, the size and the production technique impacts the losses
- - Stress annealed cores perform the best
- - Crushed nanocrystalline cores have slightly higher losses in comparison to stress annealed cores 
- - Core height increases the losses due to increased eddy current effects
-
-.center[<img src="img/devices/NC_Summary.png" height="250px">]
-
-
----
-name: S12
-
 # Improved Magnetics
 
 - Shorter toroidal cores can be stacked with an air-gaps between them to reduce eddy current losses
@@ -656,9 +642,24 @@ name: S19
 # Dynamic R<sub>DS(ON)</sub> at Cryo Temperatures
 
 - Measurement circuitry has been developed to capture the dynamic R<sub>DS(ON)</sub> under cryo temperatures
- - The 
+ - Designed to have a delay of less than 1 &micro;s
+ - The measurement circuitry can be operated under cryogenic conditions 
+ - Allows trapping at a constant voltage and de-trapping at a constant current
+ - V<sub>DS(ON)</sub> is sampled using an on-board MCU 
+- Based on our initial findings a measurement protocol has been developed 
 
-.center[<img src="img/DynamicRds/DynamicRdsCct.png" height="320px">]
+.center[<img src="img/DynamicRds/DynamicRdsCct.png" height="200px">]
+
+---
+name: S19
+
+# Initial Dynamic R<sub>DS(ON)</sub> Measurements
+
+- The performance of the measurement circuitry has been compared against an 800 MHz coaxial shunt
+ - The data is used to calibrate the measurement setup
+- 
+
+.center[<img src="img/DynamicRds/CoaxShunt.png" height="300px">]
 
 ---
 name: S19
