@@ -345,7 +345,7 @@ name: S11
 # Si Switches - R<sub>DS(ON)</sub> at 77K
 
 - The R<sub>DS(ON)</sub> of Si MOSFETs improve until about 120K 
-- The R<sub>DS(ON)</sub> of Si-Superjunction MOSFETs improve until about 120K but starts to get worse quite rapidly 
+- The R<sub>DS(ON)</sub> of Si-Superjunction MOSFETs decrease until about 120K but starts to increase quite rapidly below about 120K 
 - The R<sub>DS(ON)</sub> of SiC devices do not deteriorate until about 220K 
 - The effective R<sub>DS(ON)</sub> of Si IGBTs gets worse with reducing temperature
 
@@ -358,6 +358,7 @@ name: S11
 
 - Our work show that the GaN Systems HV Schottky p-GaN gate HEMTs offer the best performance to-date 
  - Low variability between samples, reliable operation under thermal cycling, relatively easier to design cooling, better power handling, etc.
+ - Good thermal management is still very important 
 
 .center[<img src="img/gan/GaN_Sys.jpg" height="300px">]
 
@@ -656,9 +657,25 @@ name: S19
 
 - The performance of the measurement circuitry has been compared against an 800 MHz coaxial shunt
  - The data is used to calibrate the measurement setup
-- 
+- Faster de-trapping at colder temperatures 
 
 .center[<img src="img/DynamicRds/CoaxShunt.png" height="300px">]
+
+---
+name: S19
+
+# Conclusions and Observations  
+
+- Cryoelectronics is in-demand for applications such as aviation, space exploration, nuclear fusion, future circular collider, etc.
+- Long haul commercial flights will most likely require LH2 as a fuel
+ - Has sufficient thermal capacity to cool the electronics 
+- Developing a cryoelectronic converter seems possible with current device technology 
+ - GaN device with Schottky p-GaN gates seems to be the most promising switching technology
+ - CMOS logic devices works well in cryogenic temperatures
+ - Nanocrystalline materials offer good performance 
+ - Film capacitors and NP0/C0G capacitors works well
+- Operating at lower temperature offers some advantages
+ - Improved power density, possible higher efficiency and less heat leakage
 
 ---
 name: S19
@@ -666,15 +683,16 @@ name: S19
 # Research Challenges 
 
 - Fully cryogenic power conversion system
- - We are in the process of developing the 3rd generation of our GaN HEMT based power conversion modules, with integrated isolation, protection, ancillary services and digital control 
+ - We are in the process of developing a new generation of our GaN HEMT based power conversion modules, with integrated isolation, protection, ancillary services and digital control 
 - Conduction cooling the converters
  - We are investigating new designs that enable conduction cooling for a power conversion system in a vacuum chamber using a cold head
-- Reliability of components
- - Further investigation on failure modes, impact of thermal cycling, thermal shock, thermal gradients, mechanical stresses introduced by encapsulating materials, etc. needs investigation
+- Reliability of components and further component characterization
+ - Further investigation on failure modes, cold starts, impact of thermal cycling, thermal shock, thermal gradients, mechanical stresses introduced by encapsulating materials, etc.
  - Radiation hardness of cryo-cooled GaN HEMTs (possible collaboration with Airbus and STM)
 - Driving a fully HTS machine 
  - Challenges involved in minimizing AC losses, insulation breakdown, low winding inductance, EMI, etc.
  - We are investigating some novel approaches to solve some of these issues
+
 
 ---
 
