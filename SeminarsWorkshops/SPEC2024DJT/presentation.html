@@ -858,8 +858,8 @@ name: S7
 - As we have not specified any restrictions, we can assume the both the primary and secondary couplers can be designed to have similar Qs
  - Thus, to achieve best efficiency, `\( \mathit{VA}_{pt} = \mathit{VA}_{st} \)`
 - Lets also assume that we are going to compensate the system such that `\( \sin(\theta) \approx 1 \)` under worst case k 
-- We can now determine `\( \mathit{VA}_{pt} \)` and `\( \mathit{VA}_{st} \)`, and in our example since `\( k = 0.313 \)`
-\\[P\_{o} = k \mathit{VA}\_{pt} = k \mathit{VA}\_{st} \quad \Rightarrow \quad \mathit{VA}\_{pt} = \mathit{VA}\_{st} = \frac { 1000} {0.313} \approx 3.2kVA \\]
+- We can now determine `\( \mathit{VA}_{pt} \)` and `\( \mathit{VA}_{st} \)`, and in our example since `\( k = 0.31 \)`
+\\[P\_{o} = k \mathit{VA}\_{pt} = k \mathit{VA}\_{st} \quad \Rightarrow \quad \mathit{VA}\_{pt} = \mathit{VA}\_{st} = \frac { 1000} {0.31} \approx 3.2kVA \\]
 
 ---
 name: S8
@@ -1091,19 +1091,41 @@ name: S32
 
 # Example: Parallel Compensated Secondary
 
-When placed `\(100 mm\)` apart the primary and secondary coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The secondary uses parallel compensation and powers a `\(50 \Omega \)` AC load.
+Consider the 1kW IPT system, we introduced earlier, where we designed the couplers for. When placed `\(100 mm\)` apart the primary and secondary coils of this IPT system measured `\(94 \mu H\)` and `\(139 \mu H\)`, respectively. `\(k\)` between the two coils was measured as 31.3%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(8 A_{rms}\)` current. The secondary uses parallel compensation and powers a `\(250 \Omega \)` AC load.
 
 .left-column[
-- Show that `\(C_{st}\)` has to be `\(187.2 nF\)` to compensate `\(L_{st}\)`
-- Show that `\(\mathit{VA}_{pt}=1kVA\)`
+- Show that `\(C_{st}\)` has to be `\(25.2 nF\)` to compensate `\(L_{st}\)`
+- Show that `\(\mathit{VA}_{pt}=3.2kVA\)`
 - Develop a simulation model in LTSpice 
 - With the aid of this model show that 
- - `\(P_{o}=50W\)`
- - Output power drops to `\(24.6W\)` if `\(L_{st}\)` increases by 20%
+ - `\(P_{o}=1kW\)`
+ - Output power drops to `\(660W\)` if `\(L_{st}\)` increases by 20%
 ]
 
 .right-column[
-.center[<img src="img/comp/EgPComp.png" width="300px">]
+.center[<img src="img/comp/EgPComp.png" width="320px">]
+]
+
+---
+name: S37
+
+# Example: Partial Series Compensation
+
+When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. `\(L_{pt}\)` is driven to maintain a constant `\(85 \mathit{kHz}\)`, `\(10 A_{rms}\)` current. The pick-up uses LCL compensation and power a `\(50 \Omega \)` AC load. Partial series compensation is used to deliver `\(100 W\)` to the load when operated under tuned conditions. 
+
+.left-column[
+- Show that `\(C_{si}\)` has to be `\(639.1 nF\)` to ensure `\(P_{o}=100W\)`
+- Show that `\(C_{st}\)` has to be `\(264.7 nF\)` to compensate `\(L_{st_{(eq)}}\)`
+- Show that `\(L_{si}\)` ideally has to be `\(13.24 \mu H\)` and `\(\mathit{VA}_{pt}=1kVA\)`
+- Develop a simulation model in LTSpice and show that 
+ - `\(P_{o}=100W\)`
+ - Output power drops to `\(24W\)` if `\(L_{st}\)` increases by 20%
+- Using LTSpice, show that a `\(37.46 \mu H\)` pick-up coil that is partially compensated down to `\(18.73 \mu H\)` would perform similar
+]
+
+.right-column[
+.center[<img src="img/comp/EgPTLCLCompM1.png" width="275px">]
+.center[<img src="img/comp/EgPTLCLCompM2.png" width="270px">]
 ]
 
 ---
@@ -1122,7 +1144,7 @@ layout: true
 name: template_slide
 
 .logo-slide[]
-.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) & [G A Covic](https://www.linkedin.com/in/grant-covic-179546a/), IEEE Wireless Week, Wireless Power Transfer School (June 2023)]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt), IEEE Southern Power Electronics Conference (Nov 2024)]
 
 ---
 name: S22
@@ -1202,10 +1224,10 @@ name: S32
 .center[<img src="img/netw/LCLCompGen.png" height="135px">]
 
 - The impedance of `\(L_{pt}\)` is compensated using the capacitor `\(C_{pt}\)` and the inductor `\(L_{pi}\)`
-- Typically, at a given operating `\(\omega\)` (i.e. fundamental of `\(V_{pi}\)`), `\(C_{pt}\)` and `\(L_{pi}\)` are chosen such that 
-\\[ \omega L\_{pt} = \frac {1} {\omega C\_{pt}} = \omega L\_{pi} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{pt}C\_{pt}} } =  \frac {1} { \sqrt {L\_{pi}C\_{pt}} } \\]
-- Thus, when the LCL network uses matching impedances
-\\[ Z\_{p} = \omega^2 L\_{pi}^2 \times Z\_s / ( \omega^2 M^2 )  \quad \text{and} \quad I\_{pt} = V\_{pi} / j \omega L\_{pi} \\]
+- The impedance of the compensated primary, including `\(V_{pr}\)`, seen by the converter is given by
+\\[ Z\_{p} = j \omega L\_{pi} - j \omega \frac { \left ( Z\_{pr}^2C\_{pt} - L\_{pt} \left( 1- \omega^2 L\_{pt}C\_{pt} \right) \right )} {\left( 1- \omega^2 L\_{pt}C\_{pt} \right)^2 + \omega^2 Z\_{pr}^2C\_{pt}^2 } + \frac { Z\_{pr} } {\left( 1- \omega^2 L\_{pt}C\_{pt} \right)^2 + \omega^2 Z\_{pr}^2C\_{pt}^2 } \\]
+- The primary converter current can be given by
+\\[ I\_{pi} = V\_{pi} / Z\_p  \\]
 
 ---
 name: S46
@@ -1213,18 +1235,32 @@ name: S46
 # An LCL Compensated Primary (P-II)
 
 .left-column[
-- An LCL compensated primary can be analysed using Norton transformation
-- The Norton current `\(I_{pc}\)` is given by
-\\[ I\_{pc} = \frac {V\_{pi}} {j \omega L\_{pi}} \\]
-- `\(C_{pt}\)` and `\(L_{pi}\)` looks as an open-circuit since, 
+- The primary coil current can be given by
+\\[ I\_{pt} = \frac {V\_{pi}} {j \omega L\_{pi} + j \omega L\_{pt} (1 - \omega^2 L\_{pi} C\_{pt} ) + Z\_{pr} (1 - \omega^2 L\_{pi} C\_{pt} ) } \\]
+- Typically, at a given operating `\(\omega\)` (i.e. fundamental of `\(V_{pi}\)`), `\(C_{pt}\)` and `\(L_{pi}\)` are chosen such that 
 \\[ \omega L\_{pt} = \frac {1} {\omega C\_{pt}} = \omega L\_{pi} \quad \text{or} \quad \omega =  \frac {1} { \sqrt {L\_{pt}C\_{pt}} } =  \frac {1} { \sqrt {L\_{pi}C\_{pt}} } \\]
-- Thus, `\(I_{pt}\)` has to be the same as `\(I_{pc}\)` regardless of `\(Z_{pr}\)`,
+- Thus, when the LCL network uses matching impedances,
+\\[ Z\_{p} = 1 / ( \omega^2 C\_{pt}^2 Z\_{pr} ) = \omega^2 L\_{pi}^2 \times Z\_s / ( \omega^2 M^2 )  \\]
 \\[ I\_{pt} = V\_{pi} / j \omega L\_{pi}  \\]
 ]
 
 .right-column[
 .center[<img src="img/netw/LCLCompIdeal.png" width="200px">]
 ]
+
+---
+name: S49
+
+# Partial Series Compensation of Primary
+
+.center[<img src="img/netw/PartialSCompP.png" height="135px">]
+
+- The primary coil current and thus `\(\mathit{VA_{pt}}\)`, are both limited by `\(V_{pi}/\omega L_{pi}\)`
+- If `\(V_{pi}\)` is fixed by the design, then `\(L_{pt}\)` can be partially compensated using `\(C_{pi}\)`, to increase `\(\mathit{VA_{pt}}\)` by
+ - Either reducing the effective `\(L_{pt}\)` to increase `\(I_{pt}\)` (specially if `\(L_{pt}\)` is fixed)
+ - Or increasing `\(L_{pt}\)` and then partially compensating to lower `\(I_{pt}\)` (VA in the coil is kept the same)
+- The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{pt}\)` and `\(L_{pi}\)`, is given by
+\\[ L\_{pt\_{{(eq)}}} = L\_{pt} - 1/ \left(  \omega^2 C\_{pi} \right)  \\]
 
 ---
 name: S25
@@ -1250,28 +1286,28 @@ name: S25
   </style>
   <table class="tg">
     <tr>
-      <th class="tg-zv4m"></th>
-      <th class="tg-lghr"></th>
+      <th class="tg-bqvo"></th>
+      <th class="tg-bqvo"></th>
       <th class="tg-w8f3">Secondary Series</th>
       <th class="tg-w8f3">Secondary Parallel</th>
       <th class="tg-w8f3">Secondary LCL</th>
     </tr>
     <tr>
-      <td class="tg-zv4m"></td>
+      <td class="tg-bqvo"></td>
       <td class="tg-uzdq">`\(Q_{(op)}\)`</td>
       <td class="tg-lxhs">`\( \omega L_{st} \div R_L \)`</td>
       <td class="tg-lxhs">`\( R_L \div \omega L_{st} \)`</td>
       <td class="tg-lxhs">`\( R_L \div \omega L_{st} \)`</td>
     </tr>
     <tr>
-      <td class="tg-zv4m"></td>
+      <td class="tg-bqvo"></td>
       <td class="tg-uzdq">`\(P_{o}\)`</td>
       <td class="tg-lxhs">`\( k^2 \mathit{VA_{pt}} Q_{(op)} \)`</td>
       <td class="tg-lxhs">`\( k^2 \mathit{VA_{pt}} Q_{(op)} \)`</td>
       <td class="tg-lxhs">`\( k^2 \mathit{VA_{pt}} Q_{(op)} \)`</td>
     </tr>
     <tr>
-      <td class="tg-zv4m"></td>
+      <td class="tg-bqvo"></td>
       <td class="tg-uzdq">`\(Z_{s}\)`</td>
       <td class="tg-lxhs">`\(R_{L}\)`</td>
       <td class="tg-lxhs">`\( \left( j \omega L_{st} + R_L \right) \div \left( 1 + Q_{(op)}^2 \right) \)`</td>
@@ -1330,58 +1366,20 @@ name: S48
 
 # Example: LCL-Parallel Compensated System
 
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
+Consider the 1kW IPT system, we introduced earlier. When placed `\(100 mm\)` apart the primary and pick-up coils of this IPT system measured `\(94 \mu H\)` and `\(139 \mu H\)`. `\(k\)` between the two coils was measured as 31%. The primary is to use LCL compensation and is energised using a sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses parallel compensation and delivers `\(1 kW\)` to a `\(250 \Omega \)` AC load, as per what we have designed so far. 
 
 .left-column[
-- Show that `\(C_{pt}\)` has to be `\(187.2 nF\)` and `\(L_{pi}\)` has to be `\(18.73 \mu H\)`
-- Show that `\(V_{pi}\)` has to be `\(\sim 100 V_{rms}\)` to transfer `\(50 W\)`
+- Show that `\(C_{pt}\)` has to be `\(37.3 nF\)` and `\(L_{pi}\)` has to be `\(94 \mu H\)`
+- Show that `\(V_{pi}\)` has to be `\(\sim 405 V_{rms}\)` to transfer `\(1 kW\)`
 - Develop a simulation model in LTSpice 
  - `\(L_{pi}\)` can be added a `\(50 m \Omega\)` ESR to help reach SS faster
 - With the aid of this model show that 
- - `\(P_{o} \approx 50W\)`
+ - `\(P_{o} \approx 1 kW\)`
  - `\(V_{pi}\)` sees a slightly inductive load
 ]
 
 .right-column[
-.center[<img src="img/netw/EgPLCLSPComp.png" width="300px">]
-]
-
----
-name: S49
-
-# Partial Series Compensation of Primary
-
-.center[<img src="img/netw/PartialSCompP.png" height="135px">]
-
-- The primary coil current and thus `\(\mathit{VA_{pt}}\)`, are both limited by `\(V_{pi}/\omega L_{pi}\)`
-- If `\(V_{pi}\)` is fixed by the design, then `\(L_{pt}\)` can be partially compensated using `\(C_{pi}\)`, to increase `\(\mathit{VA_{pt}}\)` by
- - Either reducing the effective `\(L_{pt}\)` to increase `\(I_{pt}\)` (specially if `\(L_{pt}\)` is fixed)
- - Or increasing `\(L_{pt}\)` and then partially compensating to lower `\(I_{pt}\)` (VA in the coil is kept the same)
-- The equivalent inductance of the partially compensated pick-up coil, which can be used to calculate `\(C_{pt}\)` and `\(L_{pi}\)`, is given by
-\\[ L\_{pt\_{{(eq)}}} = L\_{pt} - 1/ \left(  \omega^2 C\_{pi} \right)  \\]
-
----
-name: S50
-
-# Example: Partially Compensated Primary
-
-When placed `\(100 mm\)` apart the primary and pick-up coils of an IPT system each measures `\(18.73 \mu H\)`. `\(k\)` between the two coils is measured as 10%. The primary uses LCL compensation and is energised using a `\(50 V_{rms}\)` sinusoidal voltage source, `\(V_{pi}\)`, that has a frequency of `\(85 \mathit{kHz}\)`. The pick-up uses parallel compensation and deliver `\(50 W\)` to a `\(50 \Omega \)` AC load.
-
-.left-column[
-- Show that `\(C_{pi}\)` has to be `\(374.4 nF\)` to ensure `\(I_{pt}=10A_{rms}\)`
-- Show that `\(C_{pt}\)` has to be `\(374.4 nF\)` 
-- Develop a simulation model in LTSpice 
- - `\(L_{pi}\)` can be added a `\(50 m \Omega\)` ESR to help reach SS faster
-- With the aid of this model show that 
- - `\(P_{o} \approx 50W\)`
-- Using LTSpice, show that a `\(37.46 \mu H\)` primary coil that is partially compensated down to `\(13.24 \mu H\)` would deliver same `\(P_{o}\)`
-]
-
-.right-column[
-.zoom175[
-.center[<img src="img/netw/EgPPTLCLSPCompM1.png" width="300px">]
-.center[<img src="img/netw/EgPPTLCLSPCompM2.png" width="300px">]
-]
+.center[<img src="img/netw/EgPLCLSPComp.png" width="320px">]
 ]
 
 ---
@@ -1400,7 +1398,7 @@ layout: true
 name: template_slide
 
 .logo-slide[]
-.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) & [G A Covic](https://www.linkedin.com/in/grant-covic-179546a/), IEEE Wireless Week, Wireless Power Transfer School (June 2023)]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt), IEEE Southern Power Electronics Conference (Nov 2024)]
 
 ---
 name: S53
@@ -1668,6 +1666,24 @@ When `\(100 mm\)` apart, the primary and pick-up coils of an IPT system each mea
 ]
 
 ---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Part IV - Advanced IPT Systems 
+### Selected Topics
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt), IEEE Southern Power Electronics Conference (Nov 2024)]
+
+---
 name: S79
 
 # Active Rectifiers
@@ -1678,6 +1694,124 @@ name: S79
 - `\(\theta\)` can be controlled together with the amplitude of `\(V_{si}\)` to generate a specific AC impedance, `\(Z_{L(ac)}\)`, across secondary compensation network
 - The reactive part of `\(Z_{L(ac)}\)` can be used to improve power transfer and/or reduce losses, especially when operated under misaligned conditions
 - In applications requiring only uni-directional power flow, two of the switches in the full-bridge can be replaced with diodes 
+
+
+---
+
+# Hybrid Compensation Topologies
+
+.left-column[
+- Complementary compensation networks employed to improve misalignment tolerance 
+- Require less or no control 
+- Nearly constant power transfer across the entire operating region
+- Minimize increase in VA due to detuning caused by changes in coupler inductanes  
+- For example the power throughput of a parallel hybrid system can be given by
+
+\\[P\_{out} = \{8V\_{in}V\_{out}\over\pi^2} \left(\frac{1}{\omega\_TM\_s} + \frac{M\_p}{\omega\_TL\_{pi}L\_{si}}\right)\\]
+
+
+]
+
+.right-column[
+<img src="img/updates/Hybrid_Conv1.png" width="350px">
+
+<img src="img/updates/Hybrid_Conv2.png" width="350px">
+]
+
+---
+
+# Boost Active Bridge (BAB)
+
+.left-column[
+- Integrated post/pre regulation capabilities enable maximum efficiency tracking
+- Wide ZVS range and reduced current stresses
+- Eliminates DC-blocking capacitor
+<br></br>
+
+<img src="img/updates/BAB_Conv.png" height="200px">
+
+]
+
+.right-column[.right[
+<img src="img/updates/BAB_W1.png" width="310px">
+
+<img src="img/updates/BAB_W2.png" width="310px">
+]]
+
+
+---
+
+# Integrated Boost Multilevel Converter (IBMC)
+.left-column[
+- Derives a higher voltage to drive the compensation network
+ - Reduces current stress and may eliminate step-up transformer
+- Inherently eliminates circulating currents
+ - Series-blocking capacitor can be omitted
+- Generate a low THD staircase modulated output voltage
+ - Can generate wide range of voltages
+ - Can use lower voltage higher performance devices
+ 
+<img src="img/updates/IBMMC_Conv.gif" height="160px">
+
+ ]
+
+ .right-column[
+ 
+ <img src="img/updates/IBMMC_Vpi.gif" width="275px">
+ 
+ ]
+
+ 
+---
+
+# IBMC Performance
+
+.left-column[
+<img src="img/updates/IBMMC_W.gif" width="700px">
+]
+
+.right-column[
+- Maintains a constant 7.7 kW power transfer through primary control
+- Operate in 5-level mode at low k and 3-level mode at high k
+- Efficiency ranges between 91.5% and 92.4% across entire operating region
+- A simple algorithm used to ensure module voltages are balanced
+]
+
+---
+
+# A Digitized Modulation Scheme
+
+.left-column[
+<img src="img/updates/DigitisedSumary.png" width="690px">
+]
+
+.right-column[
+- Traditional duty/phase modulation causes loss of ZVS
+- Pulse density modulation introduces unwanted resonances
+- New scheme operates a module only at 0%, 50% or 100% duty ensuring ZVS
+- Works like a DAC as the number of modules in each of the 3 states determine voltage amplitude 
+]
+
+---
+# Stepped Resonant Excitation Method
+
+.center[<img src="img/SRE.png" width="850px">]
+
+---
+
+# Optimizing the Coil Structures
+
+.left-column[
+.center[<img src="img/SRE_2.png" height="200px">]
+
+- Using SRE method high fidelity FEM models that also capture thermal behavior can be developed
+ - These multiphysics models can be used to optimize the coil structures
+ - For example, the coil structures can be optimized to minimize the weight
+]
+
+.right-column[
+<img src="img/DD_Q.png" width="380px">
+]
 
 ---
 
