@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryogenic Power Electronics</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { 
+        font-family: 'Droid Serif'; 
+        line-height: 1.6;
+        }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: bold;
+        color: #00467F;
+      }
+
+      h1{
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .TitleAuthor {
+        color:white; 
+        font-weight: normal;
+      }
+
+      .title-slide .remark-slide-number {
+        display: none;
+      }
+      .title-slide h1, h2, h3, h4 {
+        text-align: left;
+        color:white;
+        line-height: 0.7;
+        font-weight: bold;
+      }
+
+      .title-slide {
+        vertical-align: middle;
+        background-color: #00467F;
+      }
+
+      .logo-title {
+        content: "";
+        position: absolute;
+        top: 15px;
+        right:   15px;
+        height: 88px;
+        width: 267px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(https://cdn.auckland.ac.nz/assets/central/central-services/mediaandmarketing/uoa-logos-2015/uoa-logo-2015-reverse.png);
+      }
+      .logo-slide {
+        content: "";
+        position: absolute;
+        top: 35px;
+        right:   25px;
+        height: 100px;
+        width: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(Logo.png);
+      }
+
+      .left-column {
+        width: 65%;
+        float: left;
+        word-wrap: break-word;
+      }
+     
+      .right-column {
+        width: 30%;
+        float: right;
+        word-wrap: break-word;
+      }
+
+      .footer {
+        content: "";
+        position: absolute;
+        bottom: 17px;
+        color:gray;
+        font-size: 10pt;
+      }
+      
+      @page {
+        size: 1600px 900px;
+        margin: 0;
+      }
+
+      @media print {
+        .remark-slide-scaler {
+          width: 100% !important;
+          height: 100% !important;
+          transform: scale(1) !important;
+          top: 0 !important;
+          left: 0 !important;
+        }
+      }
+      
+      .red {color:red;}
+
+      .zoom175 {
+        transition: transform .2s; /* Animation */
+      }
+
+      .zoom175:hover {
+        transform: scale(1.75) translateY(-20%) translateX(-20%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      }
+
+      .credits {
+        font-size: 12px;
+        line-height: 4px !important;
+        margin-top: 4px !important;
+        font-family: 'Droid Serif'; 
+      }
+
+    </style>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <style>
+    .smaller-font { font-size:14px } 
+    </style>
+
+    <!-- KaTeX and Mathjax support refer to below for syntax -->
+    <!-- https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+    <!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    -->
+
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide
+count: false
+.logo-title[]
+
+# Powering the Future
+### Cryogenic Power Electronics for Space, Aviation, and Fusion
+
+.TitleAuthor[Duleepa J Thrimawithana]
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
+
+---
+
+# The JB Wireless Power Technology Center
+
+.center[<img src="img/intro/PEGROUP.gif" height="430">]
+
+---
+
+# Commercial Successes 
+
+.center[<img src="img/intro/WPT_History.png" height="430">]
+
+---
+
+# Where We Are
+
+- Our city campus labs are on level 6 and 7 of the Engineering Building (405), while our high power labs are located in the Newmarket campus
+
+.center[<img src="img/intro/EngBuild.png" height="300"> &nbsp; &nbsp; &nbsp; <img src="img/NM.jpg" height="300">]
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# The Advanced Energy Technology Program
+### An Overview
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
+
+---
+
+name: S1
+
+# Program Overview 
+
+.center[<img src="img/overview/program.png" height="410px">]
+
+---
+
+# National and International Partners
+
+.center[<img src="img/overview/colab.png" height="410px">]
+
+---
+
+# System Overview 
+
+.center[<img src="img/overview/system.png" height="410px">]
+
+
+---
+
+name: S19
+
+# GaN Half Bridge and Magnetics
+
+.center[<img src="img/gan/evolution.png" height="410px">]
+
+---
+name: S19
+
+# Driving a Homopolar Machine with HTS Field Winding 
+
+- A homopolar machine with an HTS field winding has been driven using the 2-level three-phase inverter
+ - Inverter was in LN2 while the motor was inside a vacuum chamber cooled using a cold head
+- There was an image here but the vacuum got it
+
+
+---
+
+name: S19
+
+# Radiation Testing of GaN HEMTs
+
+- Preliminary characterisation of drain leakage under neutron radiation at Birmingham cyclotron facility
+
+.center[<img src="img/radiation/cyclotron.jpg" height="330px"><img src="img/radiation/data.png" width="50%">]
+
+---
+name: S8
+
+# Ancilary Circuits I
+
+- Prototypes of all the critical subsystems needed to build a power electronics system that can operate under cryogenic conditions have been developed and tested
+ - Passives and ICs
+ - Current Sensors
+ - Digital Isolators
+ - OpAmps and Comparators
+ - Voltage References, regulators and Zener Diodes
+ - Capacitors
+ - Custom Built Linear Regulator
+ - Custom Built Resonant Switchers
+ - MCUs and FPGAs
+- Currently working on miniaturizing the designs and improving the performance of the subsystems
+
+---
+name: S10
+
+# Ancilary Circuits II
+
+.center[<img src="img/ancilary/New_Driver.png" width="20%"><img src="img/ancilary/HallSensor.png" width="20%"><img src="img/ancilary/Isolators.png" width="20%"><img src="img/ancilary/OpAmps.png" width="20%">]
+.center[<img src="img/ancilary/Linear.png" width="20%"><img src="img/ancilary/Resonant_AirCore.png" width="20%"><img src="img/ancilary/Resonant_Core.png" width="20%"><img src="img/ancilary/RP2040.jpg" width="20%">]
+
+---
+# Resistance of Cu Traces/Interconnects
+
+- The contribution of the solder joints and PCB traces to overall D-S resistance have been investigated 
+ - A 2 Oz PCB contributes rougly 200 uOhms at RT and 22 uOhms at CT
+ - Contribution of solder joints and trace resistance is however significant for smaller devices, specially GaNs
+
+.center[<img src="img/fluxpump/SolderJoints.png" height="300px">]
+
+---
+# Solid State Flux Pump with Aircore Transformer
+
+- A 200A solid-state flux pump was developed to measure the critical current of an HTS tape
+ - 8 ultra-low Rds on Si FET was used to rectify while keeping the losses low
+
+.center[<img src="img/fluxpump/CurrentDoubler.jpg" height="300px"> <img src="img/fluxpump/CurrentDoubler_2.png" height="300px">] 
+
+---
+name: S19
+
+# Fully Cryogenic Motor Driver
+
+- The T-Type converter operated at 77K was confirgured to drive an axial flux machine
+ - Initial testing upto 400V/10kW completed
+- First fully cryogenic motor drive reported to-date
+ - All ancillary circuits and digital controller operated in the cryogenic enviroment 
+
+.center[<img src="img/t-type/All_Cryo_1.jpg" height="300px"> &nbsp; &nbsp; &nbsp; &nbsp; <img src="img/t-type/All_Cryo_2.jpg" height="300px">]
+
+---
+name: S19
+
+# Conclusions and Observations  
+
+- Cryoelectronics is in-demand for applications such as aviation, space exploration, nuclear fusion, future circular collider, etc.
+- Long haul commercial flights will most likely require LH2 as a fuel
+ - Has sufficient thermal capacity to cool the electronics 
+- Developing a cryoelectronic converter seems possible with current device technology 
+ - GaN device with Schottky p-GaN gates seems to be the most promising switching technology
+ - CMOS logic devices works well in cryogenic temperatures
+ - Nanocrystalline materials offer good performance 
+ - Film capacitors and NP0/C0G capacitors works well
+- Operating at lower temperature offers some advantages
+ - Improved power density, possible higher efficiency and less heat leakage
+
+---
+name: S19
+
+# Research Challenges 
+
+- Fully cryogenic power conversion system
+ - We are in the process of developing a new generation of our GaN HEMT based power conversion modules, with integrated isolation, protection, ancillary services and digital control 
+- Conduction cooling the converters
+ - We are investigating new designs that enable conduction cooling for a power conversion system in a vacuum chamber using a cold head
+- Reliability of components and further component characterization
+ - Further investigation on failure modes, cold starts, impact of thermal cycling, thermal shock, thermal gradients, mechanical stresses introduced by encapsulating materials, etc.
+ - Radiation hardness of cryo-cooled GaN HEMTs (possible collaboration with Airbus and STM)
+- Driving a fully HTS machine 
+ - Challenges involved in minimizing AC losses, insulation breakdown, low winding inductance, EMI, etc.
+ - We are investigating some novel approaches to solve some of these issues
+
+
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Thank You
+
+
+
+    </textarea>
+
+    <!-- 
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    -->    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
+    </script>
+
+
+    <script src="remark.min.js" type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+
+      var options = {};
+
+      var renderMath = function() {
+        renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false},
+        ]});
+      }
+
+      var slideshow = remark.create({
+        ratio: '16:9',
+        slideNumberFormat: '%current%',
+        countIncrementalSlides: false,
+        renderMath,
+      });
+
+      MathJax.Hub.Config({
+          tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          processEscapes: true
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
+      
+    </script>
+  </body>
+</html>
