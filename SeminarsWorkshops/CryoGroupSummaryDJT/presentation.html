@@ -171,13 +171,32 @@ layout: true
 name: template_slide
 
 .logo-slide[]
-.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Rupert Power](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
 
 ---
 
 # The JB Wireless Power Technology Center
 
 .center[<img src="img/intro/PEGROUP.gif" height="430">]
+
+---
+
+# What We Do 
+
+.left-column[
+
+- Grid resilience and energy security through, V2G, renewable generation and power conditioning
+- Electrification of heavy industry, primary sectors and autonomous fleets (UAVs/UGVs)
+- High-performance electric propulsion (superconducting and wireless)
+- Power electronics and wireless power for extreme environments (e.g. fusion and space)  
+- Next-generation power electronics for secure AI infrastructure
+- Advanced medical electronics and implantable devices
+]
+
+.right-column[
+.right[<img src="img/WhatWeDo.png" height="400">]
+
+]
 
 ---
 
@@ -200,8 +219,8 @@ layout: false
 count: false
 .logo-title[]
 
-# The Advanced Energy Technology Program
-### An Overview
+# Research Programs
+### A Summary
 
 ---
 
@@ -209,13 +228,29 @@ layout: true
 name: template_slide
 
 .logo-slide[]
-.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Aaron Wadsworth](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Rupert Power](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
 
 ---
 
 name: S1
 
-# Program Overview 
+# Wireless EV Charging and V2G
+
+.center[<img src="img/WPT_MBIE.png" height="430px">]
+
+---
+
+name: S1
+
+# The Team & Partners
+
+.center[<img src="img/People_MBIE.png" height="430px">]
+
+---
+
+name: S1
+
+# Advanced Energy Technology Platforms 
 
 .center[<img src="img/overview/program.png" height="410px">]
 
@@ -231,65 +266,61 @@ name: S1
 
 .center[<img src="img/overview/system.png" height="410px">]
 
+---
+
+class: title-slide
+layout: false
+count: false
+.logo-title[]
+
+# Cryogenic Power Technologies
+### An Overview of Developments 
+
+---
+
+layout: true
+name: template_slide
+
+.logo-slide[]
+.footer[[D J Thrimawithana](https://www.linkedin.com/in/duleepajt) and [Rupert Power](https://www.linkedin.com/in/aaron-wadsworth/), Department of Electrical, Computer, and Software Engineering, The University of Auckland (April 2026)]
+
+---
+name: S19
+
+# Power Converters and Magnetics
+
+.center[<img src="img/Cryo_Power.png" height="440px">]
 
 ---
 
 name: S19
 
-# GaN Half Bridge and Magnetics
+# Reliability & Radiation Testing
 
-.center[<img src="img/gan/evolution.png" height="410px">]
+- Preliminary characterisation of device behaviour under ionising radiation 
+ - Characterisation of device behaviour under neutron radiation and under X-Ray radiation 
+ - Further detailed studies are ongoing under the Horizon Europe ARCTIC project
+- Measurement of device dynamic performance
 
----
-name: S19
-
-# Driving Low-Inductance Electric Machines
-
-- A homopolar machine with an HTS field winding has been driven using both cryogenic and RT benchmark inverters
- - Spun to 24,000rpm at Air New Zealand's Auckland Test Cell
-- EMRAX back-to-back demonstration system run at 6000rpm and 10kW, further tests to follow
-
-.center[<img src="img/motor/testcellcontrol.jpg" height="320px">     <img src="img/motor/emrax.jpg" height="320px">]
-
----
-
-name: S19
-
-# Radiation Testing of GaN HEMTs
-
-- Preliminary characterisation of drain leakage under neutron radiation at Birmingham cyclotron facility
-- Characterisation of gate leakage under xray source at GNS NZ
-
-.center[<img src="img/radiation/cyclotron.jpg" height="330px"><img src="img/radiation/data.png" width="50%">]
+.center[<img src="img/radiation/radiation_testing.png" height="300px">]
 
 ---
 name: S8
 
-# Ancilary Circuits
+# Ancillary and Digital Circuits 
 
 - Prototypes of all the critical subsystems needed to build cryogenic power electronics systems
- - Capacitors
- - Current Sensors
- - Digital Isolators, OpAmps, Comparators, MCUs and FPGAs
- - Voltage References, regulators and Zener Diodes
- - Custom Built Linear Regulator & Resonant Switchers
+ - Capacitors, current sensors, iosolators, OpAmps, comparators, logic devices have been identified and characterised
+ - MCUs, CPLDs and FPGAs needed to implement the digital control has been identified and characterised
+- Custom regulator, references, digital control platforms and hardware protection cicuitry for wide temperature ranges
 
-.center[<img src="img/ancilary/New_Driver.png" width="20%"><img src="img/ancilary/Linear.png" width="20%"><img src="img/ancilary/Resonant_Core.png" width="20%"><img src="img/ancilary/RP2040.jpg" width="20%">]
+.center[<img src="img/ancilary/ancillary_combined.png" height="200px">]
 
 ---
-# Resistance of Cu Traces/Interconnects
-
-- The contribution of the solder joints and PCB traces to overall D-S resistance have been investigated 
- - A 2 Oz PCB contributes rougly 200 uOhms at RT and 22 uOhms at CT
- - Contribution of solder joints and trace resistance is however significant for smaller devices, specially GaNs
-
-.center[<img src="img/fluxpump/SolderJoints.png" height="300px">]
-
----
-# Solid State Flux Pump with Aircore Transformer
+# Solid State Flux Pump
 
 - A 200A solid-state flux pump was developed to measure the critical current of an HTS tape
- - 8 ultra-low Rds on Si FET was used to rectify while keeping the losses low
+- Ultra-low Rds on Si FETs were used and we are exploring cryogenic electronics and new magnetics to improve efficiency for kA level currents
 
 .center[<img src="img/fluxpump/CurrentDoubler.jpg" height="300px"> <img src="img/fluxpump/CurrentDoubler_2.png" height="300px">] 
 
@@ -308,9 +339,22 @@ name: S19
 ---
 name: S19
 
+# Testing at Higher TRL Levels
+
+- A homopolar machine with an HTS field winding has been driven using both cryogenic and RT benchmark inverters
+ - Spun to 24,000rpm at Air New Zealand's Auckland Test Cell
+ - Coupled as a generator with an APU
+- EMRAX back-to-back demonstration system run at 6000rpm and 10kW, further tests to follow
+
+.center[<img src="img/motor/testcellcontrol.jpg" height="250px">     <img src="img/motor/emrax.jpg" height="250px">]
+
+---
+name: S19
+
 # Conclusions and Observations  
 
 - Cryoelectronics is in-demand for applications such as aviation, space exploration, nuclear fusion, future circular collider, etc.
+ - We are working with a number of industry and academic partners to advance cryoelectronic technologies in all these sectors
 - Long haul commercial flights will most likely require LH2 as a fuel
  - Has sufficient thermal capacity to cool the electronics 
 - Developing a cryoelectronic converter seems possible with current device technology 
